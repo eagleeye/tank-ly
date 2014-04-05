@@ -1,8 +1,8 @@
 {
-	"name": "client2client-transport",
-	"description": "Client to client file transfer",
+	"name": "multiplayer tanks",
+	"description": "2d multiplayer game, cotrolled by smartphones",
 	"version": "0.1.0",
-	"homepage" : "https://bitbucket.org/eagleeyes91",
+	"homepage" : "https://github.com/eagleeye/multiplayerTanks",
 	"engines": {"node": ">= 0.10.20" },
 	"author": "Andrii Shumada <eagleeyes91@gmail.com>",
 
