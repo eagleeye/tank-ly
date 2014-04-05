@@ -3,6 +3,9 @@ touchStartEvent = 'touchstart touchmove'
 #touchStartEvent = 'mousedown'
 touchStopEvent = 'touchend'
 #touchStopEvent = 'mouseup'
+
+lastMove = '';
+
 $ ->
 	emit = (e, eventName, params = {}) ->
 		params.clientId = clientId;
@@ -11,6 +14,8 @@ $ ->
 	socket = io.connect(window.location.origin);
 	socket.on 'connect', ->
 		emit null, 'connected'
+	socket.on 'connected', (data) ->
+		console.log('connected', data)
 	socket.on 'move', (data) ->
 		console.log('move', data)
 	socket.on 'fire', (data) ->
@@ -29,7 +34,10 @@ $ ->
 		y = e.offsetY || touch.pageY
 		x = e.offsetX || touch.pageX
 		angle = Math.atan2( 0.5 * $left.height() - y, x - 0.5 * $left.width())
-		emit e, 'move', direction: getDirection(angle)
+		direction = getDirection(angle)
+		if direction isnt lastMove
+			emit e, 'move', direction: direction
+			lastMove = direction
 
 getDirection = (angle) ->
 	pi = Math.PI

@@ -9,8 +9,6 @@ io = require('socket.io').listen(server)
 server.listen(3000)
 
 io.sockets.on 'connection', (socket) ->
-	console.log 'userConnected'
-	io.sockets.emit('userConnected')
 	socket.on 'move', (data) ->
 		console.log 'move event', data
 		io.sockets.emit "move", data
@@ -20,6 +18,9 @@ io.sockets.on 'connection', (socket) ->
 	socket.on 'fire', (data) ->
 		console.log 'fire event', data
 		io.sockets.emit "fire", data
+	socket.on 'connected', (data) ->
+		console.log 'new user connected', data
+		io.sockets.emit "connected", data
 	socket.on 'disconnect', ->
 		console.log 'userDisconnected'
 		io.sockets.emit('userDisconnected')
