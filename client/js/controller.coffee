@@ -21,7 +21,7 @@ $ ->
 	socket.on 'stop', (data) ->
 		console.log('stop', data)
 
-	$('.right-control').on touchStartEvent, (e) ->
+	$('.right-control').on 'touchstart', (e) ->
 		emit e, 'fire'
 	$('.left-control').on touchStopEvent, (e) ->
 		emit e, 'stop'
