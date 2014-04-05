@@ -14,6 +14,9 @@ io.sockets.on 'connection', (socket) ->
 	socket.on 'move', (data) ->
 		console.log 'move event', data
 		io.sockets.emit "move", data
+	socket.on 'fire', (data) ->
+		console.log 'fire event', data
+		io.sockets.emit "fire", data
 	socket.on 'disconnect', ->
 		console.log 'userDisconnected'
 		io.sockets.emit('userDisconnected')
