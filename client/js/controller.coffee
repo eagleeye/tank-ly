@@ -30,6 +30,6 @@ $ ->
 	$left.on touchStartEvent, (e) ->
 		touch = event.touches?[0]
 		y = e.offsetY || touch.pageY
-		x = e.offsetX || touch.pageXs
+		x = e.offsetX || touch.pageX
 		angle = Math.atan2(0.5 * $left.height() - y, x - 0.5 * $left.width())
 		emit e, 'move', direction: angle * 180 / Math.PI
