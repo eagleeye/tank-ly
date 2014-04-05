@@ -10,7 +10,7 @@ html, body, .container {
 body {
 	background-color: #000000;
 	color: #0623ff;
-	font-size: 56px;
+	overflow: hidden;
 }
 
 .container {
@@ -24,6 +24,7 @@ body {
 }
 
 .control {
+	font-size: 50px;
 	border: 2px solid #0623ff;
 	border-radius: 500px;
 	height: 95%;
@@ -33,6 +34,6 @@ body {
 
 div.text {
 	position: relative;
-	top: 45%;
-	top: 45%;
+	top: 50%;
+	margin-top: -25px;
 }

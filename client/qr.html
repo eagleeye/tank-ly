@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+	<style>html, body, .container {
+		height: 100%;
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+	}
+
+	img {
+		width: auto;
+		height: 100%;
+		max-height: 100%;
+	}
+	</style>
+</head>
+<body>
+<div class="container"><img id="qr"></div>
+<script>
+	document.getElementById('qr').src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + window.location.origin + '/controller.html';
+</script>
+</body>
+</html>
