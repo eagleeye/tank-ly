@@ -40,9 +40,6 @@ mut.CreateGame = function(onCreate) {
 		var land = game.add.tileSprite(0, 0, width / scale, height / scale , 'earth');
 		land.fixedToCamera = true;
 
-//		var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
-//		logo.anchor.setTo(0.5, 0.5);
-
 		explosions = game.add.group();
 		for (var i = 0; i < 20; i++)
 		{
@@ -111,7 +108,7 @@ mut.CreateGame = function(onCreate) {
 		}
 
 		// Bullet hits
-		_.each(livePlayers, function(player) {
+		_.each(livePlayers, function(player, playerID) {
 			_.each(livePlayers, function(enemy) {
 				if (player === enemy) {
 					return;
@@ -123,6 +120,11 @@ mut.CreateGame = function(onCreate) {
 					bullet.kill();
 					enemy.hp -= 1;
 					if (enemy.hp === 0) {
+
+						player.score++;
+						player.scoreText.text = player.name + " " + player.score;
+						socket.emit('scoreUpdated', {clientId: playerID, score: player.score});
+
 						enemy.alive = false;
 
 						enemy.tank.exists = false;
@@ -200,6 +202,10 @@ mut.CreateGame = function(onCreate) {
 		tank.body.maxVelocity.setTo(400, 400);
 		tank.body.collideWorldBounds = true;
 
+		var style = { font: "bold 40px Arial", fill: colors[colorId-1], align: "left"};
+		var t = game.add.text(game.world.bounds.width / scale - 200, _.size(players) * 40, name + " ", style)
+		t.setShadow(3, 3, "black", 2);
+
 		players[playerID] = {
 			name: name,
 			color: colorId,
@@ -210,6 +216,8 @@ mut.CreateGame = function(onCreate) {
 			fireRate: 300,
 			nextFire: 0,
 			alive: true,
+			score: 0,
+			scoreText: t,
 			hp: maxHp,
 			input: {},
 			bullets: createBullets()

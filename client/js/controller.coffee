@@ -25,6 +25,10 @@ $ ->
 			$('.color').css('background-color', data.color)
 #		console.log('colorAssigned', data)
 
+	socket.on 'scoreUpdated', (data) ->
+		if data.clientId is clientId
+			$('.color').html(data.score.toString())
+
 	$('.right-control').on 'touchstart', (e) ->
 		emit e, 'fire'
 	$('.left-control').on touchStopEvent, (e) ->

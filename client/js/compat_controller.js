@@ -23,6 +23,11 @@
 				return $('.color').css('background-color', data.color);
 			}
 		});
+		socket.on('scoreUpdated', function(data) {
+			if (data.clientId === clientId) {
+				return $('.color').html(data.score.toString());
+			}
+		});
 
 		document.onkeydown = checkKey;
 		function checkKey(e) {

@@ -56,10 +56,10 @@ window.onload = function() {
 		});
 
 		// Bots
-		game.AddPlayer(0, "Player 1");
 		var cmds = ["press_top", "press_left", "press_fire", "unpress_left", "unpress_top", "press_fire"];
 		var cmdInd = 0;
 		var pid = 0;
+		game.AddPlayer(pid, "Bot " + (pid+1));
 
 		setInterval(function() {
 			var cmd = {	code: cmds[cmdInd++] };
@@ -73,8 +73,8 @@ window.onload = function() {
 
 //		setInterval(function() {
 //			pid++;
-//			game.AddPlayer(pid);
-//		}, 2000);
+//			game.AddPlayer(pid, "Bot " + (pid+1));
+//		}, 1500);
 
 	});
 
