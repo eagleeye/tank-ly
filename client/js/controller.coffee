@@ -12,18 +12,18 @@ $ ->
 	socket = io.connect(window.location.origin);
 	socket.on 'connect', ->
 		emit null, 'connected'
-	socket.on 'connected', (data) ->
-		console.log('connected', data)
-	socket.on 'move', (data) ->
-		console.log('move', data)
-	socket.on 'fire', (data) ->
-		console.log('fire', data)
-	socket.on 'stop', (data) ->
-		console.log('stop', data)
+#	socket.on 'connected', (data) ->
+#		console.log('connected', data)
+#	socket.on 'move', (data) ->
+#		console.log('move', data)
+#	socket.on 'fire', (data) ->
+#		console.log('fire', data)
+#	socket.on 'stop', (data) ->
+#		console.log('stop', data)
 	socket.on 'colorAssigned', (data) ->
 		if data.clientId is clientId
 			$('.color').css('background-color', data.color)
-		console.log('colorAssigned', data)
+#		console.log('colorAssigned', data)
 
 	$('.right-control').on 'touchstart', (e) ->
 		emit e, 'fire'

@@ -11,6 +11,7 @@ body {
 	background-color: #000000;
 	color: #0623ff;
 	overflow: hidden;
+	-ms-touch-action: none !important; /* DISABLE DOUBLE-TAP-ZOOM */
 }
 
 .container {
