@@ -1,7 +1,7 @@
 clientId = Math.random().toString().split('.')[1];
-touchStartEvent = 'touchstart touchmove'
-#touchStartEvent = 'mousedown'
+touchMoveEvent = 'touchstart touchmove'
 touchStopEvent = 'touchend'
+#touchMoveEvent = 'mousedown'
 #touchStopEvent = 'mouseup'
 
 $ ->
@@ -27,7 +27,7 @@ $ ->
 		emit e, 'stop'
 
 	$left = $('.left-control')
-	$left.on touchStartEvent, (e) ->
+	$left.on touchMoveEvent, (e) ->
 		touch = event.touches?[0]
 		y = e.offsetY || touch.pageY
 		x = e.offsetX || touch.pageX
