@@ -68,6 +68,12 @@ mut.CreateGame = function(onCreate) {
 			input.top && (currentSpeed += 40);
 			input.bottom && (currentSpeed -= 40);
 
+			if (input.moveDir) {
+				currentSpeed += 40;
+				var targetAngle = -input.moveDir.angle;
+				tank.angle = (tank.angle + targetAngle) * 0.5;
+			}
+
 			currentSpeed = Math.min(currentSpeed, 400);
 			currentSpeed = Math.max(currentSpeed, -200);
 
@@ -207,11 +213,12 @@ mut.CreateGame = function(onCreate) {
 
 	game.PlayerCommand = function(playerID, cmd) {
 		var player = players[playerID];
-		cmd = (cmd && cmd.code || "").split("_");
-		switch(cmd[0]) {
-			case "press": player.input[cmd[1]] = true; break;
-			case "unpress": player.input[cmd[1]] = false; break;
+		code = (cmd && cmd.code || "").split("_");
+		switch(code[0]) {
+			case "press": player.input[code[1]] = true; break;
+			case "unpress": player.input[code[1]] = false; break;
 			case "stop": player.input = {}; break;
+			case "move": player.input.moveDir = { angle: cmd.direction }; break;
 		};
 	};
 

@@ -45,7 +45,8 @@ window.onload = function() {
 		socket.on('move', function(data) {
 			game.EnsurePlayer(data.clientId);
 			var cmd = {
-				code: "press_" + data.direction
+				code: "move",
+				direction: data.direction
 			};
 			game.PlayerCommand(data.clientId, cmd);
 		});
@@ -74,6 +75,7 @@ window.onload = function() {
 //		game.AddPlayer(5, "Player 6");
 //		game.AddPlayer(6, "Player 7");
 
+//		var cmds = ["press_top", "press_left", "press_fire", "unpress_left", "unpress_top", "unpress_fire"];
 		var cmds = ["press_top", "press_left", "press_fire", "unpress_left", "unpress_top", "unpress_fire"];
 		var cmdInd = 0;
 
