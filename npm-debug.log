@@ -1,0 +1,690 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'c:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@1.4.3
+3 info using node@v0.10.26
+4 warn package.json YOUR-PROJECT-NAME-HERE@0.0.1 No repository field.
+5 verbose readDependencies using package.json deps
+6 verbose install where, deps [ 'e:\\prj\\multiplayerTanks',
+6 verbose install   [ 'connect',
+6 verbose install     'express',
+6 verbose install     'jade',
+6 verbose install     'mongoose',
+6 verbose install     'socket.io',
+6 verbose install     'vows',
+6 verbose install     'mocha',
+6 verbose install     'should' ] ]
+7 info preinstall YOUR-PROJECT-NAME-HERE@0.0.1
+8 warn package.json vows@0.5.13 No repository field.
+9 verbose readDependencies using package.json deps
+10 verbose already installed skipping jade@0.20.0 e:\prj\multiplayerTanks
+11 verbose already installed skipping socket.io@0.8.7 e:\prj\multiplayerTanks
+12 verbose already installed skipping vows@0.5.x e:\prj\multiplayerTanks
+13 verbose already installed skipping mocha@* e:\prj\multiplayerTanks
+14 verbose already installed skipping should@* e:\prj\multiplayerTanks
+15 verbose already installed skipping connect@1.8.5 e:\prj\multiplayerTanks
+16 verbose already installed skipping express@2.5.2 e:\prj\multiplayerTanks
+17 verbose cache add [ 'mongoose@2.4.8', null ]
+18 verbose cache add name=undefined spec="mongoose@2.4.8" args=["mongoose@2.4.8",null]
+19 verbose parsed url { protocol: null,
+19 verbose parsed url   slashes: null,
+19 verbose parsed url   auth: null,
+19 verbose parsed url   host: null,
+19 verbose parsed url   port: null,
+19 verbose parsed url   hostname: null,
+19 verbose parsed url   hash: null,
+19 verbose parsed url   search: null,
+19 verbose parsed url   query: null,
+19 verbose parsed url   pathname: 'mongoose@2.4.8',
+19 verbose parsed url   path: 'mongoose@2.4.8',
+19 verbose parsed url   href: 'mongoose@2.4.8' }
+20 verbose cache add name="mongoose" spec="2.4.8" args=["mongoose","2.4.8"]
+21 verbose parsed url { protocol: null,
+21 verbose parsed url   slashes: null,
+21 verbose parsed url   auth: null,
+21 verbose parsed url   host: null,
+21 verbose parsed url   port: null,
+21 verbose parsed url   hostname: null,
+21 verbose parsed url   hash: null,
+21 verbose parsed url   search: null,
+21 verbose parsed url   query: null,
+21 verbose parsed url   pathname: '2.4.8',
+21 verbose parsed url   path: '2.4.8',
+21 verbose parsed url   href: '2.4.8' }
+22 verbose addNamed [ 'mongoose', '2.4.8' ]
+23 verbose addNamed [ '2.4.8', '2.4.8' ]
+24 silly lockFile f329261c-mongoose-2-4-8 mongoose@2.4.8
+25 verbose lock mongoose@2.4.8 C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\f329261c-mongoose-2-4-8.lock
+26 verbose url raw mongoose/2.4.8
+27 verbose url resolving [ 'https://registry.npmjs.org/', './mongoose/2.4.8' ]
+28 verbose url resolved https://registry.npmjs.org/mongoose/2.4.8
+29 info trying registry request attempt 1 at 11:37:00
+30 verbose etag "7TA5ACH3O1JW0Q4974FW2PCQ"
+31 http GET https://registry.npmjs.org/mongoose/2.4.8
+32 http 304 https://registry.npmjs.org/mongoose/2.4.8
+33 silly registry.get cb [ 304,
+33 silly registry.get   { date: 'Sat, 05 Apr 2014 09:36:59 GMT',
+33 silly registry.get     server: 'Apache',
+33 silly registry.get     via: '1.1 varnish',
+33 silly registry.get     'last-modified': 'Sat, 05 Apr 2014 09:36:59 GMT',
+33 silly registry.get     'cache-control': 'max-age=1',
+33 silly registry.get     etag: '"7TA5ACH3O1JW0Q4974FW2PCQ"',
+33 silly registry.get     'x-served-by': 'cache-fra1231-FRA',
+33 silly registry.get     'x-cache': 'MISS',
+33 silly registry.get     'x-cache-hits': '0',
+33 silly registry.get     'x-timer': 'S1396690619.639040232,VS0,VE183',
+33 silly registry.get     vary: 'Accept',
+33 silly registry.get     'content-length': '0',
+33 silly registry.get     'keep-alive': 'timeout=10, max=50',
+33 silly registry.get     connection: 'Keep-Alive' } ]
+34 verbose etag mongoose/2.4.8 from cache
+35 silly lockFile f329261c-mongoose-2-4-8 mongoose@2.4.8
+36 silly lockFile f329261c-mongoose-2-4-8 mongoose@2.4.8
+37 silly resolved [ { name: 'mongoose',
+37 silly resolved     description: 'Mongoose MongoDB ODM',
+37 silly resolved     version: '2.4.8',
+37 silly resolved     author: { name: 'Guillermo Rauch', email: 'guillermo@learnboost.com' },
+37 silly resolved     keywords: [ 'mongodb', 'mongoose', 'orm', 'data', 'datastore', 'nosql' ],
+37 silly resolved     dependencies: { hooks: '0.1.9', mongodb: '0.9.7-2-5', colors: '0.5.1' },
+37 silly resolved     devDependencies: { should: '0.2.1', gleak: '0.2.1' },
+37 silly resolved     directories: { lib: './lib/mongoose' },
+37 silly resolved     scripts: { test: 'make test' },
+37 silly resolved     main: './index.js',
+37 silly resolved     engines: { node: '>= 0.4.0' },
+37 silly resolved     repository: { type: 'git', url: 'git://github.com/LearnBoost/mongoose.git' },
+37 silly resolved     readme: 'Mongoose 2.0\n============\n\n## What\'s Mongoose?\n\nMongoose is a [MongoDB](http://www.mongodb.org/) object modeling tool designed to work in an asynchronous\nenvironment.\n\nDefining a model is as easy as:\n\n```javascript\nvar Comments = new Schema({\n    title     : String\n  , body      : String\n  , date      : Date\n});\n\nvar BlogPost = new Schema({\n    author    : ObjectId\n  , title     : String\n  , body      : String\n  , buf       : Buffer\n  , date      : Date\n  , comments  : [Comments]\n  , meta      : {\n      votes : Number\n\t  , favs  : Number\n\t}\n});\n\nvar Post = mongoose.model(\'BlogPost\', BlogPost);\n```\n\n## Installation\n\nThe recommended way is through the excellent [NPM](http://www.npmjs.org/):\n\n```bash\n$ npm install mongoose\n```\n\nOtherwise, you can check it in your repository and then expose it:\n\n```bash\n$ git clone git://github.com/LearnBoost/mongoose.git node_modules/mongoose/\n```\nAnd install dependency modules written on `package.json`.\n\nThen you can `require` it:\n\n```javascript\nrequire(\'mongoose\')\n```\n\n## Connecting to MongoDB\n\nFirst, we need to define a connection. If your app uses only one database, you\nshould use `mongose.connect`. If you need to create additional connections, use\n`mongoose.createConnection`.\n\nBoth `connect` and `createConnection` take a `mongodb://` URI, or the parameters\n`host, database, port, options`.\n\n```javascript\nvar mongoose = require(\'mongoose\');\n\nmongoose.connect(\'mongodb://localhost/my_database\');\n```\n\nOnce connected, the `open` event is fired on the `Connection` instance. If\nyou\'re using `mongoose.connect`, the `Connection` is `mongoose.connection`.\nOtherwise, `mongoose.createConnection` return value is a `Connection`.\n\n**Important!** Mongoose buffers all the commands until it\'s connected to the\ndatabase. This means that you don\'t have to wait until it connects to MongoDB\nin order to define models, run queries, etc.\n\n## Defining a Model\n\nModels are defined through the `Schema` interface. \n\n```javascript\nvar Schema = mongoose.Schema\n  , ObjectId = Schema.ObjectId;\n\nvar BlogPost = new Schema({\n    author    : ObjectId\n  , title     : String\n  , body      : String\n  , date      : Date\n});\n```\n\nAside from defining the structure of your documents and the types of data you\'re\nstoring, a Schema handles the definition of:\n\n* [Validators](http://mongoosejs.com/docs/validation.html) (async and sync)\n* [Defaults](http://mongoosejs.com/docs/schematypes.html)\n* [Getters](http://mongoosejs.com/docs/getters-setters.html)\n* [Setters](http://mongoosejs.com/docs/getters-setters.html)\n* [Indexes](http://mongoosejs.com/docs/indexes.html)\n* [Middleware](http://mongoosejs.com/docs/middleware.html)\n* [Methods](http://mongoosejs.com/docs/methods-statics.html) definition\n* [Statics](http://mongoosejs.com/docs/methods-statics.html) definition\n* [Plugins](http://mongoosejs.com/docs/plugins.html)\n* [DBRefs](http://mongoosejs.com/docs/dbrefs.html)\n\nThe following example shows some of these features:\n\n```javascript\nvar Comment = new Schema({\n    name  :  { type: String, default: \'hahaha\' }\n  , age   :  { type: Number, min: 18, index: true }\n  , bio   :  { type: String, match: /[a-z]/ }\n  , date  :  { type: Date, default: Date.now }\n  , buff  :  Buffer\n});\n\n// a setter\nComment.path(\'name\').set(function (v) {\n  return capitalize(v);\n});\n\n// middleware\nComment.pre(\'save\', function (next) {\n\tnotify(this.get(\'email\'));\n\tnext();\n});\n```\n\nTake a look at the example in `examples/schema.js` for an end-to-end example of\na typical setup.\n\n## Accessing a Model\n\nOnce we define a model through `mongoose.model(\'ModelName\', mySchema)`, we can\naccess it through the same function\n\n```javascript\nvar myModel = mongoose.model(\'ModelName\');\n```\n\nOr just do it all at once\n\n```javascript\nvar MyModel = mongoose.model(\'ModelName\', mySchema);\n```\n\nWe can then instantiate it, and save it:\n\n```javascript\nvar instance = new MyModel();\ninstance.my.key = \'hello\';\ninstance.save(function (err) {\n  //\n});\n```\n\nOr we can find documents from the same collection\n\n```javascript\nMyModel.find({}, function (err, docs) {\n  // docs.forEach\n});\n```\n\nYou can also `findOne`, `findById`, `update`, etc. For more details check out\n[this link](http://mongoosejs.com/docs/finding-documents.html).\n\n## Embedded Documents\n\nIn the first example snippet, we defined a key in the Schema that looks like:\n\n```\ncomments: [Comments]\n```\n\nWhere `Comments` is a `Schema` we created. This means that creating embedded\ndocuments is as simple as:\n\n```javascript\n// retrieve my model\nvar BlogPost = mongoose.model(\'BlogPost\');\n\n// create a blog post\nvar post = new BlogPost();\n\n// create a comment\npost.comments.push({ title: \'My comment\' });\n\npost.save(function (err) {\n  if (!err) console.log(\'Success!\');\n});\n```\n\nThe same goes for removing them:\n\n```javascript\nBlogPost.findById(myId, function (err, post) {\n  if (!err) {\n    post.comments[0].remove();\n    post.save(function (err) {\n      // do something\n    });\n  }\n});\n```\n\nEmbedded documents enjoy all the same features as your models. Defaults,\nvalidators, middleware. Whenever an error occurs, it\'s bubbled to the `save()`\nerror callback, so error handling is a snap!\n\nMongoose interacts with your embedded documents in arrays _atomically_, out of\nthe box.\n\n## Middleware\n\nMiddleware is one of the most exciting features about Mongoose. Middleware\ntakes away all the pain of nested callbacks.\n\nMiddleware are defined at the Schema level and are applied for the methods\n`init` (when a document is initialized with data from MongoDB), `save` (when\na document or embedded document is saved).\n\nThere\'s two types of middleware:\n\n- Serial\n  Serial middleware are defined like:\n\n```javascript\n.pre(method, function (next, methodArg1, methodArg2, ...) {\n  // ...\n})\n```\n\n  They\'re executed one after the other, when each middleware calls `next`.\n\n  You can also intercept the `method`\'s incoming arguments via your middleware -- \n  notice `methodArg1`, `methodArg2`, etc in the `pre` definition above. See\n  section "Intercepting and mutating method arguments" below.\n  \n\n- Parallel\n  Parallel middleware offer more fine-grained flow control, and are defined\n  like:\n  \n```javascript\n.pre(method, true, function (next, done, methodArg1, methodArg2) {\n  // ...\n})\n```\n\n  Parallel middleware can `next()` immediately, but the final argument will be\n  called when all the parallel middleware have called `done()`.\n\n### Error handling\n\nIf any middleware calls `next` or `done` with an `Error` instance, the flow is\ninterrupted, and the error is passed to the function passed as an argument.\n\nFor example:\n\n```javascript\nschema.pre(\'save\', function (next) {\n  // something goes wrong\n  next(new Error(\'something went wrong\'));\n});\n\n// later...\n\nmyModel.save(function (err) {\n  // err can come from a middleware\n});\n```\n\n### Intercepting and mutating method arguments\n\nYou can intercept method arguments via middleware.\n\nFor example, this would allow you to broadcast changes about your Documents\nevery time someone `set`s a path in your Document to a new value:\n\n```javascript\nschema.pre(\'set\', function (next, path, val, typel) {\n  // `this` is the current Document\n  this.emit(\'set\', path, val);\n\n  // Pass control to the next pre\n  next();\n});\n```\n\nMoreover, you can mutate the incoming `method` arguments so that subsequent\nmiddleware see different values for those arguments. To do so, just pass the\nnew values to `next`:\n\n```javascript\n.pre(method, function firstPre (next, methodArg1, methodArg2) {\n  // Mutate methodArg1\n  next("altered-" + methodArg1.toString(), methodArg2);\n})\n\n// pre declaration is chainable\n.pre(method, function secondPre (next, methodArg1, methodArg2) {\n  console.log(methodArg1);\n  // => \'altered-originalValOfMethodArg1\' \n  \n  console.log(methodArg2);\n  // => \'originalValOfMethodArg2\' \n  \n  // Passing no arguments to `next` automatically passes along the current argument values\n  // i.e., the following `next()` is equivalent to `next(methodArg1, methodArg2)`\n  // and also equivalent to, with the example method arg \n  // values, `next(\'altered-originalValOfMethodArg1\', \'originalValOfMethodArg2\')`\n  next();\n})\n```\n\n### Schema gotcha\n\n`type`, when used in a schema has special meaning within Mongoose. If your\nschema requires using `type` as a nested property you must use object notation:\n\n``` javascript\nnew Schema({\n    broken: { type: Boolean }\n  , asset : {\n        name: String\n      , type: String // uh oh, it broke. asset will be interpreted as String\n    }\n});\n\nnew Schema({\n    works: { type: Boolean }\n  , asset : {\n        name: String\n      , type: { type: String } // works. asset is an object with a type property\n    }\n});\n```\n\n## API docs\n\nYou can find the [Dox](http://github.com/visionmedia/dox) generated API docs\n[here](http://mongoosejs.com/docs/api.html).\n\n## Getting support\n\nPlease subscribe to the Google Groups [mailing\nlist](http://groups.google.com/group/mongoose-orm).\n\nJoin #mongoosejs on freenode.\n\n## Driver access\n\nThe driver being used defaults to [node-mongodb-native](https://github.com/christkv/node-mongodb-native) and is directly accessible through `YourModel.collection`. **Note**: using the driver directly bypasses all Mongoose power-tools like validation, getters, setters, hooks, etc.\n\n## Mongoose Plugins\n\nThe following plugins are currently available for use with mongoose:\n\n- [mongoose-types](https://github.com/bnoguchi/mongoose-types) - Adds\n  several additional types (e.g., Email) that you can use in your\n  Schema declarations\n- [mongoose-auth](https://github.com/bnoguchi/mongoose-auth) - A drop in \n  solution for your auth needs. Currently supports Password, Facebook,\n  Twitter, Github, and more.\n- [mongoose-joins](https://github.com/goulash1971/mongoose-joins) - Adds simple join support\n- [mongoose-dbref](https://github.com/goulash1971/mongoose-dbref) - An alternative DBRef option\n- [mongoose-flatmatcher](https://github.com/marksweiss/mongoose-flatmatcher) - A query pre-processor that maps flat name/value pairs to schemas \n\n## Contributing to Mongoose\n\n### Cloning the repository\n\nMake a fork of `mongoose`, then clone it in your computer. The `v2.x` branch\ncontains the current stable release, and the `master` branch the next upcoming\nmajor release.\n\n### Guidelines\n\n- Please write inline documentation for new methods or class members.\n- Please write tests and make sure your tests pass.\n- Before starting to write code, look for existing tickets or create one for\n  your specific issue (unless you\'re addressing something that\'s clearly broken).\n  That way you avoid working on something that might not be of interest or that\n  has been addressed already in a different branch.\n\n## Credits\n\n- Guillermo Rauch - guillermo@learnboost.com - [Guille](http://github.com/guille)\n- Nathan White - [nw](http://github.com/nw/)\n- Brian Noguchi - [bnoguchi](https://github.com/bnoguchi)\n- Aaron Heckmann - [aheckmann](https://github.com/aheckmann)\n\n## License\n\nCopyright (c) 2010-2011 LearnBoost &lt;dev@learnboost.com&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\'Software\'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \'AS IS\', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n',
+37 silly resolved     readmeFilename: 'README.md',
+37 silly resolved     bugs: { url: 'https://github.com/LearnBoost/mongoose/issues' },
+37 silly resolved     homepage: 'https://github.com/LearnBoost/mongoose',
+37 silly resolved     _id: 'mongoose@2.4.8',
+37 silly resolved     _from: 'mongoose@2.4.8' } ]
+38 info install mongoose@2.4.8 into e:\prj\multiplayerTanks
+39 info installOne mongoose@2.4.8
+40 info e:\prj\multiplayerTanks\node_modules\mongoose unbuild
+41 verbose tar unpack C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\mongoose\2.4.8\package.tgz
+42 silly lockFile a54027f7-layerTanks-node-modules-mongoose tar://e:\prj\multiplayerTanks\node_modules\mongoose
+43 verbose lock tar://e:\prj\multiplayerTanks\node_modules\mongoose C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\a54027f7-layerTanks-node-modules-mongoose.lock
+44 silly lockFile 8293c6ce-cache-mongoose-2-4-8-package-tgz tar://C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\mongoose\2.4.8\package.tgz
+45 verbose lock tar://C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\mongoose\2.4.8\package.tgz C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\8293c6ce-cache-mongoose-2-4-8-package-tgz.lock
+46 silly gunzTarPerm modes [ '755', '644' ]
+47 silly gunzTarPerm extractEntry package.json
+48 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+49 silly gunzTarPerm extractEntry .npmignore
+50 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+51 silly gunzTarPerm extractEntry README.md
+52 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+53 silly gunzTarPerm extractEntry index.js
+54 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+55 silly gunzTarPerm extractEntry benchmarks/clone.js
+56 silly gunzTarPerm modified mode [ 'benchmarks/clone.js', 438, 420 ]
+57 silly gunzTarPerm extractEntry benchmarks/index.js
+58 silly gunzTarPerm modified mode [ 'benchmarks/index.js', 438, 420 ]
+59 silly gunzTarPerm extractEntry benchmarks/mem.js
+60 silly gunzTarPerm modified mode [ 'benchmarks/mem.js', 438, 420 ]
+61 silly gunzTarPerm extractEntry docs/migration-guide.md
+62 silly gunzTarPerm modified mode [ 'docs/migration-guide.md', 438, 420 ]
+63 silly gunzTarPerm extractEntry docs/defaults.md
+64 silly gunzTarPerm modified mode [ 'docs/defaults.md', 438, 420 ]
+65 silly gunzTarPerm extractEntry docs/errors.md
+66 silly gunzTarPerm modified mode [ 'docs/errors.md', 438, 420 ]
+67 silly gunzTarPerm extractEntry docs/finding-documents.md
+68 silly gunzTarPerm modified mode [ 'docs/finding-documents.md', 438, 420 ]
+69 silly gunzTarPerm extractEntry docs/getters-setters.md
+70 silly gunzTarPerm modified mode [ 'docs/getters-setters.md', 438, 420 ]
+71 silly gunzTarPerm extractEntry docs/indexes.md
+72 silly gunzTarPerm modified mode [ 'docs/indexes.md', 438, 420 ]
+73 silly gunzTarPerm extractEntry docs/methods-statics.md
+74 silly gunzTarPerm modified mode [ 'docs/methods-statics.md', 438, 420 ]
+75 silly gunzTarPerm extractEntry docs/middleware.md
+76 silly gunzTarPerm modified mode [ 'docs/middleware.md', 438, 420 ]
+77 silly gunzTarPerm extractEntry docs/embedded-documents.md
+78 silly gunzTarPerm modified mode [ 'docs/embedded-documents.md', 438, 420 ]
+79 silly gunzTarPerm extractEntry docs/model-definition.md
+80 silly gunzTarPerm modified mode [ 'docs/model-definition.md', 438, 420 ]
+81 silly gunzTarPerm extractEntry docs/plugins.md
+82 silly gunzTarPerm modified mode [ 'docs/plugins.md', 438, 420 ]
+83 silly gunzTarPerm extractEntry docs/populate.md
+84 silly gunzTarPerm modified mode [ 'docs/populate.md', 438, 420 ]
+85 silly gunzTarPerm extractEntry docs/query.md
+86 silly gunzTarPerm modified mode [ 'docs/query.md', 438, 420 ]
+87 silly gunzTarPerm extractEntry docs/querystream.md
+88 silly gunzTarPerm modified mode [ 'docs/querystream.md', 438, 420 ]
+89 silly gunzTarPerm extractEntry docs/schematypes.md
+90 silly gunzTarPerm modified mode [ 'docs/schematypes.md', 438, 420 ]
+91 silly gunzTarPerm extractEntry docs/validation.md
+92 silly gunzTarPerm modified mode [ 'docs/validation.md', 438, 420 ]
+93 silly gunzTarPerm extractEntry docs/virtuals.md
+94 silly gunzTarPerm modified mode [ 'docs/virtuals.md', 438, 420 ]
+95 silly gunzTarPerm extractEntry History.md
+96 silly gunzTarPerm modified mode [ 'History.md', 438, 420 ]
+97 silly gunzTarPerm extractEntry Makefile
+98 silly gunzTarPerm modified mode [ 'Makefile', 438, 420 ]
+99 silly gunzTarPerm extractEntry lib/collection.js
+100 silly gunzTarPerm modified mode [ 'lib/collection.js', 438, 420 ]
+101 silly gunzTarPerm extractEntry lib/error.js
+102 silly gunzTarPerm modified mode [ 'lib/error.js', 438, 420 ]
+103 silly gunzTarPerm extractEntry lib/index.js
+104 silly gunzTarPerm modified mode [ 'lib/index.js', 438, 420 ]
+105 silly gunzTarPerm extractEntry lib/model.js
+106 silly gunzTarPerm modified mode [ 'lib/model.js', 438, 420 ]
+107 silly gunzTarPerm extractEntry lib/namedscope.js
+108 silly gunzTarPerm modified mode [ 'lib/namedscope.js', 438, 420 ]
+109 silly gunzTarPerm extractEntry lib/utils.js
+110 silly gunzTarPerm modified mode [ 'lib/utils.js', 438, 420 ]
+111 silly gunzTarPerm extractEntry lib/connection.js
+112 silly gunzTarPerm modified mode [ 'lib/connection.js', 438, 420 ]
+113 silly gunzTarPerm extractEntry lib/querystream.js
+114 silly gunzTarPerm modified mode [ 'lib/querystream.js', 438, 420 ]
+115 silly gunzTarPerm extractEntry lib/statemachine.js
+116 silly gunzTarPerm modified mode [ 'lib/statemachine.js', 438, 420 ]
+117 silly gunzTarPerm extractEntry lib/schema.js
+118 silly gunzTarPerm modified mode [ 'lib/schema.js', 438, 420 ]
+119 silly gunzTarPerm extractEntry lib/schemadefault.js
+120 silly gunzTarPerm modified mode [ 'lib/schemadefault.js', 438, 420 ]
+121 silly gunzTarPerm extractEntry lib/document.js
+122 silly gunzTarPerm modified mode [ 'lib/document.js', 438, 420 ]
+123 silly gunzTarPerm extractEntry lib/schematype.js
+124 silly gunzTarPerm modified mode [ 'lib/schematype.js', 438, 420 ]
+125 silly gunzTarPerm extractEntry lib/promise.js
+126 silly gunzTarPerm modified mode [ 'lib/promise.js', 438, 420 ]
+127 silly gunzTarPerm extractEntry lib/virtualtype.js
+128 silly gunzTarPerm modified mode [ 'lib/virtualtype.js', 438, 420 ]
+129 silly gunzTarPerm extractEntry lib/query.js
+130 silly gunzTarPerm modified mode [ 'lib/query.js', 438, 420 ]
+131 silly gunzTarPerm extractEntry lib/schema/array.js
+132 silly gunzTarPerm modified mode [ 'lib/schema/array.js', 438, 420 ]
+133 silly gunzTarPerm extractEntry lib/schema/boolean.js
+134 silly gunzTarPerm modified mode [ 'lib/schema/boolean.js', 438, 420 ]
+135 silly gunzTarPerm extractEntry lib/schema/buffer.js
+136 silly gunzTarPerm modified mode [ 'lib/schema/buffer.js', 438, 420 ]
+137 silly gunzTarPerm extractEntry lib/schema/date.js
+138 silly gunzTarPerm modified mode [ 'lib/schema/date.js', 438, 420 ]
+139 silly gunzTarPerm extractEntry lib/schema/documentarray.js
+140 silly gunzTarPerm modified mode [ 'lib/schema/documentarray.js', 438, 420 ]
+141 silly gunzTarPerm extractEntry lib/schema/index.js
+142 silly gunzTarPerm modified mode [ 'lib/schema/index.js', 438, 420 ]
+143 silly gunzTarPerm extractEntry lib/schema/mixed.js
+144 silly gunzTarPerm modified mode [ 'lib/schema/mixed.js', 438, 420 ]
+145 silly gunzTarPerm extractEntry lib/schema/number.js
+146 silly gunzTarPerm modified mode [ 'lib/schema/number.js', 438, 420 ]
+147 silly gunzTarPerm extractEntry lib/schema/objectid.js
+148 silly gunzTarPerm modified mode [ 'lib/schema/objectid.js', 438, 420 ]
+149 silly gunzTarPerm extractEntry lib/schema/string.js
+150 silly gunzTarPerm modified mode [ 'lib/schema/string.js', 438, 420 ]
+151 silly gunzTarPerm extractEntry lib/types/_subarray.js
+152 silly gunzTarPerm modified mode [ 'lib/types/_subarray.js', 438, 420 ]
+153 silly gunzTarPerm extractEntry lib/types/array.js
+154 silly gunzTarPerm modified mode [ 'lib/types/array.js', 438, 420 ]
+155 silly gunzTarPerm extractEntry lib/types/buffer.js
+156 silly gunzTarPerm modified mode [ 'lib/types/buffer.js', 438, 420 ]
+157 silly gunzTarPerm extractEntry lib/types/documentarray.js
+158 silly gunzTarPerm modified mode [ 'lib/types/documentarray.js', 438, 420 ]
+159 silly gunzTarPerm extractEntry lib/types/embedded.js
+160 silly gunzTarPerm modified mode [ 'lib/types/embedded.js', 438, 420 ]
+161 silly gunzTarPerm extractEntry lib/types/index.js
+162 silly gunzTarPerm modified mode [ 'lib/types/index.js', 438, 420 ]
+163 silly gunzTarPerm extractEntry lib/types/number.js
+164 silly gunzTarPerm modified mode [ 'lib/types/number.js', 438, 420 ]
+165 silly gunzTarPerm extractEntry lib/types/objectid.js
+166 silly gunzTarPerm modified mode [ 'lib/types/objectid.js', 438, 420 ]
+167 silly gunzTarPerm extractEntry lib/drivers/node-mongodb-native/binary.js
+168 silly gunzTarPerm modified mode [ 'lib/drivers/node-mongodb-native/binary.js', 438, 420 ]
+169 silly gunzTarPerm extractEntry lib/drivers/node-mongodb-native/collection.js
+170 silly gunzTarPerm modified mode [ 'lib/drivers/node-mongodb-native/collection.js', 438, 420 ]
+171 silly gunzTarPerm extractEntry lib/drivers/node-mongodb-native/connection.js
+172 silly gunzTarPerm modified mode [ 'lib/drivers/node-mongodb-native/connection.js', 438, 420 ]
+173 silly gunzTarPerm extractEntry lib/drivers/node-mongodb-native/objectid.js
+174 silly gunzTarPerm modified mode [ 'lib/drivers/node-mongodb-native/objectid.js', 438, 420 ]
+175 silly gunzTarPerm extractEntry test/collection.test.js
+176 silly gunzTarPerm modified mode [ 'test/collection.test.js', 438, 420 ]
+177 silly gunzTarPerm extractEntry test/model.querying.test.js
+178 silly gunzTarPerm modified mode [ 'test/model.querying.test.js', 438, 420 ]
+179 silly gunzTarPerm extractEntry test/model.ref.test.js
+180 silly gunzTarPerm modified mode [ 'test/model.ref.test.js', 438, 420 ]
+181 silly gunzTarPerm extractEntry test/model.stream.test.js
+182 silly gunzTarPerm modified mode [ 'test/model.stream.test.js', 438, 420 ]
+183 silly gunzTarPerm extractEntry test/index.test.js
+184 silly gunzTarPerm modified mode [ 'test/index.test.js', 438, 420 ]
+185 silly gunzTarPerm extractEntry test/common.js
+186 silly gunzTarPerm modified mode [ 'test/common.js', 438, 420 ]
+187 silly gunzTarPerm extractEntry test/promise.test.js
+188 silly gunzTarPerm modified mode [ 'test/promise.test.js', 438, 420 ]
+189 silly gunzTarPerm extractEntry test/query.test.js
+190 silly gunzTarPerm modified mode [ 'test/query.test.js', 438, 420 ]
+191 silly gunzTarPerm extractEntry test/schema.onthefly.test.js
+192 silly gunzTarPerm modified mode [ 'test/schema.onthefly.test.js', 438, 420 ]
+193 silly gunzTarPerm extractEntry test/schema.test.js
+194 silly gunzTarPerm modified mode [ 'test/schema.test.js', 438, 420 ]
+195 silly gunzTarPerm extractEntry test/dropdb.js
+196 silly gunzTarPerm modified mode [ 'test/dropdb.js', 438, 420 ]
+197 silly gunzTarPerm extractEntry test/types.array.test.js
+198 silly gunzTarPerm modified mode [ 'test/types.array.test.js', 438, 420 ]
+199 silly gunzTarPerm extractEntry test/utils.test.js
+200 silly gunzTarPerm modified mode [ 'test/utils.test.js', 438, 420 ]
+201 silly gunzTarPerm extractEntry test/types.buffer.test.js
+202 silly gunzTarPerm modified mode [ 'test/types.buffer.test.js', 438, 420 ]
+203 silly gunzTarPerm extractEntry test/document.test.js
+204 silly gunzTarPerm modified mode [ 'test/document.test.js', 438, 420 ]
+205 silly gunzTarPerm extractEntry test/types.document.test.js
+206 silly gunzTarPerm modified mode [ 'test/types.document.test.js', 438, 420 ]
+207 silly gunzTarPerm extractEntry test/crash.test.js
+208 silly gunzTarPerm modified mode [ 'test/crash.test.js', 438, 420 ]
+209 silly gunzTarPerm extractEntry test/types.documentarray.test.js
+210 silly gunzTarPerm modified mode [ 'test/types.documentarray.test.js', 438, 420 ]
+211 silly gunzTarPerm extractEntry test/connection.test.js
+212 silly gunzTarPerm modified mode [ 'test/connection.test.js', 438, 420 ]
+213 silly gunzTarPerm extractEntry test/types.number.test.js
+214 silly gunzTarPerm modified mode [ 'test/types.number.test.js', 438, 420 ]
+215 silly gunzTarPerm extractEntry test/model.test.js
+216 silly gunzTarPerm modified mode [ 'test/model.test.js', 438, 420 ]
+217 silly gunzTarPerm extractEntry test/zzlast.test.js
+218 silly gunzTarPerm modified mode [ 'test/zzlast.test.js', 438, 420 ]
+219 silly gunzTarPerm extractEntry test/namedscope.test.js
+220 silly gunzTarPerm modified mode [ 'test/namedscope.test.js', 438, 420 ]
+221 silly gunzTarPerm extractEntry test/drivers/node-mongodb-native/collection.test.js
+222 silly gunzTarPerm modified mode [ 'test/drivers/node-mongodb-native/collection.test.js',
+222 silly gunzTarPerm   438,
+222 silly gunzTarPerm   420 ]
+223 silly gunzTarPerm extractEntry support/cli-table/package.json
+224 silly gunzTarPerm modified mode [ 'support/cli-table/package.json', 438, 420 ]
+225 silly gunzTarPerm extractEntry support/cli-table/.npmignore
+226 silly gunzTarPerm modified mode [ 'support/cli-table/.npmignore', 438, 420 ]
+227 silly gunzTarPerm extractEntry support/cli-table/README.md
+228 silly gunzTarPerm modified mode [ 'support/cli-table/README.md', 438, 420 ]
+229 silly gunzTarPerm extractEntry support/cli-table/index.js
+230 silly gunzTarPerm modified mode [ 'support/cli-table/index.js', 438, 420 ]
+231 silly gunzTarPerm extractEntry support/cli-table/History.md
+232 silly gunzTarPerm modified mode [ 'support/cli-table/History.md', 438, 420 ]
+233 silly gunzTarPerm extractEntry support/cli-table/Makefile
+234 silly gunzTarPerm modified mode [ 'support/cli-table/Makefile', 438, 420 ]
+235 silly gunzTarPerm extractEntry support/cli-table/examples/revs.js
+236 silly gunzTarPerm modified mode [ 'support/cli-table/examples/revs.js', 438, 420 ]
+237 silly gunzTarPerm extractEntry support/cli-table/lib/cli-table/index.js
+238 silly gunzTarPerm modified mode [ 'support/cli-table/lib/cli-table/index.js', 438, 420 ]
+239 silly gunzTarPerm extractEntry support/cli-table/lib/cli-table/utils.js
+240 silly gunzTarPerm modified mode [ 'support/cli-table/lib/cli-table/utils.js', 438, 420 ]
+241 silly gunzTarPerm extractEntry support/cli-table/test/common.js
+242 silly gunzTarPerm modified mode [ 'support/cli-table/test/common.js', 438, 420 ]
+243 silly gunzTarPerm extractEntry support/cli-table/test/index.test.js
+244 silly gunzTarPerm modified mode [ 'support/cli-table/test/index.test.js', 438, 420 ]
+245 silly gunzTarPerm extractEntry support/expresso/package.json
+246 silly gunzTarPerm modified mode [ 'support/expresso/package.json', 438, 420 ]
+247 silly gunzTarPerm extractEntry support/expresso/.npmignore
+248 silly gunzTarPerm modified mode [ 'support/expresso/.npmignore', 438, 420 ]
+249 silly gunzTarPerm extractEntry support/expresso/.gitmodules
+250 silly gunzTarPerm modified mode [ 'support/expresso/.gitmodules', 438, 420 ]
+251 silly gunzTarPerm extractEntry support/expresso/History.md
+252 silly gunzTarPerm modified mode [ 'support/expresso/History.md', 438, 420 ]
+253 silly gunzTarPerm extractEntry support/expresso/Makefile
+254 silly gunzTarPerm modified mode [ 'support/expresso/Makefile', 438, 420 ]
+255 silly gunzTarPerm extractEntry support/expresso/Readme.md
+256 silly gunzTarPerm modified mode [ 'support/expresso/Readme.md', 438, 420 ]
+257 silly gunzTarPerm extractEntry support/expresso/bin/expresso
+258 silly gunzTarPerm modified mode [ 'support/expresso/bin/expresso', 438, 420 ]
+259 silly gunzTarPerm extractEntry support/expresso/docs/api.html
+260 silly gunzTarPerm modified mode [ 'support/expresso/docs/api.html', 438, 420 ]
+261 silly gunzTarPerm extractEntry support/expresso/docs/index.html
+262 silly gunzTarPerm modified mode [ 'support/expresso/docs/index.html', 438, 420 ]
+263 silly gunzTarPerm extractEntry support/expresso/docs/index.md
+264 silly gunzTarPerm modified mode [ 'support/expresso/docs/index.md', 438, 420 ]
+265 silly gunzTarPerm extractEntry support/expresso/docs/layout/foot.html
+266 silly gunzTarPerm modified mode [ 'support/expresso/docs/layout/foot.html', 438, 420 ]
+267 silly gunzTarPerm extractEntry support/expresso/docs/layout/head.html
+268 silly gunzTarPerm modified mode [ 'support/expresso/docs/layout/head.html', 438, 420 ]
+269 silly gunzTarPerm extractEntry support/expresso/lib/bar.js
+270 silly gunzTarPerm modified mode [ 'support/expresso/lib/bar.js', 438, 420 ]
+271 silly gunzTarPerm extractEntry support/expresso/lib/foo.js
+272 silly gunzTarPerm modified mode [ 'support/expresso/lib/foo.js', 438, 420 ]
+273 silly gunzTarPerm extractEntry support/expresso/test/assert.test.js
+274 silly gunzTarPerm modified mode [ 'support/expresso/test/assert.test.js', 438, 420 ]
+275 silly gunzTarPerm extractEntry support/expresso/test/async.test.js
+276 silly gunzTarPerm modified mode [ 'support/expresso/test/async.test.js', 438, 420 ]
+277 silly gunzTarPerm extractEntry support/expresso/test/bar.test.js
+278 silly gunzTarPerm modified mode [ 'support/expresso/test/bar.test.js', 438, 420 ]
+279 silly gunzTarPerm extractEntry support/expresso/test/foo.test.js
+280 silly gunzTarPerm modified mode [ 'support/expresso/test/foo.test.js', 438, 420 ]
+281 silly gunzTarPerm extractEntry support/expresso/test/http.test.js
+282 silly gunzTarPerm modified mode [ 'support/expresso/test/http.test.js', 438, 420 ]
+283 silly gunzTarPerm extractEntry support/expresso/test/serial/async.test.js
+284 silly gunzTarPerm modified mode [ 'support/expresso/test/serial/async.test.js', 438, 420 ]
+285 silly gunzTarPerm extractEntry support/expresso/test/serial/http.test.js
+286 silly gunzTarPerm modified mode [ 'support/expresso/test/serial/http.test.js', 438, 420 ]
+287 silly gunzTarPerm extractEntry examples/schema.js
+288 silly gunzTarPerm modified mode [ 'examples/schema.js', 438, 420 ]
+289 silly lockFile a54027f7-layerTanks-node-modules-mongoose tar://e:\prj\multiplayerTanks\node_modules\mongoose
+290 silly lockFile a54027f7-layerTanks-node-modules-mongoose tar://e:\prj\multiplayerTanks\node_modules\mongoose
+291 silly lockFile 8293c6ce-cache-mongoose-2-4-8-package-tgz tar://C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\mongoose\2.4.8\package.tgz
+292 silly lockFile 8293c6ce-cache-mongoose-2-4-8-package-tgz tar://C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\mongoose\2.4.8\package.tgz
+293 info preinstall mongoose@2.4.8
+294 verbose readDependencies using package.json deps
+295 verbose readDependencies using package.json deps
+296 verbose cache add [ 'hooks@0.1.9', null ]
+297 verbose cache add name=undefined spec="hooks@0.1.9" args=["hooks@0.1.9",null]
+298 verbose parsed url { protocol: null,
+298 verbose parsed url   slashes: null,
+298 verbose parsed url   auth: null,
+298 verbose parsed url   host: null,
+298 verbose parsed url   port: null,
+298 verbose parsed url   hostname: null,
+298 verbose parsed url   hash: null,
+298 verbose parsed url   search: null,
+298 verbose parsed url   query: null,
+298 verbose parsed url   pathname: 'hooks@0.1.9',
+298 verbose parsed url   path: 'hooks@0.1.9',
+298 verbose parsed url   href: 'hooks@0.1.9' }
+299 verbose cache add name="hooks" spec="0.1.9" args=["hooks","0.1.9"]
+300 verbose parsed url { protocol: null,
+300 verbose parsed url   slashes: null,
+300 verbose parsed url   auth: null,
+300 verbose parsed url   host: null,
+300 verbose parsed url   port: null,
+300 verbose parsed url   hostname: null,
+300 verbose parsed url   hash: null,
+300 verbose parsed url   search: null,
+300 verbose parsed url   query: null,
+300 verbose parsed url   pathname: '0.1.9',
+300 verbose parsed url   path: '0.1.9',
+300 verbose parsed url   href: '0.1.9' }
+301 verbose addNamed [ 'hooks', '0.1.9' ]
+302 verbose addNamed [ '0.1.9', '0.1.9' ]
+303 silly lockFile 9186c221-hooks-0-1-9 hooks@0.1.9
+304 verbose lock hooks@0.1.9 C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\9186c221-hooks-0-1-9.lock
+305 verbose cache add [ 'mongodb@0.9.7-2-5', null ]
+306 verbose cache add name=undefined spec="mongodb@0.9.7-2-5" args=["mongodb@0.9.7-2-5",null]
+307 verbose parsed url { protocol: null,
+307 verbose parsed url   slashes: null,
+307 verbose parsed url   auth: null,
+307 verbose parsed url   host: null,
+307 verbose parsed url   port: null,
+307 verbose parsed url   hostname: null,
+307 verbose parsed url   hash: null,
+307 verbose parsed url   search: null,
+307 verbose parsed url   query: null,
+307 verbose parsed url   pathname: 'mongodb@0.9.7-2-5',
+307 verbose parsed url   path: 'mongodb@0.9.7-2-5',
+307 verbose parsed url   href: 'mongodb@0.9.7-2-5' }
+308 verbose cache add name="mongodb" spec="0.9.7-2-5" args=["mongodb","0.9.7-2-5"]
+309 verbose parsed url { protocol: null,
+309 verbose parsed url   slashes: null,
+309 verbose parsed url   auth: null,
+309 verbose parsed url   host: null,
+309 verbose parsed url   port: null,
+309 verbose parsed url   hostname: null,
+309 verbose parsed url   hash: null,
+309 verbose parsed url   search: null,
+309 verbose parsed url   query: null,
+309 verbose parsed url   pathname: '0.9.7-2-5',
+309 verbose parsed url   path: '0.9.7-2-5',
+309 verbose parsed url   href: '0.9.7-2-5' }
+310 verbose addNamed [ 'mongodb', '0.9.7-2-5' ]
+311 verbose addNamed [ '0.9.7-2-5', '0.9.7-2-5' ]
+312 silly lockFile 1fe6301a-mongodb-0-9-7-2-5 mongodb@0.9.7-2-5
+313 verbose lock mongodb@0.9.7-2-5 C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\1fe6301a-mongodb-0-9-7-2-5.lock
+314 verbose cache add [ 'colors@0.5.1', null ]
+315 verbose cache add name=undefined spec="colors@0.5.1" args=["colors@0.5.1",null]
+316 verbose parsed url { protocol: null,
+316 verbose parsed url   slashes: null,
+316 verbose parsed url   auth: null,
+316 verbose parsed url   host: null,
+316 verbose parsed url   port: null,
+316 verbose parsed url   hostname: null,
+316 verbose parsed url   hash: null,
+316 verbose parsed url   search: null,
+316 verbose parsed url   query: null,
+316 verbose parsed url   pathname: 'colors@0.5.1',
+316 verbose parsed url   path: 'colors@0.5.1',
+316 verbose parsed url   href: 'colors@0.5.1' }
+317 verbose cache add name="colors" spec="0.5.1" args=["colors","0.5.1"]
+318 verbose parsed url { protocol: null,
+318 verbose parsed url   slashes: null,
+318 verbose parsed url   auth: null,
+318 verbose parsed url   host: null,
+318 verbose parsed url   port: null,
+318 verbose parsed url   hostname: null,
+318 verbose parsed url   hash: null,
+318 verbose parsed url   search: null,
+318 verbose parsed url   query: null,
+318 verbose parsed url   pathname: '0.5.1',
+318 verbose parsed url   path: '0.5.1',
+318 verbose parsed url   href: '0.5.1' }
+319 verbose addNamed [ 'colors', '0.5.1' ]
+320 verbose addNamed [ '0.5.1', '0.5.1' ]
+321 silly lockFile f4bcf598-colors-0-5-1 colors@0.5.1
+322 verbose lock colors@0.5.1 C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\f4bcf598-colors-0-5-1.lock
+323 verbose url raw mongodb/0.9.7-2-5
+324 verbose url resolving [ 'https://registry.npmjs.org/', './mongodb/0.9.7-2-5' ]
+325 verbose url resolved https://registry.npmjs.org/mongodb/0.9.7-2-5
+326 info trying registry request attempt 1 at 11:37:02
+327 verbose etag "5CPWDDH5UPH241CK8UWERQKJZ"
+328 http GET https://registry.npmjs.org/mongodb/0.9.7-2-5
+329 verbose url raw hooks/0.1.9
+330 verbose url resolving [ 'https://registry.npmjs.org/', './hooks/0.1.9' ]
+331 verbose url resolved https://registry.npmjs.org/hooks/0.1.9
+332 info trying registry request attempt 1 at 11:37:02
+333 verbose etag "74K3ZYOGNYBM3BGTTBWIVQVZT"
+334 http GET https://registry.npmjs.org/hooks/0.1.9
+335 verbose url raw colors/0.5.1
+336 verbose url resolving [ 'https://registry.npmjs.org/', './colors/0.5.1' ]
+337 verbose url resolved https://registry.npmjs.org/colors/0.5.1
+338 info trying registry request attempt 1 at 11:37:02
+339 verbose etag "BSPSPE92300KILMC7MC8R15T"
+340 http GET https://registry.npmjs.org/colors/0.5.1
+341 http 304 https://registry.npmjs.org/hooks/0.1.9
+342 silly registry.get cb [ 304,
+342 silly registry.get   { date: 'Sat, 05 Apr 2014 09:37:01 GMT',
+342 silly registry.get     server: 'Apache',
+342 silly registry.get     via: '1.1 varnish',
+342 silly registry.get     'last-modified': 'Sat, 05 Apr 2014 09:37:01 GMT',
+342 silly registry.get     'cache-control': 'max-age=1',
+342 silly registry.get     etag: '"74K3ZYOGNYBM3BGTTBWIVQVZT"',
+342 silly registry.get     'x-served-by': 'cache-fra1226-FRA',
+342 silly registry.get     'x-cache': 'MISS',
+342 silly registry.get     'x-cache-hits': '0',
+342 silly registry.get     'x-timer': 'S1396690621.116815805,VS0,VE155',
+342 silly registry.get     vary: 'Accept',
+342 silly registry.get     'content-length': '0',
+342 silly registry.get     'keep-alive': 'timeout=10, max=50',
+342 silly registry.get     connection: 'Keep-Alive' } ]
+343 verbose etag hooks/0.1.9 from cache
+344 silly lockFile 9186c221-hooks-0-1-9 hooks@0.1.9
+345 silly lockFile 9186c221-hooks-0-1-9 hooks@0.1.9
+346 http 304 https://registry.npmjs.org/colors/0.5.1
+347 silly registry.get cb [ 304,
+347 silly registry.get   { date: 'Sat, 05 Apr 2014 09:37:01 GMT',
+347 silly registry.get     server: 'Apache',
+347 silly registry.get     via: '1.1 varnish',
+347 silly registry.get     'last-modified': 'Sat, 05 Apr 2014 09:37:01 GMT',
+347 silly registry.get     'cache-control': 'max-age=1',
+347 silly registry.get     etag: '"BSPSPE92300KILMC7MC8R15T"',
+347 silly registry.get     'x-served-by': 'cache-fra1225-FRA',
+347 silly registry.get     'x-cache': 'MISS',
+347 silly registry.get     'x-cache-hits': '0',
+347 silly registry.get     'x-timer': 'S1396690621.126397848,VS0,VE241',
+347 silly registry.get     vary: 'Accept',
+347 silly registry.get     'content-length': '0',
+347 silly registry.get     'keep-alive': 'timeout=10, max=50',
+347 silly registry.get     connection: 'Keep-Alive' } ]
+348 verbose etag colors/0.5.1 from cache
+349 silly lockFile f4bcf598-colors-0-5-1 colors@0.5.1
+350 silly lockFile f4bcf598-colors-0-5-1 colors@0.5.1
+351 http 304 https://registry.npmjs.org/mongodb/0.9.7-2-5
+352 silly registry.get cb [ 304,
+352 silly registry.get   { date: 'Sat, 05 Apr 2014 09:37:01 GMT',
+352 silly registry.get     server: 'Apache',
+352 silly registry.get     via: '1.1 varnish',
+352 silly registry.get     'last-modified': 'Sat, 05 Apr 2014 09:37:01 GMT',
+352 silly registry.get     'cache-control': 'max-age=1',
+352 silly registry.get     etag: '"5CPWDDH5UPH241CK8UWERQKJZ"',
+352 silly registry.get     'x-served-by': 'cache-fra1229-FRA',
+352 silly registry.get     'x-cache': 'MISS',
+352 silly registry.get     'x-cache-hits': '0',
+352 silly registry.get     'x-timer': 'S1396690621.109093666,VS0,VE334',
+352 silly registry.get     vary: 'Accept',
+352 silly registry.get     'content-length': '0',
+352 silly registry.get     'keep-alive': 'timeout=10, max=50',
+352 silly registry.get     connection: 'Keep-Alive' } ]
+353 verbose etag mongodb/0.9.7-2-5 from cache
+354 silly lockFile 1fe6301a-mongodb-0-9-7-2-5 mongodb@0.9.7-2-5
+355 silly lockFile 1fe6301a-mongodb-0-9-7-2-5 mongodb@0.9.7-2-5
+356 silly resolved [ { name: 'hooks',
+356 silly resolved     description: 'Adds pre and post hook functionality to your JavaScript methods.',
+356 silly resolved     version: '0.1.9',
+356 silly resolved     keywords: [ 'node', 'hooks', 'middleware', 'pre', 'post' ],
+356 silly resolved     homepage: 'https://github.com/bnoguchi/hooks-js/',
+356 silly resolved     repository: { type: 'git', url: 'git://github.com/bnoguchi/hooks-js.git' },
+356 silly resolved     author:
+356 silly resolved      { name: 'Brian Noguchi',
+356 silly resolved        email: 'brian.noguchi@gmail.com',
+356 silly resolved        url: 'https://github.com/bnoguchi/' },
+356 silly resolved     main: './hooks.js',
+356 silly resolved     directories: { lib: '.' },
+356 silly resolved     scripts: { test: 'make test' },
+356 silly resolved     dependencies: {},
+356 silly resolved     devDependencies: { expresso: '>=0.7.6', should: '>=0.2.1', underscore: '>=1.1.4' },
+356 silly resolved     engines: { node: '>=0.4.0' },
+356 silly resolved     licenses: [ 'MIT' ],
+356 silly resolved     readme: 'hooks\n============\n\nAdd pre and post middleware hooks to your JavaScript methods.\n\n## Installation\n    npm install hooks\n\n## Motivation\nSuppose you have a JavaScript object with a `save` method.\n\nIt would be nice to be able to declare code that runs before `save` and after `save`.\nFor example, you might want to run validation code before every `save`,\nand you might want to dispatch a job to a background job queue after `save`.\n\nOne might have an urge to hard code this all into `save`, but that turns out to\ncouple all these pieces of functionality (validation, save, and job creation) more\ntightly than is necessary. For example, what if someone does not want to do background\njob creation after the logical save? \n\nIt is nicer to tack on functionality using what we call `pre` and `post` hooks. These\nare functions that you define and that you direct to execute before or after particular\nmethods.\n\n## Example\nWe can use `hooks` to add validation and background jobs in the following way:\n\n    var hooks = require(\'hooks\')\n      , Document = require(\'./path/to/some/document/constructor\');\n\n    // Add hooks\' methods: `hook`, `pre`, and `post`    \n    for (var k in hooks) {\n      Document[k] = hooks[k];\n    }\n\n    // Define a new method that is able to invoke pre and post middleware\n    Document.hook(\'save\', Document.prototype.save);\n\n    // Define a middleware function to be invoked before \'save\'\n    Document.pre(\'save\', function validate (next) {\n      // The `this` context inside of `pre` and `post` functions\n      // is the Document instance\n      if (this.isValid()) next();      // next() passes control to the next middleware\n                                       // or to the target method itself\n      else next(new Error("Invalid")); // next(error) invokes an error callback\n    });\n\n    // Define a middleware function to be invoked after \'save\'\n    Document.post(\'save\', function createJob () {\n      this.sendToBackgroundQueue();\n    });\n\nIf you already have defined `Document.prototype` methods for which you want pres and posts,\nthen you do not need to explicitly invoke `Document.hook(...)`. Invoking `Document.pre(methodName, fn)`\nor `Document.post(methodName, fn)` will automatically and lazily change `Document.prototype[methodName]`\nso that it plays well with `hooks`. An equivalent way to implement the previous example is:\n\n```javascript\nvar hooks = require(\'hooks\')\n  , Document = require(\'./path/to/some/document/constructor\');\n\n// Add hooks\' methods: `hook`, `pre`, and `post`    \nfor (var k in hooks) {\n  Document[k] = hooks[k];\n}\n\nDocument.prototype.save = function () {\n  // ...\n};\n\n// Define a middleware function to be invoked before \'save\'\nDocument.pre(\'save\', function validate (next) {\n  // The `this` context inside of `pre` and `post` functions\n  // is the Document instance\n  if (this.isValid()) next();      // next() passes control to the next middleware\n                                   // or to the target method itself\n  else next(new Error("Invalid")); // next(error) invokes an error callback\n});\n\n// Define a middleware function to be invoked after \'save\'\nDocument.post(\'save\', function createJob () {\n  this.sendToBackgroundQueue();\n});\n```\n\n## Pres and Posts as Middleware\nWe structure pres and posts as middleware to give you maximum flexibility:\n\n1. You can define **multiple** pres (or posts) for a single method.\n2. These pres (or posts) are then executed as a chain of methods.\n3. Any functions in this middleware chain can choose to halt the chain\'s execution by `next`ing an Error from that middleware function. If this occurs, then none of the other middleware in the chain will execute, and the main method (e.g., `save`) will not execute. This is nice, for example, when we don\'t want a document to save if it is invalid.\n\n## Defining multiple pres (or posts)\n`pre` is chainable, so you can define multiple pres via:\n    Document.pre(\'save\', function (next, halt) {\n      console.log("hello");\n    }).pre(\'save\', function (next, halt) {\n      console.log("world");\n    });\n\nAs soon as one pre finishes executing, the next one will be invoked, and so on.\n\n## Error Handling\nYou can define a default error handler by passing a 2nd function as the 3rd argument to `hook`:\n    Document.hook(\'set\', function (path, val) {\n      this[path] = val;\n    }, function (err) {\n      // Handler the error here\n      console.error(err);\n    });\n\nThen, we can pass errors to this handler from a pre or post middleware function:\n    Document.pre(\'set\', function (next, path, val) {\n      next(new Error());\n    });\n\nIf you do not set up a default handler, then `hooks` makes the default handler that just throws the `Error`.\n\nThe default error handler can be over-rided on a per method invocation basis.\n\nIf the main method that you are surrounding with pre and post middleware expects its last argument to be a function\nwith callback signature `function (error, ...)`, then that callback becomes the error handler, over-riding the default\nerror handler you may have set up.\n   \n```javascript\nDocument.hook(\'save\', function (callback) {\n  // Save logic goes here\n  ...\n});\n\nvar doc = new Document();\ndoc.save( function (err, saved) {\n  // We can pass err via `next` in any of our pre or post middleware functions\n  if (err) console.error(err);\n  \n  // Rest of callback logic follows ...\n});\n```\n\n## Mutating Arguments via Middleware\n`pre` and `post` middleware can also accept the intended arguments for the method\nthey augment. This is useful if you want to mutate the arguments before passing\nthem along to the next middleware and eventually pass a mutated arguments list to\nthe main method itself.\n\nAs a simple example, let\'s define a method `set` that just sets a key, value pair.\nIf we want to namespace the key, we can do so by adding a `pre` middleware hook\nthat runs before `set`, alters the arguments by namespacing the `key` argument, and passes them onto `set`:\n\n    Document.hook(\'set\', function (key, val) {\n      this[key] = val;\n    });\n    Document.pre(\'set\', function (next, key, val) {\n      next(\'namespace-\' + key, val);\n    });\n    var doc = new Document();\n    doc.set(\'hello\', \'world\');\n    console.log(doc.hello); // undefined\n    console.log(doc[\'namespace-hello\']); // \'world\'\n\nAs you can see above, we pass arguments via `next`.\n\nIf you are not mutating the arguments, then you can pass zero arguments\nto `next`, and the next middleware function will still have access\nto the arguments.\n\n    Document.hook(\'set\', function (key, val) {\n      this[key] = val;\n    });\n    Document.pre(\'set\', function (next, key, val) {\n      // I have access to key and val here\n      next(); // We don\'t need to pass anything to next\n    });\n    Document.pre(\'set\', function (next, key, val) {\n      // And I still have access to the original key and val here\n      next();\n    });\n\nFinally, you can add arguments that downstream middleware can also see:\n\n    // Note that in the definition of `set`, there is no 3rd argument, options\n    Document.hook(\'set\', function (key, val) {\n      // But...\n      var options = arguments[2]; // ...I have access to an options argument\n                                  // because of pre function pre2 (defined below)\n      console.log(options); // \'{debug: true}\'\n      this[key] = val;\n    });\n    Document.pre(\'set\', function pre1 (next, key, val) {\n      // I only have access to key and val arguments\n      console.log(arguments.length); // 3\n      next(key, val, {debug: true});\n    });\n    Document.pre(\'set\', function pre2 (next, key, val, options) {\n      console.log(arguments.length); // 4\n      console.log(options); // \'{ debug: true}\'\n      next();\n    });\n    Document.pre(\'set\', function pre3 (next, key, val, options) {\n      // I still have access to key, val, AND the options argument introduced via the preceding middleware\n      console.log(arguments.length); // 4\n      console.log(options); // \'{ debug: true}\'\n      next();\n    });\n    \n    var doc = new Document()\n    doc.set(\'hey\', \'there\');\n\n## Parallel `pre` middleware\n\nAll middleware up to this point has been "serial" middleware -- i.e., middleware whose logic\nis executed as a serial chain.\n\nSome scenarios call for parallel middleware -- i.e., middleware that can wait for several\nasynchronous services at once to respond.\n\nFor instance, you may only want to save a Document only after you have checked\nthat the Document is valid according to two different remote services.\n\nWe accomplish asynchronous middleware by adding a second kind of flow control callback\n(the only flow control callback so far has been `next`), called `done`.\n\n- `next` passes control to the next middleware in the chain\n- `done` keeps track of how many parallel middleware have invoked `done` and passes\n   control to the target method when ALL parallel middleware have invoked `done`. If\n   you pass an `Error` to `done`, then the error is handled, and the main method that is\n   wrapped by pres and posts will not get invoked.\n\nWe declare pre middleware that is parallel by passing a 3rd boolean argument to our `pre`\ndefinition method.\n\nWe illustrate via the parallel validation example mentioned above:\n\n    Document.hook(\'save\', function targetFn (callback) {\n      // Save logic goes here\n      // ...\n      // This only gets run once the two `done`s are both invoked via preOne and preTwo.\n    });\n\n                         // true marks this as parallel middleware\n    Document.pre(\'save\', true, function preOne (next, doneOne, callback) {\n      remoteServiceOne.validate(this.serialize(), function (err, isValid) {\n        // The code in here will probably be run after the `next` below this block\n        // and could possibly be run after the console.log("Hola") in `preTwo\n        if (err) return doneOne(err);\n        if (isValid) doneOne();\n      });\n      next(); // Pass control to the next middleware\n    });\n    \n    // We will suppose that we need 2 different remote services to validate our document\n    Document.pre(\'save\', true, function preTwo (next, doneTwo, callback) {\n      remoteServiceTwo.validate(this.serialize(), function (err, isValid) {\n        if (err) return doneTwo(err);\n        if (isValid) doneTwo();\n      });\n      next();\n    });\n    \n    // While preOne and preTwo are parallel, preThree is a serial pre middleware\n    Document.pre(\'save\', function preThree (next, callback) {\n      next();\n    });\n    \n    var doc = new Document();\n    doc.save( function (err, doc) {\n      // Do stuff with the saved doc here...\n    });\n\nIn the above example, flow control may happen in the following way:\n\n(1) doc.save -> (2) preOne --(next)--> (3) preTwo --(next)--> (4) preThree --(next)--> (wait for dones to invoke) -> (5) doneTwo -> (6) doneOne -> (7) targetFn\n\nSo what\'s happening is that:\n\n1. You call `doc.save(...)`\n2. First, your preOne middleware gets executed. It makes a remote call to the validation service and `next()`s to the preTwo middleware.\n3. Now, your preTwo middleware gets executed. It makes a remote call to another validation service and `next()`s to the preThree middleware.\n4. Your preThree middleware gets executed. It immediately `next()`s. But nothing else gets executing until both `doneOne` and `doneTwo` are invoked inside the callbacks handling the response from the two valiation services.\n5. We will suppose that validation remoteServiceTwo returns a response to us first. In this case, we call `doneTwo` inside the callback to remoteServiceTwo.\n6. Some fractions of a second later, remoteServiceOne returns a response to us. In this case, we call `doneOne` inside the callback to remoteServiceOne.\n7. `hooks` implementation keeps track of how many parallel middleware has been defined per target function. It detects that both asynchronous pre middlewares (`preOne` and `preTwo`) have finally called their `done` functions (`doneOne` and `doneTwo`), so the implementation finally invokes our `targetFn` (i.e., our core `save` business logic).\n\n## Removing Pres\n\nYou can remove a particular pre associated with a hook:\n\n    Document.pre(\'set\', someFn);\n    Document.removePre(\'set\', someFn);\n\nAnd you can also remove all pres associated with a hook:\n    Document.removePre(\'set\'); // Removes all declared `pre`s on the hook \'set\'\n\n## Tests\nTo run the tests:\n    make test\n\n### Contributors\n- [Brian Noguchi](https://github.com/bnoguchi)\n\n### License\nMIT License\n\n---\n### Author\nBrian Noguchi\n',
+356 silly resolved     readmeFilename: 'README.md',
+356 silly resolved     bugs: { url: 'https://github.com/bnoguchi/hooks-js/issues' },
+356 silly resolved     _id: 'hooks@0.1.9',
+356 silly resolved     _from: 'hooks@0.1.9' },
+356 silly resolved   { name: 'colors',
+356 silly resolved     description: 'get colors in your node.js console like what',
+356 silly resolved     version: '0.5.1',
+356 silly resolved     author: { name: 'Marak Squires' },
+356 silly resolved     repository: { type: 'git', url: 'http://github.com/Marak/colors.js.git' },
+356 silly resolved     engines: { node: '>=0.1.90' },
+356 silly resolved     main: 'colors',
+356 silly resolved     readme: '<h1>colors.js - get color and style in your node.js console like what</h1>\n\n<img src="http://i.imgur.com/goJdO.png" border = "0"/>\n\n       var sys = require(\'sys\');\n       var colors = require(\'./colors\');\n\n       sys.puts(\'hello\'.green); // outputs green text\n       sys.puts(\'i like cake and pies\'.underline.red) // outputs red underlined text\n       sys.puts(\'inverse the color\'.inverse); // inverses the color\n       sys.puts(\'OMG Rainbows!\'.rainbow); // rainbow (ignores spaces)\n       \n<h2>colors and styles!</h2>\n- bold\n- italic\n- underline\n- inverse\n- yellow\n- cyan\n- white\n- magenta\n- green\n- red\n- grey\n- blue\n\n\n### Authors \n\n#### Alexis Sellier (cloudhead) , Marak Squires , Justin Campbell, Dustin Diaz (@ded)\n',
+356 silly resolved     readmeFilename: 'ReadMe.md',
+356 silly resolved     bugs: { url: 'https://github.com/Marak/colors.js/issues' },
+356 silly resolved     homepage: 'https://github.com/Marak/colors.js',
+356 silly resolved     _id: 'colors@0.5.1',
+356 silly resolved     _from: 'colors@0.5.1' },
+356 silly resolved   { name: 'mongodb',
+356 silly resolved     description: 'A node.js driver for MongoDB',
+356 silly resolved     keywords: [ 'mongodb', 'mongo', 'driver', 'db' ],
+356 silly resolved     version: '0.9.7-2-5',
+356 silly resolved     author: { name: 'Christian Amor Kvalheim', email: 'christkv@gmail.com' },
+356 silly resolved     contributors:
+356 silly resolved      [ [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object],
+356 silly resolved        [Object] ],
+356 silly resolved     repository:
+356 silly resolved      { type: 'git',
+356 silly resolved        url: 'http://github.com/christkv/node-mongodb-native.git' },
+356 silly resolved     bugs: { url: 'http://github.com/christkv/node-mongodb-native/issues' },
+356 silly resolved     os: [ 'linux', 'darwin', 'freebsd' ],
+356 silly resolved     config: { native: false },
+356 silly resolved     main: './lib/mongodb/index',
+356 silly resolved     directories: { lib: './lib/mongodb' },
+356 silly resolved     engines: { node: '>=0.4.0' },
+356 silly resolved     scripts: { install: 'node install.js' },
+356 silly resolved     licenses: [ [Object] ],
+356 silly resolved     readme: 'Install\n========\n\nTo install the most recent release from npm, run:\n\n    npm install mongodb\n    \nThat may give you a warning telling you that bugs[\'web\'] should be bugs[\'url\'], it would be safe to ignore it (this has been fixed in the development version) \n\nTo install from the latest from the repository, run::\n\n    npm install path/to/node-mongodb-native\n\nCommunity\n========\nCheck out the google group [node-mongodb-native](http://groups.google.com/group/node-mongodb-native) for questions/answers from users of the driver.\n\nIntroduction\n========\n\nThis is a node.js driver for MongoDB. It\'s a port (or close to a port) of the libary for ruby at http://github.com/mongodb/mongo-ruby-driver/.\n\nA simple example of inserting a document.\n\n    var client = new Db(\'test\', new Server("127.0.0.1", 27017, {})),\n        test = function (err, collection) {\n          collection.insert({a:2}, function(err, docs) {\n\n            collection.count(function(err, count) {\n              test.assertEquals(1, count);\n            });\n\n            // Locate all the entries using find\n            collection.find().toArray(function(err, results) {\n              test.assertEquals(1, results.length);\n              test.assertTrue(results.a === 2);\n\n              // Let\'s close the db\n              client.close();\n            });\n          });\n        };\n\n    client.open(function(err, p_client) {\n      client.collection(\'test_insert\', test);\n    });\n\nData types\n========\n\nTo store and retrieve the non-JSON MongoDb primitives ([ObjectID](http://www.mongodb.org/display/DOCS/Object+IDs), Long, Binary, [Timestamp](http://www.mongodb.org/display/DOCS/Timestamp+data+type), [DBRef](http://www.mongodb.org/display/DOCS/Database+References#DatabaseReferences-DBRef), Code), you have to use one of the types from the bson_serializer.\n\nIn particular, every document has a unique `_id` which can be almost any type, and by default a 12-byte ObjectID is created. ObjectIDs can be represented as 24-digit hexadecimal strings, but you must convert the string back into an ObjectID before you can use it in the database. For example:\n\n    var idString = \'4e4e1638c85e808431000003\';\n    collection.findOne({_id: new client.bson_serializer.ObjectID(idString)}, console.log)  // ok\n    collection.findOne({_id: idString}, console.log)  // wrong! callback gets undefined\n\nHere are the constructors the non-Javascript BSON primitive types:\n\n    var client = new Db(...);\n    new client.bson_serializer.Long(numberString)\n    new client.bson_serializer.ObjectID(hexString)\n    new client.bson_serializer.Timestamp()  // the actual unique number is generated on insert.\n    new client.bson_serializer.DBRef(collectionName, id, dbName)\n    new client.bson_serializer.Binary(buffer)  // takes a string or Buffer\n    new client.bson_serializer.Code(code, [context])\n\nThe C/C++ bson parser/serializer\n--------\n\nFrom V0.8.0 to V0.9.6.9, the Javascript bson parser was slower than an optional C/C++ bson parser. As of V0.9.6.9+, due to performance improvements in the Javascript parser, the C/C++ parser is deprecated and is not installed by default anymore.\n\nIf you are running a version of this library has the C/C++ parser compiled, to enable the driver to use the C/C++ bson parser pass it the option native_parser:true like below\n\n    // using Deprecated native_parser:\n    var client = new Db(\'integration_tests_20\',\n                        new Server("127.0.0.1", 27017),\n                        {native_parser:true});\n\nSince objects created using the C/C++ bson parser are incompatible with a client configured to use the Javascript bson parser and vice versa, you should call constructors using `client.bson_serializer` as described above (don\'t use `mongodb.BSONNative` and `mongodb.BSONPure` directly).\n\nGitHub information\n========\n\nThe source code is available at http://github.com/christkv/node-mongodb-native.\nYou can either clone the repository or download a tarball of the latest release.\n\nOnce you have the source you can test the driver by running\n\n    $ make test\n\nin the main directory. You will need to have a mongo instance running on localhost for the integration tests to pass.\n\nExamples\n========\n\nFor examples look in the examples/ directory. You can execute the examples using node.\n\n    $ cd examples\n    $ node queries.js\n\nGridStore\n=========\n\nThe GridStore class allows for storage of binary files in mongoDB using the mongoDB defined files and chunks collection definition.\n\nFor more information have a look at [Gridstore](https://github.com/christkv/node-mongodb-native/blob/master/docs/gridfs.md)\n\nReplicasets\n===========\nFor more information about how to connect to a replicaset have a look at [Replicasets](https://github.com/christkv/node-mongodb-native/blob/master/docs/replicaset.md)\n\nPrimary Key Factories\n--------\n\nDefining your own primary key factory allows you to generate your own series of id\'s\n(this could f.ex be to use something like ISBN numbers). The generated the id needs to be a 12 byte long "string".\n\nSimple example below\n\n    // Custom factory (need to provide a 12 byte array);\n    CustomPKFactory = function() {}\n    CustomPKFactory.prototype = new Object();\n    CustomPKFactory.createPk = function() {\n      return new ObjectID("aaaaaaaaaaaa");\n    }\n\n    var p_client = new Db(\'integration_tests_20\', new Server("127.0.0.1", 27017, {}), {\'pk\':CustomPKFactory});\n    p_client.open(function(err, p_client) {\n      p_client.dropDatabase(function(err, done) {\n        p_client.createCollection(\'test_custom_key\', function(err, collection) {\n          collection.insert({\'a\':1}, function(err, docs) {\n            collection.find({\'_id\':new ObjectID("aaaaaaaaaaaa")}, function(err, cursor) {\n              cursor.toArray(function(err, items) {\n                test.assertEquals(1, items.length);\n\n                // Let\'s close the db\n                p_client.close();\n              });\n            });\n          });\n        });\n      });\n    });\n\nStrict mode\n--------\n\nEach database has an optional strict mode. If it is set then asking for a collection\nthat does not exist will return an Error object in the callback. Similarly if you\nattempt to create a collection that already exists. Strict is provided for convenience.\n\n    var error_client = new Db(\'integration_tests_\', new Server("127.0.0.1", 27017, {auto_reconnect: false}), {strict:true});    \n      test.assertEquals(true, error_client.strict);\n      \n      error_client.open(function(err, error_client) {\n      error_client.collection(\'does-not-exist\', function(err, collection) {\n        test.assertTrue(err instanceof Error);\n        test.assertEquals("Collection does-not-exist does not exist. Currently in strict mode.", err.message);\n      });\n\n      error_client.createCollection(\'test_strict_access_collection\', function(err, collection) {\n        error_client.collection(\'test_strict_access_collection\', function(err, collection) {\n          test.assertTrue(collection instanceof Collection);\n          // Let\'s close the db\n          error_client.close();\n        });\n      });\n    });\n\nDocumentation\n========\n\nIf this document doesn\'t answer your questions, see the source of\n[Collection](https://github.com/christkv/node-mongodb-native/blob/master/lib/mongodb/collection.js)\nor [Cursor](https://github.com/christkv/node-mongodb-native/blob/master/lib/mongodb/cursor.js),\nor the documentation at MongoDB for query and update formats.\n\nFind\n--------\n\nThe find method is actually a factory method to create\nCursor objects. A Cursor lazily uses the connection the first time\nyou call `nextObject`, `each`, or `toArray`.\n\nThe basic operation on a cursor is the `nextObject` method\nthat fetches the next matching document from the database. The convenience\nmethods `each` and `toArray` call `nextObject` until the cursor is exhausted.\n\nSignatures:\n\n    var cursor = collection.find(query, [fields], options);\n    cursor.sort(fields).limit(n).skip(m).\n\n    cursor.nextObject(function(err, doc) {});\n    cursor.each(function(err, doc) {});\n    cursor.toArray(function(err, docs) {});\n\n    cursor.rewind()  // reset the cursor to its initial state.\n\nUseful chainable methods of cursor. These can optionally be options of `find` instead of method calls:\n\n* `.limit(n).skip(m)` to control paging.\n* `.sort(fields)` Order by the given fields. There are several equivalent syntaxes:\n  * `.sort({field1: -1, field2: 1})` descending by field1, then ascending by field2.\n  * `.sort([[\'field1\', \'desc\'], [\'field2\', \'asc\']])` same as above\n  * `.sort([[\'field1\', \'desc\'], \'field2\'])` same as above\n  * `.sort(\'field1\')` ascending by field1\n\nOther options of `find`:\n\n* `fields` the fields to fetch (to avoid transferring the entire document)\n* `tailable` if true, makes the cursor [tailable](http://www.mongodb.org/display/DOCS/Tailable+Cursors).\n* `batchSize` The number of the subset of results to request the database\nto return for every request. This should initially be greater than 1 otherwise\nthe database will automatically close the cursor. The batch size can be set to 1\nwith `batchSize(n, function(err){})` after performing the initial query to the database.\n* `hint` See [Optimization: hint](http://www.mongodb.org/display/DOCS/Optimization#Optimization-Hint).\n* `explain` turns this into an explain query. You can also call\n`explain()` on any cursor to fetch the explanation.\n* `snapshot` prevents documents that are updated while the query is active\nfrom being returned multiple times. See more\n[details about query snapshots](http://www.mongodb.org/display/DOCS/How+to+do+Snapshotted+Queries+in+the+Mongo+Database).\n* `timeout` if false, asks MongoDb not to time out this cursor after an\ninactivity period.\n\n\nFor information on how to create queries, see the\n[MongoDB section on querying](http://www.mongodb.org/display/DOCS/Querying).\n\n    var mongodb = require(\'mongodb\');\n    var server = new mongodb.Server("127.0.0.1", 27017, {});\n    new mongodb.Db(\'test\', server, {}).open(function (error, client) {\n      if (error) throw error;\n      var collection = new mongodb.Collection(client, \'test_collection\');\n      collection.find({}, {limit:10}).toArray(function(err, docs) {\n        console.dir(docs);\n      });\n    });\n\nInsert\n--------\n\nSignature:\n\n    collection.insert(docs, options, [callback]);\n\nwhere `docs` can be a single document or an array of documents.\n\nUseful options:\n\n* `safe:true` Should always set if you have a callback.\n\nSee also: [MongoDB docs for insert](http://www.mongodb.org/display/DOCS/Inserting).\n\n    var mongodb = require(\'mongodb\');\n    var server = new mongodb.Server("127.0.0.1", 27017, {});\n    new mongodb.Db(\'test\', server, {}).open(function (error, client) {\n      if (error) throw error;\n      var collection = new mongodb.Collection(client, \'test_collection\');\n      collection.insert({hello: \'world\'}, {safe:true},\n                        function(err, objects) {\n        if (err) console.warn(err.message);\n        if (err && err.message.indexOf(\'E11000 \') !== -1) {\n          // this _id was already inserted in the database\n        }\n      });\n    });\n\nNote that there\'s no reason to pass a callback to the insert or update commands\nunless you use the `safe:true` option. If you don\'t specify `safe:true`, then\nyour callback will be called immediately.\n\nUpdate; update and insert (upsert)\n--------\n\nThe update operation will update the first document that matches your query\n(or all documents that match if you use `multi:true`).\nIf `safe:true`, `upsert` is not set, and no documents match, your callback\nwill be given an error.\n\nSee the [MongoDB docs](http://www.mongodb.org/display/DOCS/Updating) for\nthe modifier (`$inc`, `$set`, `$push`, etc.) formats.\n\nSignature:\n\n    collection.update(criteria, objNew, options, [callback]);\n\nUseful options:\n\n* `safe:true` Should always set if you have a callback.\n* `multi:true` If set, all matching documents are updated, not just the first.\n* `upsert:true` Atomically inserts the document if no documents matched.\n\nExample for `update`:\n\n    var mongodb = require(\'mongodb\');\n    var server = new mongodb.Server("127.0.0.1", 27017, {});\n    new mongodb.Db(\'test\', server, {}).open(function (error, client) {\n      if (error) throw error;\n      var collection = new mongodb.Collection(client, \'test_collection\');\n      collection.update({hi: \'here\'}, {$set: {hi: \'there\'}}, {safe:true},\n                        function(err) {\n        if (err) console.warn(err.message);\n        else console.log(\'successfully updated\');\n      });\n    });\n\nFind and modify\n--------\n\n`findAndModify` is like `update`, but it also gives the updated document to\nyour callback. But there are a few key differences between findAndModify and\nupdate:\n\n  1. The signatures differ.\n  2. You can only findAndModify a single item, not multiple items.\n\nSignature:\n\n    collection.findAndModify(query, sort, update, options, callback)\n\nThe sort parameter is used to specify which object to operate on, if more than\none document matches. It takes the same format as the cursor sort (see\nConnection.find above).\n\nSee the\n[MongoDB docs for findAndModify](http://www.mongodb.org/display/DOCS/findAndModify+Command)\nfor more details.\n\nUseful options:\n\n* `remove:true` set to a true to remove the object before returning\n* `new:true` set to true if you want to return the modified object rather than the original. Ignored for remove.\n* `upsert:true` Atomically inserts the document if no documents matched.\n\nExample for `findAndModify`:\n\n    var mongodb = require(\'mongodb\');\n    var server = new mongodb.Server("127.0.0.1", 27017, {});\n    new mongodb.Db(\'test\', server, {}).open(function (error, client) {\n      if (error) throw error;\n      var collection = new mongodb.Collection(client, \'test_collection\');\n      collection.findAndModify({hello: \'world\'}, [[\'_id\',\'asc\']], {$set: {hi: \'there\'}}, {},\n                        function(err, object) {\n        if (err) console.warn(err.message);\n        else console.dir(object);  // undefined if no matching object exists.\n      });\n    });\n\nSave\n--------\n\nThe `save` method is a shorthand for upsert if the document contains an\n`_id`, or an insert if there is no `_id`.\n\nSponsors\n========\nJust as Felix Geisendörfer I\'m also working on the driver for my own startup and this driver is a big project that also benefits other companies who are using MongoDB.\n\nIf your company could benefit from a even better-engineered node.js mongodb driver I would appreciate any type of sponsorship you may be able to provide. All the sponsors will get a lifetime display in this readme, priority support and help on problems and votes on the roadmap decisions for the driver. If you are interested contact me on [christkv AT g m a i l.com](mailto:christkv@gmail.com) for details.\n\nAnd I\'m very thankful for code contributions. If you are interested in working on features please contact me so we can discuss API design and testing.\n\nRelease Notes\n=============\n\nSee HISTORY\n\nCredits\n========\n\n1. [10gen](http://github.com/mongodb/mongo-ruby-driver/)\n2. [Google Closure Library](http://code.google.com/closure/library/)\n3. [Jonas Raoni Soares Silva](http://jsfromhell.com/classes/binary-parser)\n\nContributors\n=============\n\nAaron Heckmann, Christoph Pojer, Pau Ramon Revilla, Nathan White, Emmerman, Seth LaForge, Boris Filipov, Stefan Schärmeli, Tedde Lundgren, renctan, Sergey Ukustov, Ciaran Jessup, kuno, srimonti, Erik Abele, Pratik Daga, Slobodan Utvic, Kristina Chodorow, Yonathan Randolph, Brian Noguchi, Sam Epstein, James Harrison Fisher, Vladimir Dronnikov, Ben Hockey, Henrik Johansson, Simon Weare, Alex Gorbatchev, Shimon Doodkin, Kyle Mueller, Eran Hammer-Lahav, Marcin Ciszak, François de Metz, Vinay Pulim, nstielau, Adam Wiggins, entrinzikyl, Jeremy Selier, Ian Millington, Public Keating, andrewjstone, Christopher Stott, Corey Jewett, brettkiefer, Rob Holland, Senmiao Liu, heroic, gitfy\n\nLicense\n========\n\n Copyright 2009 - 2010 Christian Amor Kvalheim.\n\n   Licensed under the Apache License, Version 2.0 (the "License");\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n       http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an "AS IS" BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.\n\n',
+356 silly resolved     readmeFilename: 'Readme.md',
+356 silly resolved     homepage: 'https://github.com/christkv/node-mongodb-native',
+356 silly resolved     _id: 'mongodb@0.9.7-2-5',
+356 silly resolved     _from: 'mongodb@0.9.7-2-5' } ]
+357 info install hooks@0.1.9 into e:\prj\multiplayerTanks\node_modules\mongoose
+358 info install colors@0.5.1 into e:\prj\multiplayerTanks\node_modules\mongoose
+359 info install mongodb@0.9.7-2-5 into e:\prj\multiplayerTanks\node_modules\mongoose
+360 info installOne hooks@0.1.9
+361 info installOne colors@0.5.1
+362 info installOne mongodb@0.9.7-2-5
+363 verbose about to build e:\prj\multiplayerTanks\node_modules\mongoose
+364 info e:\prj\multiplayerTanks\node_modules\mongoose unbuild
+365 info preuninstall mongoose@2.4.8
+366 info e:\prj\multiplayerTanks\node_modules\mongoose\node_modules\hooks unbuild
+367 info e:\prj\multiplayerTanks\node_modules\mongoose\node_modules\colors unbuild
+368 info uninstall mongoose@2.4.8
+369 verbose tar unpack C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\hooks\0.1.9\package.tgz
+370 silly lockFile 5151fefc-ules-mongoose-node-modules-hooks tar://e:\prj\multiplayerTanks\node_modules\mongoose\node_modules\hooks
+371 verbose lock tar://e:\prj\multiplayerTanks\node_modules\mongoose\node_modules\hooks C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\5151fefc-ules-mongoose-node-modules-hooks.lock
+372 silly lockFile 7029394a-pm-cache-hooks-0-1-9-package-tgz tar://C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\hooks\0.1.9\package.tgz
+373 verbose lock tar://C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\hooks\0.1.9\package.tgz C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\7029394a-pm-cache-hooks-0-1-9-package-tgz.lock
+374 verbose tar unpack C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\colors\0.5.1\package.tgz
+375 silly lockFile 821193ec-les-mongoose-node-modules-colors tar://e:\prj\multiplayerTanks\node_modules\mongoose\node_modules\colors
+376 verbose lock tar://e:\prj\multiplayerTanks\node_modules\mongoose\node_modules\colors C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\821193ec-les-mongoose-node-modules-colors.lock
+377 silly lockFile ec33b398-m-cache-colors-0-5-1-package-tgz tar://C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\colors\0.5.1\package.tgz
+378 verbose lock tar://C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\colors\0.5.1\package.tgz C:\Users\anshu.KYIV\AppData\Roaming\npm-cache\ec33b398-m-cache-colors-0-5-1-package-tgz.lock
+379 verbose true,e:\prj\multiplayerTanks\node_modules,e:\prj\multiplayerTanks\node_modules unbuild mongoose@2.4.8
+380 info postuninstall mongoose@2.4.8
+381 silly gunzTarPerm modes [ '755', '644' ]
+382 silly gunzTarPerm modes [ '755', '644' ]
+383 silly gunzTarPerm extractEntry package.json
+384 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+385 silly gunzTarPerm extractEntry package.json
+386 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+387 silly gunzTarPerm extractEntry .npmignore
+388 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+389 silly gunzTarPerm extractEntry README.md
+390 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+391 silly gunzTarPerm extractEntry colors.js
+392 silly gunzTarPerm modified mode [ 'colors.js', 438, 420 ]
+393 silly gunzTarPerm extractEntry example.js
+394 silly gunzTarPerm modified mode [ 'example.js', 438, 420 ]
+395 error Error: ENOENT, lstat 'e:\prj\multiplayerTanks\node_modules\mongoose\node_modules\colors\package.json'
+396 error If you need help, you may report this *entire* log,
+396 error including the npm and node versions, at:
+396 error     <http://github.com/npm/npm/issues>
+397 error System Windows_NT 6.1.7601
+398 error command "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install"
+399 error cwd e:\prj\multiplayerTanks
+400 error node -v v0.10.26
+401 error npm -v 1.4.3
+402 error path e:\prj\multiplayerTanks\node_modules\mongoose\node_modules\colors\package.json
+403 error fstream_path e:\prj\multiplayerTanks\node_modules\mongoose\node_modules\colors\package.json
+404 error fstream_type File
+405 error fstream_class FileWriter
+406 error code ENOENT
+407 error errno 34
+408 error fstream_stack c:\Program Files\nodejs\node_modules\npm\node_modules\fstream\lib\writer.js:284:26
+408 error fstream_stack Object.oncomplete (fs.js:107:15)
+409 verbose exit [ 34, true ]
