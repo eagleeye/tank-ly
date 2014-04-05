@@ -80,6 +80,38 @@ mut.CreateGame = function(onCreate) {
 
 			input.fire && fireBullet(player);
 		});
+
+		// Collisions
+		var arr = _.toArray(players);
+		for (var i = 0; i < arr.length - 1; i++) {
+			for (var j = i + 1; j < arr.length; j++) {
+				var player1 = arr[i];
+				var player2 = arr[j];
+				game.physics.arcade.collide(player1.tank, player2.tank);
+			}
+		}
+
+		// Bullet hits
+		_.each(players, function(player) {
+			_.each(players, function(enemy) {
+				if (player === enemy) {
+					return;
+				}
+
+				game.physics.arcade.overlap(player.bullets, enemy.tank, bulletHitEnemy);
+
+				function bulletHitEnemy(tank, bullet) {
+					bullet.kill();
+					enemy.hp -= 1;
+					if (enemy.hp === 0) {
+						enemy.isAlive = false;
+						enemy.tank.kill();
+						enemy.turret.kill();
+						enemy.shadow.kill();
+					}
+				}
+			});
+		});
 	}
 
 	function render() {
@@ -120,6 +152,7 @@ mut.CreateGame = function(onCreate) {
 			currentSpeed: 0,
 			fireRate: 300,
 			nextFire: 0,
+			hp: 5,
 			input: {},
 			bullets: createBullets()
 		};

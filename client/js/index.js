@@ -40,9 +40,13 @@ window.onload = function() {
 
 		// will listen to game events later, for now just improvise
 
-		game.AddPlayer(0, "Player 1", "red");
-		game.AddPlayer(1, "Player 2", "green");
-		game.AddPlayer(2, "Player 3", "blue");
+		game.AddPlayer(0, "Player 1");
+		game.AddPlayer(1, "Player 2");
+		game.AddPlayer(2, "Player 3");
+		game.AddPlayer(3, "Player 4");
+		game.AddPlayer(4, "Player 5");
+		game.AddPlayer(5, "Player 6");
+		game.AddPlayer(6, "Player 7");
 
 		var cmds = ["press_forward", "press_left", "press_fire", "unpress_left", "unpress_forward", "unpress_fire"];
 		var cmdInd = 0;
