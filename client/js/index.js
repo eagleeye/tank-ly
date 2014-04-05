@@ -28,7 +28,11 @@ window.onload = function() {
 
 	mut.CreateGame(function(game) {
 
-		//	var socket = io.connect('http://localhost');
+//		var socket = io.connect(window.location.origin);
+//		socket.on('move', function(data) {
+//			return console.log('move', data);
+//		});
+
 		//	socket.on('news', function (data) {
 		//		console.log(data);
 		//		socket.emit('my other event', { my: 'data' });
@@ -40,23 +44,22 @@ window.onload = function() {
 		game.AddPlayer(1, "Player 2", "green");
 		game.AddPlayer(2, "Player 3", "blue");
 
-		setTimeout(function() {
+		var cmds = ["press_forward", "press_left", "unpress_left", "unpress_forward"];
+		var cmdInd = 0;
+
+		setInterval(function() {
 			var pid = 0;
+
 			var cmd = {
-				code: "press_forward"
-			};
+				code: cmds[cmdInd++]
+			}
+			if (cmdInd === cmds.length) {
+				cmdInd = 0;
+			}
 
 			game.PlayerCommand(pid, cmd);
-		}, 1000);
 
-		setTimeout(function() {
-			var pid = 0;
-			var cmd = {
-				code: "unpress_forward"
-			};
-
-			game.PlayerCommand(pid, cmd);
-		}, 5000);
+		}, 500);
 
 	});
 

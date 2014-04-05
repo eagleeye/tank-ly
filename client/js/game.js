@@ -39,14 +39,29 @@ mut.CreateGame = function(onCreate) {
 		_.each(players, function(player) {
 			var tank = player.tank;
 			var turret = player.turret;
+			var input = player.input;
+			var currentSpeed = player.currentSpeed;
 
-			if (player.input.forward) {
-				player.currentSpeed = 300;
-			} else {
-				player.currentSpeed = 0;
+			input.left && (tank.angle += 4);
+			input.right && (tank.angle -= 4);
+			input.forward && (currentSpeed += 100);
+			input.backward && (currentSpeed -= 100);
+
+			currentSpeed = Math.min(currentSpeed, 400);
+			currentSpeed = Math.max(currentSpeed, -200);
+
+			if (!input.forward && currentSpeed > 0) {
+				currentSpeed -= 5;
+				currentSpeed = Math.max(currentSpeed, 0);
+			}
+			if (!input.backward && currentSpeed < 0) {
+				currentSpeed += 5;
+				currentSpeed = Math.min(currentSpeed, 0);
 			}
 
-			game.physics.arcade.velocityFromRotation(tank.rotation, player.currentSpeed, tank.body.velocity);
+			player.currentSpeed = currentSpeed;
+
+			game.physics.arcade.velocityFromRotation(tank.rotation, currentSpeed, tank.body.velocity);
 
 //			shadow.x = tank.x;
 //			shadow.y = tank.y;
@@ -55,14 +70,11 @@ mut.CreateGame = function(onCreate) {
 			turret.x = tank.x;
 			turret.y = tank.y;
 
-//			turret.rotation = game.physics.arcade.angleToPointer(turret);
 			turret.rotation = tank.rotation;
-
 		});
 	}
 
 	function render() {
-
 	}
 
 	game.AddPlayer = function(playerID, name, color) {
