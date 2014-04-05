@@ -29,8 +29,9 @@ mut.CreateGame = function(onCreate) {
 	function create() {
 
 		game.world.setBounds(0, 0, 800, 600);
+		game.world.scale = new Phaser.Point(0.5, 0.5);
 
-		var land = game.add.tileSprite(0, 0, 800, 600, 'earth');
+		var land = game.add.tileSprite(0, 0, 1600, 1200, 'earth');
 		land.fixedToCamera = true;
 
 //		var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
@@ -43,13 +44,14 @@ mut.CreateGame = function(onCreate) {
 		_.each(players, function(player) {
 			var tank = player.tank;
 			var turret = player.turret;
+			var shadow = player.shadow;
 			var input = player.input;
 			var currentSpeed = player.currentSpeed;
 
 			input.left && (tank.angle += 4);
 			input.right && (tank.angle -= 4);
-			input.forward && (currentSpeed += 100);
-			input.backward && (currentSpeed -= 100);
+			input.forward && (currentSpeed += 40);
+			input.backward && (currentSpeed -= 40);
 
 			currentSpeed = Math.min(currentSpeed, 400);
 			currentSpeed = Math.max(currentSpeed, -200);
@@ -67,14 +69,16 @@ mut.CreateGame = function(onCreate) {
 
 			game.physics.arcade.velocityFromRotation(tank.rotation, currentSpeed, tank.body.velocity);
 
-//			shadow.x = tank.x;
-//			shadow.y = tank.y;
-//			shadow.rotation = tank.rotation;
+			shadow.x = tank.x;
+			shadow.y = tank.y;
+			shadow.rotation = tank.rotation;
 
 			turret.x = tank.x;
 			turret.y = tank.y;
 
 			turret.rotation = tank.rotation;
+
+			input.fire && fireBullet(player);
 		});
 	}
 
@@ -91,6 +95,9 @@ mut.CreateGame = function(onCreate) {
 			colorId -= maxColorId;
 		}
 		var spriteName = 'tank_' + colorId;
+
+		var shadow = game.add.sprite(x, y, spriteName, 'shadow');
+		shadow.anchor.setTo(0.5);
 
 		var tank = game.add.sprite(x, y, spriteName, 'tank1');
 		tank.anchor.setTo(0.5, 0.5);
@@ -109,8 +116,12 @@ mut.CreateGame = function(onCreate) {
 			color: colorId,
 			tank: tank,
 			turret: turret,
+			shadow: shadow,
 			currentSpeed: 0,
-			input: {}
+			fireRate: 300,
+			nextFire: 0,
+			input: {},
+			bullets: createBullets()
 		};
 
 		return players[playerID];
@@ -124,5 +135,27 @@ mut.CreateGame = function(onCreate) {
 			case "unpress": player.input[cmd[1]] = false; break;
 		};
 	};
+
+	function createBullets() {
+		var bullets = game.add.group();
+		bullets.enableBody = true;
+		bullets.physicsBodyType = Phaser.Physics.ARCADE;
+		bullets.createMultiple(10, 'bullet', 0, false);
+		bullets.setAll('anchor.x', 0.5);
+		bullets.setAll('anchor.y', 0.5);
+		bullets.setAll('outOfBoundsKill', true);
+		bullets.setAll('checkWorldBounds', true);
+		return bullets;
+	}
+
+	function fireBullet(player) {
+		if (game.time.now > player.nextFire && player.bullets.countDead() > 0) {
+			player.nextFire = game.time.now + player.fireRate;
+			var bullet = player.bullets.getFirstExists(false);
+			bullet.reset(player.turret.x, player.turret.y);
+			bullet.rotation = player.tank.rotation;
+			game.physics.arcade.velocityFromRotation(bullet.rotation, 1000, bullet.body.velocity);
+		}
+	}
 
 };

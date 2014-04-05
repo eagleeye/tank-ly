@@ -44,7 +44,7 @@ window.onload = function() {
 		game.AddPlayer(1, "Player 2", "green");
 		game.AddPlayer(2, "Player 3", "blue");
 
-		var cmds = ["press_forward", "press_left", "unpress_left", "unpress_forward"];
+		var cmds = ["press_forward", "press_left", "press_fire", "unpress_left", "unpress_forward", "unpress_fire"];
 		var cmdInd = 0;
 
 		setInterval(function() {
