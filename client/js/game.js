@@ -94,14 +94,6 @@ mut.CreateGame = function(onCreate) {
 
 			game.physics.arcade.velocityFromRotation(tank.rotation, currentSpeed, tank.body.velocity);
 
-			shadow.x = tank.x;
-			shadow.y = tank.y;
-			shadow.rotation = tank.rotation;
-
-			turret.x = tank.x;
-			turret.y = tank.y;
-			turret.rotation = tank.rotation;
-
 			if (input.fire) {
 				fireBullet(player);
 				delete input.fire;
@@ -152,13 +144,22 @@ mut.CreateGame = function(onCreate) {
 				player.alive = true;
 				player.hp = maxHp;
 				delete player.respawn;
-				var x = game.world.randomX;
-				var y = game.world.randomY;
+				var x = game.world.randomX / scale;
+				var y = game.world.randomY / scale;
 				_.each(['tank', 'turret', 'shadow'], function(prop) {
 					player[prop].exists = true;
 					player[prop].reset(x, y);
 				});
 			}
+		});
+
+		// updates of parts
+		_.each(livePlayers, function(player) {
+			_.each(['turret', 'shadow'], function(prop) {
+				player[prop].x = player.tank.x;
+				player[prop].y = player.tank.y;
+				player[prop].rotation = player.tank.rotation;
+			});
 		});
 	}
 
@@ -173,8 +174,8 @@ mut.CreateGame = function(onCreate) {
 
 	game.AddPlayer = function(playerID, name) {
 
-		var x = game.world.randomX;
-		var y = game.world.randomY;
+		var x = game.world.randomX / scale;
+		var y = game.world.randomY / scale;
 
 		var colorId = _.size(players) + 1;
 		while (colorId > maxColorId) {
@@ -232,7 +233,7 @@ mut.CreateGame = function(onCreate) {
 		var bullets = game.add.group();
 		bullets.enableBody = true;
 		bullets.physicsBodyType = Phaser.Physics.ARCADE;
-		bullets.createMultiple(10, 'bullet', 0, false);
+		bullets.createMultiple(5, 'bullet', 0, false);
 		bullets.setAll('anchor.x', 0.5);
 		bullets.setAll('anchor.y', 0.5);
 		bullets.setAll('outOfBoundsKill', true);
