@@ -27,7 +27,7 @@ $ ->
 
 	socket.on 'scoreUpdated', (data) ->
 		if data.clientId is clientId
-			$('.color').html(data.score.toString())
+			$('.color').html(data.score)
 
 	$('.right-control').on 'touchstart', (e) ->
 		emit e, 'fire'

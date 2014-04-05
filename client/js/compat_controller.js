@@ -25,7 +25,7 @@
 		});
 		socket.on('scoreUpdated', function(data) {
 			if (data.clientId === clientId) {
-				return $('.color').html(data.score.toString());
+				return $('.color').html(data.score);
 			}
 		});
 

@@ -108,7 +108,7 @@ mut.CreateGame = function(onCreate) {
 		}
 
 		// Bullet hits
-		_.each(livePlayers, function(player, playerID) {
+		_.each(livePlayers, function(player) {
 			_.each(livePlayers, function(enemy) {
 				if (player === enemy) {
 					return;
@@ -123,7 +123,8 @@ mut.CreateGame = function(onCreate) {
 
 						player.score++;
 						player.scoreText.text = player.name + " - " + player.score + " ";
-						socket.emit('scoreUpdated', {clientId: playerID, score: player.score});
+						socket.emit('scoreUpdated', {clientId: player.id, score: player.score});
+						sortScores();
 
 						enemy.alive = false;
 
@@ -163,6 +164,13 @@ mut.CreateGame = function(onCreate) {
 				player[prop].rotation = player.tank.rotation;
 			});
 		});
+
+		function sortScores() {
+			var sorted = _.sortBy(players, function(p) { return -p.score;} );
+			_.each(sorted, function(p, index) {
+				p.scoreText.y = index * 40;
+			});
+		}
 	}
 
 	function render() {
@@ -211,6 +219,7 @@ mut.CreateGame = function(onCreate) {
 		t.setShadow(3, 3, "black", 2);
 
 		players[playerID] = {
+			id: playerID,
 			name: name,
 			color: colorId,
 			tank: tank,

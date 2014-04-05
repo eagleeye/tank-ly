@@ -46,4 +46,7 @@ div.text {
 	height: 50px;
 	left: 50%;
 	margin-left: -81px;
+	text-align: center;
+	font-size: 36px;
+	color: black;
 }
