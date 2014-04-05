@@ -13,6 +13,8 @@ mut.CreateGame = function(onCreate) {
 
 	var maxColorId = 7;
 
+	var explosions;
+
 	function preload() {
 		game.load.image('logo', '../resources/phaser.png');
 
@@ -37,11 +39,25 @@ mut.CreateGame = function(onCreate) {
 //		var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
 //		logo.anchor.setTo(0.5, 0.5);
 
+		explosions = game.add.group();
+
+		for (var i = 0; i < 20; i++)
+		{
+			var explosionAnimation = explosions.create(0, 0, 'kaboom', [0], false);
+			explosionAnimation.anchor.setTo(0.5, 0.5);
+			explosionAnimation.animations.add('kaboom');
+		}
+
 		onCreate && onCreate(game);
 	}
 
 	function update() {
-		_.each(players, function(player) {
+
+		var livePlayers = _.filter(players, function(p) {
+			return p.alive;
+		});
+
+		_.each(livePlayers, function(player) {
 			var tank = player.tank;
 			var turret = player.turret;
 			var shadow = player.shadow;
@@ -82,7 +98,7 @@ mut.CreateGame = function(onCreate) {
 		});
 
 		// Collisions
-		var arr = _.toArray(players);
+		var arr = _.toArray(livePlayers);
 		for (var i = 0; i < arr.length - 1; i++) {
 			for (var j = i + 1; j < arr.length; j++) {
 				var player1 = arr[i];
@@ -92,8 +108,8 @@ mut.CreateGame = function(onCreate) {
 		}
 
 		// Bullet hits
-		_.each(players, function(player) {
-			_.each(players, function(enemy) {
+		_.each(livePlayers, function(player) {
+			_.each(livePlayers, function(enemy) {
 				if (player === enemy) {
 					return;
 				}
@@ -104,13 +120,23 @@ mut.CreateGame = function(onCreate) {
 					bullet.kill();
 					enemy.hp -= 1;
 					if (enemy.hp === 0) {
-						enemy.isAlive = false;
+						enemy.alive = false;
+
 						enemy.tank.kill();
 						enemy.turret.kill();
 						enemy.shadow.kill();
+
+						var explosionAnimation = explosions.getFirstExists(false);
+						explosionAnimation.reset(tank.x, tank.y);
+						explosionAnimation.play('kaboom', 30, false, true);
 					}
 				}
 			});
+		});
+
+		// Rspawns
+		_.each(livePlayers, function(player) {
+
 		});
 	}
 
@@ -152,6 +178,7 @@ mut.CreateGame = function(onCreate) {
 			currentSpeed: 0,
 			fireRate: 300,
 			nextFire: 0,
+			alive: true,
 			hp: 5,
 			input: {},
 			bullets: createBullets()
