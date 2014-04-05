@@ -1,8 +1,11 @@
 var mut = mut || {}; // MUltiplayer Tanks
+var width = window.innerWidth;
+var height = window.innerHeight;
+var scale = 0.5;
 
 mut.CreateGame = function(onCreate) {
 
-	var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
+	var game = new Phaser.Game(width, height, Phaser.AUTO, '', {
 		preload: preload,
 		create: create,
 		update: update,
@@ -30,10 +33,10 @@ mut.CreateGame = function(onCreate) {
 	}
 
 	function create() {
-		game.world.setBounds(0, 0, 800, 600);
-		game.world.scale = new Phaser.Point(0.5, 0.5);
+		game.world.setBounds(0, 0, width, height);
+		game.world.scale = new Phaser.Point(scale, scale);
 
-		var land = game.add.tileSprite(0, 0, 1600, 1200, 'earth');
+		var land = game.add.tileSprite(0, 0, width / scale, height / scale , 'earth');
 		land.fixedToCamera = true;
 
 //		var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
