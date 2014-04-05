@@ -11,10 +11,14 @@ mut.CreateGame = function(onCreate) {
 
 	var players = {};
 
+	var maxColorId = 7;
+
 	function preload() {
 		game.load.image('logo', '../resources/phaser.png');
 
-		game.load.atlas('tank', '../resources/tanks.png', '../resources/tanks.json');
+		for (var i = 1; i <= maxColorId; i++) {
+			game.load.atlas('tank_' + i, '../resources/tanks_' + i + '.png', '../resources/tanks.json');
+		}
 		game.load.atlas('enemy', '../resources/enemy-tanks.png', '../resources/tanks.json');
 		game.load.image('logo', '../resources/logo.png');
 		game.load.image('bullet', '../resources/bullet.png');
@@ -77,16 +81,22 @@ mut.CreateGame = function(onCreate) {
 	function render() {
 	}
 
-	game.AddPlayer = function(playerID, name, color) {
+	game.AddPlayer = function(playerID, name) {
 
 		var x = game.world.randomX;
 		var y = game.world.randomY;
 
-		var tank = game.add.sprite(x, y, 'tank', 'tank1');
+		var colorId = _.size(players) + 1;
+		while (colorId > maxColorId) {
+			colorId -= maxColorId;
+		}
+		var spriteName = 'tank_' + colorId;
+
+		var tank = game.add.sprite(x, y, spriteName, 'tank1');
 		tank.anchor.setTo(0.5, 0.5);
 		tank.animations.add('move', ['tank1', 'tank2', 'tank3', 'tank4', 'tank5', 'tank6'], 20, true);
 
-		var turret = game.add.sprite(x, y, 'tank', 'turret');
+		var turret = game.add.sprite(x, y, spriteName, 'turret');
 		turret.anchor.setTo(0.3, 0.5);
 
 		game.physics.enable(tank, Phaser.Physics.ARCADE);
@@ -96,7 +106,7 @@ mut.CreateGame = function(onCreate) {
 
 		players[playerID] = {
 			name: name,
-			color: color,
+			color: colorId,
 			tank: tank,
 			turret: turret,
 			currentSpeed: 0,
