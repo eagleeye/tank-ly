@@ -12,6 +12,7 @@ mut.CreateGame = function(onCreate) {
 	var players = {};
 
 	var maxColorId = 7;
+	var maxHp = 3;
 
 	var explosions;
 
@@ -29,7 +30,6 @@ mut.CreateGame = function(onCreate) {
 	}
 
 	function create() {
-
 		game.world.setBounds(0, 0, 800, 600);
 		game.world.scale = new Phaser.Point(0.5, 0.5);
 
@@ -40,7 +40,6 @@ mut.CreateGame = function(onCreate) {
 //		logo.anchor.setTo(0.5, 0.5);
 
 		explosions = game.add.group();
-
 		for (var i = 0; i < 20; i++)
 		{
 			var explosionAnimation = explosions.create(0, 0, 'kaboom', [0], false);
@@ -64,19 +63,19 @@ mut.CreateGame = function(onCreate) {
 			var input = player.input;
 			var currentSpeed = player.currentSpeed;
 
-			input.left && (tank.angle += 4);
-			input.right && (tank.angle -= 4);
-			input.forward && (currentSpeed += 40);
-			input.backward && (currentSpeed -= 40);
+			input.left && (tank.angle -= 4);
+			input.right && (tank.angle += 4);
+			input.top && (currentSpeed += 40);
+			input.bottom && (currentSpeed -= 40);
 
 			currentSpeed = Math.min(currentSpeed, 400);
 			currentSpeed = Math.max(currentSpeed, -200);
 
-			if (!input.forward && currentSpeed > 0) {
+			if (!input.top && currentSpeed > 0) {
 				currentSpeed -= 5;
 				currentSpeed = Math.max(currentSpeed, 0);
 			}
-			if (!input.backward && currentSpeed < 0) {
+			if (!input.bottom && currentSpeed < 0) {
 				currentSpeed += 5;
 				currentSpeed = Math.min(currentSpeed, 0);
 			}
@@ -91,10 +90,12 @@ mut.CreateGame = function(onCreate) {
 
 			turret.x = tank.x;
 			turret.y = tank.y;
-
 			turret.rotation = tank.rotation;
 
-			input.fire && fireBullet(player);
+			if (input.fire) {
+				fireBullet(player);
+				delete input.fire;
+			}
 		});
 
 		// Collisions
@@ -122,9 +123,10 @@ mut.CreateGame = function(onCreate) {
 					if (enemy.hp === 0) {
 						enemy.alive = false;
 
-						enemy.tank.kill();
-						enemy.turret.kill();
-						enemy.shadow.kill();
+						enemy.tank.exists = false;
+						enemy.turret.exists = false;
+						enemy.shadow.exists = false;
+						enemy.respawn = game.time.now + 2000;
 
 						var explosionAnimation = explosions.getFirstExists(false);
 						explosionAnimation.reset(tank.x, tank.y);
@@ -135,13 +137,29 @@ mut.CreateGame = function(onCreate) {
 		});
 
 		// Rspawns
-		_.each(livePlayers, function(player) {
-
+		_.each(players, function(player) {
+			if (!player.alive && game.time.now > player.respawn) {
+				player.alive = true;
+				player.hp = maxHp;
+				delete player.respawn;
+				var x = game.world.randomX;
+				var y = game.world.randomY;
+				_.each(['tank', 'turret', 'shadow'], function(prop) {
+					player[prop].exists = true;
+					player[prop].reset(x, y);
+				});
+			}
 		});
 	}
 
 	function render() {
 	}
+
+	game.EnsurePlayer = function(playerID) {
+		if (!players[playerID]) {
+			game.AddPlayer(playerID, "Player_" + playerID);
+		}
+	};
 
 	game.AddPlayer = function(playerID, name) {
 
@@ -179,7 +197,7 @@ mut.CreateGame = function(onCreate) {
 			fireRate: 300,
 			nextFire: 0,
 			alive: true,
-			hp: 5,
+			hp: maxHp,
 			input: {},
 			bullets: createBullets()
 		};
@@ -193,6 +211,7 @@ mut.CreateGame = function(onCreate) {
 		switch(cmd[0]) {
 			case "press": player.input[cmd[1]] = true; break;
 			case "unpress": player.input[cmd[1]] = false; break;
+			case "stop": player.input = {}; break;
 		};
 	};
 

@@ -38,17 +38,43 @@ window.onload = function() {
 		//		socket.emit('my other event', { my: 'data' });
 		//	});
 
+		socket = io.connect(window.location.origin);
+		socket.on('connected', function(data) {
+			game.AddPlayer(data.clientId, "Player_" + data.clientId);
+		});
+		socket.on('move', function(data) {
+			game.EnsurePlayer(data.clientId);
+			var cmd = {
+				code: "press_" + data.direction
+			};
+			game.PlayerCommand(data.clientId, cmd);
+		});
+		socket.on('fire', function(data) {
+			game.EnsurePlayer(data.clientId);
+			var cmd = {
+				code: "press_fire"
+			};
+			game.PlayerCommand(data.clientId, cmd);
+		});
+		socket.on('stop', function(data) {
+			game.EnsurePlayer(data.clientId);
+			var cmd = {
+				code: "stop"
+			};
+			game.PlayerCommand(data.clientId, cmd);
+		});
+
 		// will listen to game events later, for now just improvise
 
 		game.AddPlayer(0, "Player 1");
-		game.AddPlayer(1, "Player 2");
-		game.AddPlayer(2, "Player 3");
-		game.AddPlayer(3, "Player 4");
-		game.AddPlayer(4, "Player 5");
-		game.AddPlayer(5, "Player 6");
-		game.AddPlayer(6, "Player 7");
+//		game.AddPlayer(1, "Player 2");
+//		game.AddPlayer(2, "Player 3");
+//		game.AddPlayer(3, "Player 4");
+//		game.AddPlayer(4, "Player 5");
+//		game.AddPlayer(5, "Player 6");
+//		game.AddPlayer(6, "Player 7");
 
-		var cmds = ["press_forward", "press_left", "press_fire", "unpress_left", "unpress_forward", "unpress_fire"];
+		var cmds = ["press_top", "press_left", "press_fire", "unpress_left", "unpress_top", "unpress_fire"];
 		var cmdInd = 0;
 
 		setInterval(function() {
