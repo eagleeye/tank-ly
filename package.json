@@ -1,5 +1,5 @@
 {
-	"name": "multiplayer tanks",
+	"name": "multiplayerTanks",
 	"description": "2d multiplayer game, cotrolled by smartphones",
 	"version": "0.1.0",
 	"homepage" : "https://github.com/eagleeye/multiplayerTanks",
@@ -22,6 +22,6 @@
 	}],
 
 	"scripts": {
-		"start": "coffee server.coffee"
+		"start": "coffee -c -m client/js/controller.coffee && coffee server.coffee"
 	}
 }
