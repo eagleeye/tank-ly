@@ -31,10 +31,12 @@ $ ->
 
 	$('.right-control').on 'touchstart', (e) ->
 		emit e, 'fire'
-	$('.left-control').on touchStopEvent, (e) ->
-		emit e, 'stop'
 
 	$left = $('.left-control')
+
+	$left.on touchStopEvent, (e) ->
+		emit e, 'stop'
+
 	$left.on touchMoveEvent, (e) ->
 		touch = event.touches?[0]
 		y = e.offsetY || touch.pageY

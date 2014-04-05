@@ -29,6 +29,9 @@ window.onload = function() {
 	mut.CreateGame(function(game) {
 
 		socket = io.connect(window.location.origin);
+		socket.on('connect', function() {
+			socket.emit('master');
+		});
 		socket.on('connected', function(data) {
 			game.AddPlayer(data.clientId, "Player_" + data.clientId);
 		});
