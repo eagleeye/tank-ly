@@ -37,3 +37,12 @@ div.text {
 	top: 50%;
 	margin-top: -25px;
 }
+
+.color {
+	position: absolute;
+	bottom: 0;
+	width: 150px;
+	height: 50px;
+	left: 50%;
+	margin-left: -81px;
+}

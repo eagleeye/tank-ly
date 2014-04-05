@@ -2,6 +2,7 @@ var mut = mut || {}; // MUltiplayer Tanks
 var width = window.innerWidth;
 var height = window.innerHeight;
 var scale = 0.5;
+var colors = ['green', 'lightgreen', 'aqua', 'blue', 'darkviolet', 'red', 'yellow'];
 
 mut.CreateGame = function(onCreate) {
 
@@ -179,6 +180,8 @@ mut.CreateGame = function(onCreate) {
 		while (colorId > maxColorId) {
 			colorId -= maxColorId;
 		}
+		socket.emit('colorAssigned', {clientId: playerID, color: colors[colorId - 1]});
+
 		var spriteName = 'tank_' + colorId;
 
 		var shadow = game.add.sprite(x, y, spriteName, 'shadow');

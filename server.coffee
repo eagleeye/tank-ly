@@ -18,6 +18,9 @@ io.sockets.on 'connection', (socket) ->
 	socket.on 'fire', (data) ->
 		console.log 'fire event', data
 		io.sockets.emit "fire", data
+	socket.on 'colorAssigned', (data) ->
+		console.log 'colorAssigned', data
+		io.sockets.emit "colorAssigned", data
 	socket.on 'connected', (data) ->
 		console.log 'new user connected', data
 		io.sockets.emit "connected", data

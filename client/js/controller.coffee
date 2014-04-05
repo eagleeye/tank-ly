@@ -20,6 +20,10 @@ $ ->
 		console.log('fire', data)
 	socket.on 'stop', (data) ->
 		console.log('stop', data)
+	socket.on 'colorAssigned', (data) ->
+		if data.clientId is clientId
+			$('.color').css('background-color', data.color)
+		console.log('colorAssigned', data)
 
 	$('.right-control').on 'touchstart', (e) ->
 		emit e, 'fire'

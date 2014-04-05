@@ -23,7 +23,7 @@
 // - connects to server using sockect.io
 // - for each connection creates a player
 // - listens for events, applies them to player
-
+var socket;
 window.onload = function() {
 
 	mut.CreateGame(function(game) {
