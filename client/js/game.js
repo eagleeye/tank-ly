@@ -75,18 +75,18 @@ mut.CreateGame = function(onCreate) {
 			if (input.moveDir) {
 				currentSpeed += 40;
 				var targetAngle = -input.moveDir.angle;
-				tank.angle = (tank.angle + targetAngle) * 0.5;
+				tank.angle = targetAngle;
 			}
 
 			currentSpeed = Math.min(currentSpeed, 400);
 			currentSpeed = Math.max(currentSpeed, -200);
 
-			if (!input.top && currentSpeed > 0) {
-				currentSpeed -= 5;
+			if (!input.top && !input.moveDir && currentSpeed > 0) {
+				currentSpeed -= 7;
 				currentSpeed = Math.max(currentSpeed, 0);
 			}
 			if (!input.bottom && currentSpeed < 0) {
-				currentSpeed += 5;
+				currentSpeed += 7;
 				currentSpeed = Math.min(currentSpeed, 0);
 			}
 
@@ -148,7 +148,7 @@ mut.CreateGame = function(onCreate) {
 
 		// Rspawns
 		_.each(players, function(player) {
-			if (!player.alive && game.time.now > player.respawn) {
+			if (!player.alive && game.time.now > player.respawn && !_.isEmpty(player.input)) {
 				player.alive = true;
 				player.hp = maxHp;
 				delete player.respawn;
