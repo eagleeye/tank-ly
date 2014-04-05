@@ -122,7 +122,7 @@ mut.CreateGame = function(onCreate) {
 					if (enemy.hp === 0) {
 
 						player.score++;
-						player.scoreText.text = player.name + " " + player.score;
+						player.scoreText.text = player.name + " - " + player.score + " ";
 						socket.emit('scoreUpdated', {clientId: playerID, score: player.score});
 
 						enemy.alive = false;
@@ -170,11 +170,15 @@ mut.CreateGame = function(onCreate) {
 
 	game.EnsurePlayer = function(playerID) {
 		if (!players[playerID]) {
-			game.AddPlayer(playerID, "Player_" + playerID);
+			game.AddPlayer(playerID);
 		}
 	};
 
+	var playersNumber = 1;
+
 	game.AddPlayer = function(playerID, name) {
+
+		name = name || "Player " + playersNumber++;
 
 		var x = game.world.randomX / scale;
 		var y = game.world.randomY / scale;
@@ -203,7 +207,7 @@ mut.CreateGame = function(onCreate) {
 		tank.body.collideWorldBounds = true;
 
 		var style = { font: "bold 40px Arial", fill: colors[colorId-1], align: "left"};
-		var t = game.add.text(game.world.bounds.width / scale - 200, _.size(players) * 40, name + " ", style)
+		var t = game.add.text(game.world.bounds.width / scale - 300, _.size(players) * 40, name + " ", style)
 		t.setShadow(3, 3, "black", 2);
 
 		players[playerID] = {

@@ -25,6 +25,9 @@ io.sockets.on 'connection', (socket) ->
 	socket.on 'colorAssigned', (data) ->
 		console.log 'colorAssigned', data
 		io.sockets.emit "colorAssigned", data
+	socket.on 'scoreUpdated', (data) ->
+		console.log 'scoreUpdated', data
+		io.sockets.emit "scoreUpdated", data
 	socket.on 'connected', (data) ->
 		console.log 'new user connected', data
 		masterSocket?.emit "connected", data

@@ -33,7 +33,7 @@ window.onload = function() {
 			socket.emit('master');
 		});
 		socket.on('connected', function(data) {
-			game.AddPlayer(data.clientId, "Player_" + data.clientId);
+			game.AddPlayer(data.clientId);
 		});
 		socket.on('move', function(data) {
 			game.EnsurePlayer(data.clientId);
