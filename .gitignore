@@ -2,3 +2,4 @@ node_modules
 .idea
 client/js/controller.js
 client/js/controller.map
+forego.exe
