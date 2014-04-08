@@ -6,7 +6,7 @@ app.use(express.static(__dirname + '/client'))
 http = require 'http'
 server = http.createServer(app)
 io = require('socket.io').listen(server)
-server.listen(3000)
+server.listen(process.env.PORT || 5000)
 masterSocket = null
 
 io.sockets.on 'connection', (socket) ->
