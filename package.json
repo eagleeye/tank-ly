@@ -18,7 +18,7 @@
     "url": "git@github.com:eagleeye/multiplayerTanks.git"
   },
   "scripts": {
-    "start": "coffee -c -m client/js/controller.coffee && coffee server.coffee"
+    "start": "node app.js"
   },
   "bugs": {
     "url": "https://github.com/eagleeye/multiplayerTanks/issues"
