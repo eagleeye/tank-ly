@@ -1,29 +1,36 @@
 {
-	"name": "multiplayerTanks",
-	"description": "2d multiplayer game, cotrolled by smartphones",
-	"version": "0.1.0",
-	"homepage" : "https://github.com/eagleeye/multiplayerTanks",
-	"engines": {
-		"node": "0.10.x"
-	},
-	"author": "Andrii Shumada <eagleeyes91@gmail.com>",
-
-	"dependencies": {
-		"coffee-script": "*",
-		"socket.io": "*",
-		"express": "*",
-		"lodash": "*"
-	},
-
-	"repository" : {
-		"type" : "git",
-		"url" : "git@github.com:eagleeye/multiplayerTanks.git"
-	},
-	"licenses": [{
-		"type": "proprietary"
-	}],
-
-	"scripts": {
-		"start": "coffee -c -m client/js/controller.coffee && coffee server.coffee"
-	}
+  "name": "multiplayerTanks",
+  "description": "2d multiplayer game, cotrolled by smartphones",
+  "version": "0.1.0",
+  "homepage": "https://github.com/eagleeye/multiplayerTanks",
+  "engines": {
+    "node": "0.10.x"
+  },
+  "author": "Andrii Shumada <eagleeyes91@gmail.com>",
+  "dependencies": {
+    "coffee-script": "*",
+    "socket.io": "*",
+    "express": "*",
+    "lodash": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:eagleeye/multiplayerTanks.git"
+  },
+  "scripts": {
+    "start": "coffee -c -m client/js/controller.coffee && coffee server.coffee"
+  },
+  "bugs": {
+    "url": "https://github.com/eagleeye/multiplayerTanks/issues"
+  },
+  "main": "app.js",
+  "devDependencies": {
+    "coffee-script": "~1.7.1"
+  },
+  "keywords": [
+    "game",
+    "socket.io",
+    "mobile"
+  ],
+  "license": "MIT"
 }
