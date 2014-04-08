@@ -3,7 +3,9 @@
 	"description": "2d multiplayer game, cotrolled by smartphones",
 	"version": "0.1.0",
 	"homepage" : "https://github.com/eagleeye/multiplayerTanks",
-	"engines": {"node": ">= 0.10.20" },
+	"engines": {
+		"node": "0.10.x"
+	},
 	"author": "Andrii Shumada <eagleeyes91@gmail.com>",
 
 	"dependencies": {
