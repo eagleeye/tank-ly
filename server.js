@@ -43,6 +43,10 @@
       console.log('colorAssigned', data);
       return io.sockets.emit("colorAssigned", data);
     });
+    socket.on('scoreUpdated', function(data) {
+      console.log('scoreUpdated', data);
+      return io.sockets.emit("scoreUpdated", data);
+    });
     socket.on('connected', function(data) {
       console.log('new user connected', data);
       return masterSocket != null ? masterSocket.emit("connected", data) : void 0;
