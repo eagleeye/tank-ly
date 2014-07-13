@@ -1,17 +1,21 @@
 fs = require("fs")
 express = require('express')
 _ = require("lodash")
+favicon = require('serve-favicon')
 app = express()
+app.use(favicon(__dirname + '/client/img/favicon.png'))
+app.set('views', __dirname + '/views')
 app.use(express.static(__dirname + '/client'))
 http = require 'http'
 server = http.createServer(app)
 io = require('socket.io').listen(server)
 server.listen(process.env.PORT || 5000)
-masterSocket = null
+rooms = {}
 
 io.sockets.on 'connection', (socket) ->
 	socket.on 'master', ->
 		console.log 'master connected'
+		socket[socket.id] = socket
 		masterSocket = socket
 	socket.on 'move', (data) ->
 		console.log 'move event', data

@@ -1,8 +1,9 @@
 {
   "name": "multiplayerTanks",
-  "description": "2d multiplayer game, cotrolled by smartphones",
+  "description": "2d multiplayer game, controlled by touch devices",
   "version": "0.1.0",
   "homepage": "https://github.com/eagleeye/multiplayerTanks",
+  "main": "app.js",
   "engines": {
     "node": "0.10.x"
   },
@@ -11,7 +12,8 @@
     "coffee-script": "*",
     "socket.io": "*",
     "express": "*",
-    "lodash": "*"
+    "lodash": "*",
+    "serve-favicon": "*"
   },
   "repository": {
     "type": "git",
@@ -30,7 +32,10 @@
   "keywords": [
     "game",
     "socket.io",
-    "mobile"
+    "mobile",
+    "touch",
+    "tanks",
+    "fun"
   ],
   "license": "MIT"
 }

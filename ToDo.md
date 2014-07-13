@@ -1,0 +1,24 @@
+- tests
+- better sprites
+- rooms
+	- home page
+		- add new room
+		- remove room
+			- on disconnect + 2 min
+			- handle reconnect
+		- join room
+- performance
+	- event debounce
+	- events to exact receivers
+- field page
+	- url with roomId
+	- button "toggle QR"
+	- handle resize of window
+	- button "full screen"
+- facebook integration
+	- block of news on front page
+	- login with facebook
+		- use Facebook name on game field
+	- like
+	- news
+
