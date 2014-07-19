@@ -1,8 +1,10 @@
 clientId = Math.random().toString().split('.')[1];
+touchStartEvent = 'touchstart'
 touchMoveEvent = 'touchstart touchmove'
 touchStopEvent = 'touchend'
-#touchMoveEvent = 'mousedown'
-#touchStopEvent = 'mouseup'
+touchMoveEvent = 'mousedown'
+touchStartEvent = 'mousedown'
+touchStopEvent = 'mouseup'
 
 $ ->
 	emit = (e, eventName, params = {}) ->
@@ -12,6 +14,7 @@ $ ->
 	socket = io.connect(window.location.origin);
 	socket.on 'connect', ->
 		emit null, 'connected'
+		console.log 'connected'
 #	socket.on 'connected', (data) ->
 #		console.log('connected', data)
 #	socket.on 'move', (data) ->
@@ -21,15 +24,15 @@ $ ->
 #	socket.on 'stop', (data) ->
 #		console.log('stop', data)
 	socket.on 'colorAssigned', (data) ->
-		if data.clientId is clientId
-			$('.color').css('background-color', data.color)
-#		console.log('colorAssigned', data)
+		$('.color').css('background-color', data.color)
+		console.log('colorAssigned', data)
 
 	socket.on 'scoreUpdated', (data) ->
-		if data.clientId is clientId
-			$('.color').html(data.score)
+		$('.color').html(data.score)
+		console.log('scoreUpdated', data)
 
 	$('.right-control').on 'touchstart', (e) ->
+		console.log 'fire!'
 		emit e, 'fire'
 
 	$left = $('.left-control')

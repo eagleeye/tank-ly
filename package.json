@@ -10,24 +10,27 @@
   "author": "Andrii Shumada <eagleeyes91@gmail.com>",
   "dependencies": {
     "coffee-script": "*",
-    "socket.io": "*",
     "express": "*",
     "lodash": "*",
-    "serve-favicon": "*"
+    "serve-favicon": "*",
+    "socket.io": "^1.0.6"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:eagleeye/multiplayerTanks.git"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node ./node_modules/coffee-script/bin/coffee app.coffee"
   },
   "bugs": {
     "url": "https://github.com/eagleeye/multiplayerTanks/issues"
   },
-  "main": "app.js",
   "devDependencies": {
-    "coffee-script": "~1.7.1"
+    "chai": "",
+    "chai-subset": "",
+    "coffee-script": "~1.7.1",
+    "mocha": "",
+    "request": "^2.37.0"
   },
   "keywords": [
     "game",

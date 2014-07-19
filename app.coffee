@@ -13,10 +13,10 @@ server.listen(process.env.PORT || 5000)
 rooms = {}
 
 io.sockets.on 'connection', (socket) ->
-	socket.on 'master', ->
-		console.log 'master connected'
-		socket[socket.id] = socket
-		masterSocket = socket
+	console.log 'new connection'
+	socket.on 'master', (data) ->
+		console.log 'master connected', data
+		getRooom(data.roomId).masterSocket = socket
 	socket.on 'move', (data) ->
 		console.log 'move event', data
 		masterSocket?.emit "move", data
@@ -38,3 +38,8 @@ io.sockets.on 'connection', (socket) ->
 	socket.on 'disconnect', ->
 		console.log 'userDisconnected'
 		masterSocket?.emit('userDisconnected')
+
+getRoom = (id) ->
+	if not rooms[id]
+		rooms[id] = master: {}, sockets: {}
+	rooms[id]
