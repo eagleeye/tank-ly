@@ -24,7 +24,8 @@
     "url": "git@github.com:eagleeye/multiplayerTanks.git"
   },
   "scripts": {
-    "start": "node ./node_modules/coffee-script/bin/coffee app.coffee"
+    "start": "node ./node_modules/coffee-script/bin/coffee app.coffee",
+    "postinstall": "node ./node_modules/gulp/bin/gulp.js coffee"
   },
   "bugs": {
     "url": "https://github.com/eagleeye/multiplayerTanks/issues"
