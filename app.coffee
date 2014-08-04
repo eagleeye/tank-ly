@@ -9,7 +9,9 @@ app.use(express.static(__dirname + '/client'))
 http = require 'http'
 server = http.createServer(app)
 io = require('socket.io').listen(server)
-server.listen(process.env.PORT || 5000)
+port = process.env.PORT || 5000
+server.listen(port)
+console.log('server started')
 rooms = {}
 
 io.sockets.on 'connection', (socket) ->
