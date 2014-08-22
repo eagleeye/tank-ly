@@ -25,6 +25,7 @@
   },
   "scripts": {
     "start": "node ./node_modules/coffee-script/bin/coffee app.coffee",
+    "test": "node ./node_modules/mocha/bin/mocha test",
     "postinstall": "node ./node_modules/gulp/bin/gulp.js coffee"
   },
   "bugs": {
@@ -34,7 +35,8 @@
     "chai": "",
     "chai-subset": "",
     "mocha": "",
-    "request": "^2.37.0"
+    "request": "^2.37.0",
+    "socket.io-client": "^1.0.6"
   },
   "keywords": [
     "game",
