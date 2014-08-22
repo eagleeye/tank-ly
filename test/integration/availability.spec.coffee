@@ -1,6 +1,7 @@
 request = require 'request'
 
-describe 'initial tests', ->
+describe 'availability of home page', ->
+
 	describe 'load home page', ->
 		resp = null
 		bodyReturned = null

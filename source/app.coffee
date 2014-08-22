@@ -3,9 +3,10 @@ express = require('express')
 _ = require("lodash")
 favicon = require('serve-favicon')
 app = express()
-app.use(favicon(__dirname + '/client/img/favicon.png'))
-app.set('views', __dirname + '/views')
-app.use(express.static(__dirname + '/client'))
+app.use(favicon('./client/img/favicon.png'))
+app.set('views', './views')
+app.set('view engine', 'jade')
+app.use(express.static('./client'))
 http = require 'http'
 server = http.createServer(app)
 io = require('socket.io').listen(server)
@@ -13,6 +14,9 @@ port = process.env.PORT || 5000
 server.listen(port)
 console.log('server started')
 rooms = {}
+
+app.get '/', (req, res) ->
+	res.render 'home'
 
 io.sockets.on 'connection', (socket) ->
 	console.log 'new connection'
