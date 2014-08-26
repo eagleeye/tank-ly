@@ -12,11 +12,27 @@ server = http.createServer(app)
 io = require('socket.io').listen(server)
 port = process.env.PORT || 5000
 server.listen(port)
-console.log('server started')
+uuid = require 'node-uuid'
+console.log('server started on port ', port)
 rooms = {}
 
 app.get '/', (req, res) ->
 	res.render 'home'
+
+app.put '/createroom', (req, res) ->
+	roomId = uuid.v4()
+	rooms[roomId] = rooms[roomId] or master: null, tanks: {}
+	res.json roomId: roomId
+
+app.put '/joinroom/:roomid', (req, res) ->
+	roomId = req.params.roomid
+	tankId = uuid.v4()
+	rooms[roomId][tankId] = color: null, tankId: tankId
+	res.json roomId: roomId
+
+app.use (err, req, res, next) ->
+	console.error('Uncaught error', err)
+	res.status(500).send({error: 'Internal server error'})
 
 io.sockets.on 'connection', (socket) ->
 	console.log 'new connection'
@@ -44,8 +60,3 @@ io.sockets.on 'connection', (socket) ->
 	socket.on 'disconnect', ->
 		console.log 'userDisconnected'
 		masterSocket?.emit('userDisconnected')
-
-getRoom = (id) ->
-	if not rooms[id]
-		rooms[id] = master: {}, sockets: {}
-	rooms[id]
