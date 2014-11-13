@@ -15,6 +15,7 @@ server.listen(port)
 uuid = require 'node-uuid'
 console.log('server started on port ', port)
 rooms = {}
+colors = "green aqua blue".split(" ")
 
 app.get '/', (req, res) ->
 	res.render 'home'
@@ -24,10 +25,10 @@ app.put '/createroom', (req, res) ->
 	rooms[roomId] = rooms[roomId] or master: null, tanks: {}
 	res.json roomId: roomId
 
-app.put '/joinroom/:roomid', (req, res) ->
+app.get '/joinroom/:roomid', (req, res) ->
 	roomId = req.params.roomid
 	tankId = uuid.v4()
-	rooms[roomId][tankId] = color: null, tankId: tankId
+	rooms[roomId][tankId] = color: _.random(), tankId: tankId
 	res.json roomId: roomId
 
 app.use (err, req, res, next) ->
