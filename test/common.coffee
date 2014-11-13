@@ -6,3 +6,7 @@ chai.config.includeStack
 global.chai = chai
 global.expect = chai.expect
 require("../source/app")
+
+realProcessExit = process.exit
+process.exit = (code) ->
+	setTimeout realProcessExit.bind(process, code), 1000

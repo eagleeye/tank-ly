@@ -5,6 +5,7 @@ describe 'create room', ->
 #	socket = null
 	roomId = null
 	resp = null
+	playerInfo = null
 
 	before (done) ->
 		request.put 'http://localhost:5000/createroom', json: yes, (err, _resp, body) ->
@@ -15,10 +16,10 @@ describe 'create room', ->
 	it 'should return roomId', ->
 		expect(roomId).to.be.ok
 
-	describe 'connect to the room', ->
+	describe.only 'connect to the room', ->
 		playerInfo = null
 		before (done) ->
-			request.get 'http://localhost:5000/joinRoom/' + roomId, json: yes, (err, _resp, body) ->
+			request.get "http://localhost:5000/joinroom/#{roomId}", json: yes, (err, _resp, body) ->
 				playerInfo = body
 				resp = _resp
 				done(err)

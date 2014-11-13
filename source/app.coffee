@@ -28,8 +28,8 @@ app.put '/createroom', (req, res) ->
 app.get '/joinroom/:roomid', (req, res) ->
 	roomId = req.params.roomid
 	tankId = uuid.v4()
-	rooms[roomId][tankId] = color: _.random(), tankId: tankId
-	res.json roomId: roomId
+	rooms[roomId][tankId] = color: _.sample(colors), tankId: tankId
+	res.json rooms[roomId][tankId]
 
 app.use (err, req, res, next) ->
 	console.error('Uncaught error', err)
