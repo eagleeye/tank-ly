@@ -15,12 +15,12 @@ server.listen(port)
 uuid = require 'node-uuid'
 console.log('server started on port ', port)
 rooms = {}
-colors = "green aqua blue".split(" ")
+colors = "green aqua blue black red yellow".split(" ")
 
 app.get '/', (req, res) ->
 	res.render 'home'
 
-app.put '/createroom', (req, res) ->
+app.post '/createroom', (req, res) ->
 	roomId = uuid.v4()
 	rooms[roomId] = rooms[roomId] or master: null, tanks: {}
 	res.json roomId: roomId

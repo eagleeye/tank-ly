@@ -1,7 +1,15 @@
-h1 Welcome to tank.ly
-p multiplayer almoust offline game)
-p To play this game you need more or less modern smartphone with touchscreen, that supports multitouch. I recommend to open given URL in Chrome browser.
-p
-	| How to play - open&nbsp
-	a(href="/screen.html") screen
-	|  and press QR icon. Alternativly you can type link directly.
+html
+	head(lang="en")
+		meta(charset="UTF-8")
+		title Tank.ly | Home
+		script(src="/js/lib/jquery-2.1.0.min.js")
+		script(src="/js/build/home.js")
+	body
+		p.
+			Welcome to Tank.ly! The game, where you can play tanks and control them with smartphones!
+		p.
+			Just create or join existing room, read QR code or enter room by direct url from your mobile browser and that's it! Enjoy! Recommended mobile browser id Chrome.
+
+	ul#rooms
+	p
+		a#create-room(href="#") Create rooms
