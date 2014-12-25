@@ -8,7 +8,7 @@ describe 'create room', ->
 	playerInfo = null
 
 	before (done) ->
-		request.put 'http://localhost:5000/createroom', json: yes, (err, _resp, body) ->
+		request.post 'http://localhost:5000/createroom', json: yes, (err, _resp, body) ->
 			roomId = body and body.roomId
 			resp = _resp
 			done(err)
