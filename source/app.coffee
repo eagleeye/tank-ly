@@ -31,6 +31,9 @@ app.get '/joinroom/:roomid', (req, res) ->
 	rooms[roomId][tankId] = color: _.sample(colors), tankId: tankId
 	res.json rooms[roomId][tankId]
 
+app.get '/rooms', (req, res) ->
+	res.json Object.keys(rooms)
+
 app.use (err, req, res, next) ->
 	console.error('Uncaught error', err)
 	res.status(500).send({error: 'Internal server error'})

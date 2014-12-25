@@ -16,7 +16,20 @@ describe 'create room', ->
 	it 'should return roomId', ->
 		expect(roomId).to.be.ok
 
-	describe.only 'connect to the room', ->
+	it 'should status code 200', ->
+		expect(resp.statusCode).to.eql(200)
+
+	describe 'get list of available rooms', ->
+		before (done) ->
+			request.get 'http://localhost:5000/rooms', json: yes, (err, _resp) ->
+				resp = _resp
+				done(err)
+		it 'should status code 200', ->
+			expect(resp.statusCode).to.eql(200)
+		it 'should return list of rooms', ->
+			expect(resp.body).to.be.an('array').to.have.length(1)
+
+	describe 'connect to the room', ->
 		playerInfo = null
 		before (done) ->
 			request.get "http://localhost:5000/joinroom/#{roomId}", json: yes, (err, _resp, body) ->
