@@ -4,7 +4,7 @@ $ ->
 			html = ""
 			for room in rooms
 				html += """
-					<li><a href="/joinroom/#{room}">#{room}</a></li>
+					<li><a href="/joinroom/#{room}">Join #{room}</a>&nbsp;<a href="/hostroom/#{room}">Host #{room}</a></li>
 				"""
 			$("#rooms").html(html)
 	setInterval getRooms, 5000
