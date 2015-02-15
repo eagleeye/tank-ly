@@ -4,7 +4,7 @@ var gutil = require('gulp-util');
 var sourcemaps = require('gulp-sourcemaps');
 var del = require('del');
 var nodemon = require('gulp-nodemon');
-//var stylus = require('gulp-stylus');
+var stylus = require('gulp-stylus');
 
 paths = {
 	coffeeClient: './client/js/src/*.coffee',
@@ -22,9 +22,9 @@ gulp.task('coffee-client', ['clean-js'], function() {
 		.pipe(gulp.dest(paths.jsClient))
 });
 
-gulp.task('watch', ['coffee-client'], function() { //, 'sass'
+gulp.task('watch', ['coffee-client', 'stylus'], function() {
 	gulp.watch(paths.coffeeClient, ['coffee-client']);
-	//gulp.watch(paths.sassSrcWatch, ['sass']);
+	gulp.watch(paths.stylusSrcWatch, ['sass']);
 });
 
 gulp.task('clean-js', function(cb) {
@@ -45,12 +45,12 @@ gulp.task('nodemon', function () {
 });
 
 gulp.task('dev', ['nodemon', 'watch']);
-gulp.task('build', ['coffee-client']); //, 'sass'
+gulp.task('build', ['coffee-client', 'stylus']);
 
-//gulp.task('stylus', ['clean-css'], function () {
-//	gulp.src(paths.stylusSrc)
-//		.pipe(stylus({
-//			sourceComments: 'map'
-//		}))
-//		.pipe(gulp.dest(paths.cssBuild));
-//});
+gulp.task('stylus', ['clean-css'], function () {
+	gulp.src(paths.stylusSrc)
+		.pipe(stylus({
+			sourceComments: 'map'
+		}))
+		.pipe(gulp.dest(paths.cssBuild));
+});
