@@ -24,7 +24,7 @@ gulp.task('coffee-client', ['clean-js'], function() {
 
 gulp.task('watch', ['coffee-client', 'stylus'], function() {
 	gulp.watch(paths.coffeeClient, ['coffee-client']);
-	gulp.watch(paths.stylusSrcWatch, ['sass']);
+	gulp.watch(paths.stylusSrcWatch, ['stylus']);
 });
 
 gulp.task('clean-js', function(cb) {
@@ -49,8 +49,8 @@ gulp.task('build', ['coffee-client', 'stylus']);
 
 gulp.task('stylus', ['clean-css'], function () {
 	gulp.src(paths.stylusSrc)
-		.pipe(stylus({
-			sourceComments: 'map'
-		}))
+		.pipe(sourcemaps.init())
+		.pipe(stylus())
+		.pipe(sourcemaps.write('./maps/'))
 		.pipe(gulp.dest(paths.cssBuild));
 });
