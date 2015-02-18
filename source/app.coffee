@@ -13,26 +13,28 @@ io = require('socket.io').listen(server)
 port = process.env.PORT || 5000
 server.listen(port)
 uuid = require 'node-uuid'
-console.log('server started on port ', port)
+console.log("server started on port #{} http://localhost:#{port}")
 rooms = {}
+for roomId in [1..10]
+	rooms[roomId] = host: {}, tanks: {}
 colors = "green aqua blue black red yellow".split(" ")
 
 app.get '/', (req, res) ->
 	res.render 'home'
 
-app.post '/createroom', (req, res) ->
-	roomId = uuid.v4()
-	rooms[roomId] = rooms[roomId] or master: null, tanks: {}
-	res.json roomId: roomId
+app.get '/m', (req, res) ->
+	res.render 'controller'
 
 app.get '/joinroom/:roomid', (req, res) ->
 	roomId = req.params.roomid
+	if not rooms[roomId]
+		return res.status(404).send({error: 'Internal server error'})
 	tankId = uuid.v4()
-	rooms[roomId][tankId] = color: _.sample(colors), tankId: tankId
+	rooms[roomId].tanks[tankId] = color: _.sample(colors), tankId: tankId
 	res.json rooms[roomId][tankId]
 
 app.get '/rooms', (req, res) ->
-	res.json Object.keys(rooms)
+	res.json rooms
 
 app.use (err, req, res, next) ->
 	console.error('Uncaught error', err)

@@ -1,19 +1,16 @@
 $ ->
+	timeout = 5000
 	getRooms = ->
 		$.getJSON("/rooms").success (rooms) ->
 			html = ""
-			for room in rooms
+			for roomId, room of rooms
 				html += """
-					<li><a href="/joinroom/#{room}">Join #{room}</a>&nbsp;<a href="/hostroom/#{room}">Host #{room}</a></li>
+					<li>
+						Room ##{roomId} Host: #{if room.host.socket then '+' else '-'} Tanks: #{Object.keys(room.tanks).length}
+						<a href="/m##{roomId}">Join</a>&nbsp;<a href="/hostroom/#{roomId}">Host</a>
+					</li>
 				"""
 			$("#rooms").html(html)
-	setInterval getRooms, 5000
+			setTimeout getRooms, timeout
+	setTimeout getRooms, timeout
 	getRooms()
-
-
-	$('#create-room').click ->
-		$.post("/createroom").success (data) ->
-			console.log 'room created', data
-		.error (err) ->
-			console.error 'OOps', err
-		no

@@ -7,18 +7,6 @@ describe 'create room', ->
 	resp = null
 	playerInfo = null
 
-	before (done) ->
-		request.post 'http://localhost:5000/createroom', json: yes, (err, _resp, body) ->
-			roomId = body and body.roomId
-			resp = _resp
-			done(err)
-
-	it 'should return roomId', ->
-		expect(roomId).to.be.ok
-
-	it 'should status code 200', ->
-		expect(resp.statusCode).to.eql(200)
-
 	describe 'get list of available rooms', ->
 		before (done) ->
 			request.get 'http://localhost:5000/rooms', json: yes, (err, _resp) ->
@@ -26,18 +14,18 @@ describe 'create room', ->
 				done(err)
 		it 'should status code 200', ->
 			expect(resp.statusCode).to.eql(200)
-		it 'should return list of rooms', ->
-			expect(resp.body).to.be.an('array').to.have.length(1)
+		it 'should return object of rooms', ->
+			expect(Object.keys(resp.body)).to.be.an('array').of.length(10)
 
-	describe 'connect to the room', ->
+	describe 'connect to the room #1', ->
 		playerInfo = null
 		before (done) ->
-			request.get "http://localhost:5000/joinroom/#{roomId}", json: yes, (err, _resp, body) ->
+			request.get "http://localhost:5000/joinroom/1", json: yes, (err, _resp, body) ->
 				playerInfo = body
 				resp = _resp
 				done(err)
 		it 'should return status 200', ->
-			expect(resp.statusCode).to.be.eql(200)
+			expect(resp.statusCode, playerInfo).to.be.eql(200)
 		it 'should have color', ->
 			expect(playerInfo).to.have.property('color').to.be.ok
 		it 'should have tankId', ->

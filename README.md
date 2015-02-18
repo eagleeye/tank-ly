@@ -2,7 +2,7 @@
 
 This is online multiplayer game, controlled by smartphones
 
-This project is made for Copenhagen NodeJs Hackathon #5
+Latest stable version you can play on [http://tankly-touch.herokuapp.com/](http://tankly-touch.herokuapp.com/)
 
 # Installation
 
