@@ -31,7 +31,7 @@ app.get '/joinroom/:roomid', (req, res) ->
 		return res.status(404).send({error: 'Internal server error'})
 	tankId = uuid.v4()
 	rooms[roomId].tanks[tankId] = color: _.sample(colors), tankId: tankId
-	res.json rooms[roomId][tankId]
+	res.json rooms[roomId].tanks[tankId]
 
 app.get '/rooms', (req, res) ->
 	res.json rooms
