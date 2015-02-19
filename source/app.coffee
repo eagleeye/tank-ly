@@ -26,9 +26,9 @@ app.get '/m/:roomId', (req, res) ->
 	res.render 'controller', {roomId: roomId}
 
 app.get '/joinroom/:roomId', (req, res) ->
-	roomId = req.params.roomid
+	roomId = req.params.roomId
 	if not rooms[roomId]
-		return res.status(404).send({error: 'Internal server error'})
+		return res.status(404).send({error: "Room #{roomId} not found"})
 	tankId = uuid.v4()
 	rooms[roomId].tanks[tankId] = color: _.sample(colors), tankId: tankId
 	res.json rooms[roomId].tanks[tankId]
@@ -44,7 +44,7 @@ app.get '/rooms', (req, res) ->
 
 app.use (err, req, res, next) ->
 	console.error('Uncaught error', err)
-	res.status(500).send({error: 'Internal server error'})
+	res.status(500).send({error: 'Internal server error', stack: err})
 
 io.sockets.on 'connection', (socket) ->
 	console.log 'new connection'
