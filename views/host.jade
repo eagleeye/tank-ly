@@ -1,0 +1,19 @@
+doctype html
+html
+	head
+		meta(charset="UTF-8")
+		title Tank.ly
+		link(rel="stylesheet", href="/css/build/screen.css")
+		script.
+			var roomId = #{roomId}
+		script(src="/js/lib/socket.io-1.2.0.js")
+		script(src="/js/lib/phaser.min.js")
+		script(src="/js/lib/lodash.min.js")
+		script(src="/js/game.js")
+		script(src="/js/index.js")
+	body
+		.menu
+			p Room ##{roomId}
+			ul
+				li: a(href="/qr.html", target="_blank")
+				li: a(href="#") LIKE

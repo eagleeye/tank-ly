@@ -6,8 +6,8 @@ $ ->
 			for roomId, room of rooms
 				html += """
 					<li>
-						Room ##{roomId} Host: #{if room.host.socket then '+' else '-'} Tanks: #{Object.keys(room.tanks).length}
-						<a href="/m##{roomId}">Join</a>&nbsp;<a href="/hostroom/#{roomId}">Host</a>
+						Room ##{roomId} #{if room.host.socket then 'Host exists' else """<a href="/hostroom/#{roomId}">Host this room</a>"""} Tanks: #{Object.keys(room.tanks).length}
+						<a href="/m/#{roomId}">Join</a>&nbsp;
 					</li>
 				"""
 			$("#rooms").html(html)

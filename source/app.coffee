@@ -22,16 +22,22 @@ colors = "green aqua blue black red yellow".split(" ")
 app.get '/', (req, res) ->
 	res.render 'home'
 
-app.get '/m', (req, res) ->
-	res.render 'controller'
+app.get '/m/:roomId', (req, res) ->
+	res.render 'controller', {roomId: roomId}
 
-app.get '/joinroom/:roomid', (req, res) ->
+app.get '/joinroom/:roomId', (req, res) ->
 	roomId = req.params.roomid
 	if not rooms[roomId]
 		return res.status(404).send({error: 'Internal server error'})
 	tankId = uuid.v4()
 	rooms[roomId].tanks[tankId] = color: _.sample(colors), tankId: tankId
 	res.json rooms[roomId].tanks[tankId]
+
+app.get '/hostroom/:roomId', (req, res) ->
+	roomId = req.params.roomId
+	if not rooms[roomId]
+		return res.status(404).send({error: "Room #{roomId} not found"})
+	res.render 'host', {roomId: roomId}
 
 app.get '/rooms', (req, res) ->
 	res.json rooms
