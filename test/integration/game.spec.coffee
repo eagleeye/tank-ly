@@ -1,9 +1,8 @@
 io = require 'socket.io-client'
 request = require 'request'
 
-describe 'create room', ->
+describe 'game tests', ->
 #	socket = null
-	roomId = null
 	resp = null
 	playerInfo = null
 
@@ -13,7 +12,7 @@ describe 'create room', ->
 				resp = _resp
 				done(err)
 		it 'should status code 200', ->
-			expect(resp.statusCode).to.eql(200)
+			expect(resp.statusCode, resp.body).to.eql(200)
 		it 'should return object of rooms', ->
 			expect(Object.keys(resp.body)).to.be.an('array').of.length(10)
 

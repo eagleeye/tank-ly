@@ -13,7 +13,7 @@ io = require('socket.io').listen(server)
 port = process.env.PORT || 5000
 server.listen(port)
 uuid = require 'node-uuid'
-console.log("server started on port #{} http://localhost:#{port}")
+console.log("Server started on port #{port} http://localhost:#{port}")
 rooms = {}
 for roomId in [1..10]
 	rooms[roomId] = host: {}, tanks: {}
@@ -44,31 +44,35 @@ app.get '/rooms', (req, res) ->
 
 app.use (err, req, res, next) ->
 	console.error('Uncaught error', err)
-	res.status(500).send({error: 'Internal server error', stack: err})
+	res.status(500).send({error: 'Internal server error', code: err.name, stack: err?.stack})
+
+validateRoomId = (data) ->
+	if not data or not data.roomId or not rooms[data.roomId]
+		console.error "room with id #{data?.roomid} not found"
+		no
+	else yes
 
 io.sockets.on 'connection', (socket) ->
 	console.log 'new connection'
-	socket.on 'master', (data) ->
-		console.log 'master connected', data
-		getRooom(data.roomId).masterSocket = socket
-	socket.on 'move', (data) ->
-		console.log 'move event', data
-		masterSocket?.emit "move", data
-	socket.on 'stop', (data) ->
-		console.log 'stop event', data
-		masterSocket?.emit "stop", data
-	socket.on 'fire', (data) ->
-		console.log 'fire event', data
-		masterSocket?.emit "fire", data
-	socket.on 'colorAssigned', (data) ->
-		console.log 'colorAssigned', data
-		io.sockets.emit "colorAssigned", data
-	socket.on 'scoreUpdated', (data) ->
-		console.log 'scoreUpdated', data
-		io.sockets.emit "scoreUpdated", data
-	socket.on 'connected', (data) ->
-		console.log 'new user connected', data
-		masterSocket?.emit "connected", data
-	socket.on 'disconnect', ->
-		console.log 'userDisconnected'
-		masterSocket?.emit('userDisconnected')
+	socket.on 'host', (data) ->
+		console.log 'host connected', data
+		if not validateRoomId(data) then return
+		rooms[data.roomId].host.socket = socket
+
+	controllerEvents = "move stop fire connected".split ' '
+	for event in controllerEvents
+		socket.on event, (data) ->
+			console.log "#{event} event received", data
+			if not validateRoomId(data) then return
+			rooms[data.roomId].host.socket?.emit "move", data
+
+	hostEvents = "colorAssigned scoreUpdated".split ' '
+	for event in hostEvents
+		socket.on event, (data) ->
+			console.log "event #{event} received", data
+			if not validateRoomId(data) then return
+			rooms[data.roomId].tanks[data.tankId]?.socket.emit "colorAssigned", data.color
+	socket.on 'disconnect', (data) ->
+		console.log 'userDisconnected', data
+	socket.on 'error', (data) ->
+		console.log('Error in socket', data, data.stack)

@@ -11,9 +11,10 @@ html
 		script(src="/js/lib/lodash.min.js")
 		script(src="/js/game.js")
 		script(src="/js/index.js")
+		script(src="/js/lib/jquery-2.1.0.min.js")
+		script(src="/js/lib/jquery.qrcode-0.11.0.min.js")
+		script(src="/js/build/host.js")
 	body
 		.menu
 			p Room ##{roomId}
-			ul
-				li: a(href="/qr.html", target="_blank")
-				li: a(href="#") LIKE
+			#qr

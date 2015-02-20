@@ -30,7 +30,7 @@ window.onload = function() {
 
 		socket = io.connect(window.location.origin);
 		socket.on('connect', function() {
-			socket.emit('master');
+			socket.emit('host', {roomId: window.roomId});
 		});
 		socket.on('connected', function(data) {
 			game.AddPlayer(data.clientId);
