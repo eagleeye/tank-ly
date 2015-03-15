@@ -141,7 +141,7 @@ mut.CreateGame = function(onCreate) {
 			});
 		});
 
-		// Rspawns
+		// Respawns
 		_.each(players, function(player) {
 			if (!player.alive && game.time.now > player.respawn && !_.isEmpty(player.input)) {
 				player.alive = true;

@@ -40,7 +40,12 @@ app.get '/hostroom/:roomId', (req, res) ->
 	res.render 'host', {roomId: roomId}
 
 app.get '/rooms', (req, res) ->
-	res.json rooms
+	roomsJson = {}
+	for roomId, room of rooms
+		roomsJson[roomId] =
+			host: {socket: !!room.host.socket}
+			tanks: Object.keys(room.tanks).length
+	res.json roomsJson
 
 app.use (err, req, res, next) ->
 	console.error('Uncaught error', err)
