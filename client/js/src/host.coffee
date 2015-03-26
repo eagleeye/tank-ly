@@ -21,4 +21,8 @@ options =
 	fontname: 'Ubuntu'
 	fontcolor: '#000'
 
-$("#qr").empty().qrcode(options);
+$ ->
+	$("#qr").empty().qrcode(options);
+
+	$('.toggle-qr').click ->
+		$('#qr').slideToggle()
