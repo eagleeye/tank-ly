@@ -3,7 +3,7 @@ html
 	head
 		meta(charset="UTF-8")
 		title Tank.ly
-		link(rel="stylesheet", href="/css/build/screen.css")
+		link(rel="stylesheet", href="/css/build/host.css")
 		script.
 			var roomId = #{roomId}
 		script(src="/js/lib/socket.io-1.2.0.js")
@@ -17,4 +17,5 @@ html
 	body
 		.menu
 			p Room ##{roomId}
+			p.toggle-qr Show QR
 			#qr

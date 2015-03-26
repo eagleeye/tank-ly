@@ -33,29 +33,29 @@ window.onload = function() {
 			socket.emit('host', {roomId: window.roomId});
 		});
 		socket.on('connected', function(data) {
-			game.AddPlayer(data.clientId);
+			game.AddPlayer(data.tankId, null, data.color);
 		});
 		socket.on('move', function(data) {
-			game.EnsurePlayer(data.clientId);
+			game.EnsurePlayer(data.tankId);
 			var cmd = {
 				code: "move",
 				direction: data.direction
 			};
-			game.PlayerCommand(data.clientId, cmd);
+			game.PlayerCommand(data.tankId, cmd);
 		});
 		socket.on('fire', function(data) {
-			game.EnsurePlayer(data.clientId);
+			game.EnsurePlayer(data.tankId);
 			var cmd = {
 				code: "press_fire"
 			};
-			game.PlayerCommand(data.clientId, cmd);
+			game.PlayerCommand(data.tankId, cmd);
 		});
 		socket.on('stop', function(data) {
-			game.EnsurePlayer(data.clientId);
+			game.EnsurePlayer(data.tankId);
 			var cmd = {
 				code: "stop"
 			};
-			game.PlayerCommand(data.clientId, cmd);
+			game.PlayerCommand(data.tankId, cmd);
 		});
 
 		// Bots
@@ -80,7 +80,4 @@ window.onload = function() {
 //		}, 1500);
 
 	});
-
-
-
-}
+};

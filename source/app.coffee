@@ -17,13 +17,13 @@ console.log("Server started on port #{port} http://localhost:#{port}")
 rooms = {}
 for roomId in [1..10]
 	rooms[roomId] = host: {}, tanks: {}
-colors = "green aqua blue black red yellow".split(" ")
+colors = "green aqua blue violet red yellow lightgreen brown".split(" ")
 
 app.get '/', (req, res) ->
 	res.render 'home'
 
 app.get '/m/:roomId', (req, res) ->
-	res.render 'controller', {roomId: roomId}
+	res.render 'controller', {roomId: req.params.roomId}
 
 app.get '/joinroom/:roomId', (req, res) ->
 	roomId = req.params.roomId
@@ -51,9 +51,9 @@ app.use (err, req, res, next) ->
 	console.error('Uncaught error', err)
 	res.status(500).send({error: 'Internal server error', code: err.name, stack: err?.stack})
 
-validateRoomId = (data) ->
+validateRoomId = (data, event) ->
 	if not data or not data.roomId or not rooms[data.roomId]
-		console.error "room with id #{data?.roomid} not found"
+		console.error "room with id #{data?.roomid} not found, #{event}"
 		no
 	else yes
 
@@ -68,16 +68,14 @@ io.sockets.on 'connection', (socket) ->
 	for event in controllerEvents
 		socket.on event, (data) ->
 			console.log "#{event} event received", data
-			if not validateRoomId(data) then return
+			if not validateRoomId(data, event) then return
 			rooms[data.roomId].host.socket?.emit "move", data
 
-	hostEvents = "colorAssigned scoreUpdated".split ' '
-	for event in hostEvents
-		socket.on event, (data) ->
-			console.log "event #{event} received", data
-			if not validateRoomId(data) then return
-			rooms[data.roomId].tanks[data.tankId]?.socket.emit "colorAssigned", data.color
-	socket.on 'disconnect', (data) ->
-		console.log 'userDisconnected', data
+	socket.on 'scoreUpdated', (data) ->
+		console.log "event scoreUpdates received", data
+		if not validateRoomId(data) then return
+		rooms[data.roomId].tanks[data.tankId]?.socket.emit 'scoreUpdated', data
+	socket.on 'disconnect', (data, a, b, d) ->
+		console.log 'userDisconnected', data, a, b, d
 	socket.on 'error', (data) ->
 		console.log('Error in socket', data, data.stack)
