@@ -4,9 +4,11 @@ var height = window.innerHeight;
 var scale = 0.5;
 var colors = ['green', 'lightgreen', 'aqua', 'blue', 'darkviolet', 'red', 'yellow'];
 
+var game
+
 mut.CreateGame = function(onCreate) {
 
-	var game = new Phaser.Game(width, height, Phaser.AUTO, '', {
+	game = new Phaser.Game(width, height, Phaser.AUTO, '', {
 		preload: preload,
 		create: create,
 		update: update,
@@ -21,6 +23,8 @@ mut.CreateGame = function(onCreate) {
 	var explosions;
 
 	function preload() {
+		game.stage.disableVisibilityChange = true;
+
 		game.load.image('logo', '../resources/phaser.png');
 
 		for (var i = 1; i <= maxColorId; i++) {
@@ -123,7 +127,7 @@ mut.CreateGame = function(onCreate) {
 
 						player.score++;
 						player.scoreText.text = player.name + " - " + player.score + " ";
-						socket.emit('scoreUpdated', {clientId: player.id, score: player.score});
+						socket.emit('scoreUpdated', {tankId: player.id, score: player.score, roomId: roomId});
 						sortScores();
 
 						enemy.alive = false;

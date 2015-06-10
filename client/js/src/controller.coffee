@@ -20,7 +20,7 @@ startSession = (gameInfo) ->
 		data.roomId = roomId
 		socket.emit(eventName, data)
 		e?.preventDefault?()
-		console.log "emiting event", eventName, data
+#		console.log "emiting event", eventName, data
 	socket = io.connect(window.location.origin);
 	socket.on 'connect', ->
 		emit null, 'connected'

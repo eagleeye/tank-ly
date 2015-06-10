@@ -24,6 +24,8 @@ app.get '/', (req, res) ->
 
 app.get '/m/:roomId', (req, res) ->
 	res.render 'controller', {roomId: req.params.roomId}
+app.get '/bot/:roomId', (req, res) ->
+	res.render 'bot', {roomId: req.params.roomId}
 
 app.get '/joinroom/:roomId', (req, res) ->
 	roomId = req.params.roomId
@@ -66,10 +68,12 @@ io.sockets.on 'connection', (socket) ->
 
 	controllerEvents = "move stop fire connected".split ' '
 	for event in controllerEvents
-		socket.on event, (data) ->
-			console.log "#{event} event received", data
-			if not validateRoomId(data, event) then return
-			rooms[data.roomId].host.socket?.emit "move", data
+		((event) ->
+			socket.on event, (data) ->
+#				console.log "#{event} event received", data
+				if not validateRoomId(data, event) then return
+				rooms[data.roomId].host.socket?.emit event, data
+		)(event)
 
 	socket.on 'scoreUpdated', (data) ->
 		console.log "event scoreUpdates received", data

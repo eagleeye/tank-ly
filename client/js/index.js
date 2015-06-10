@@ -30,12 +30,15 @@ window.onload = function() {
 
 		socket = io.connect(window.location.origin);
 		socket.on('connect', function() {
+			console.log('connect');
 			socket.emit('host', {roomId: window.roomId});
 		});
 		socket.on('connected', function(data) {
+			console.log('connected ', data);
 			game.AddPlayer(data.tankId, null, data.color);
 		});
 		socket.on('move', function(data) {
+			//console.log('move ', data);
 			game.EnsurePlayer(data.tankId);
 			var cmd = {
 				code: "move",
@@ -44,6 +47,7 @@ window.onload = function() {
 			game.PlayerCommand(data.tankId, cmd);
 		});
 		socket.on('fire', function(data) {
+			//console.log('fire ', data);
 			game.EnsurePlayer(data.tankId);
 			var cmd = {
 				code: "press_fire"
@@ -52,6 +56,7 @@ window.onload = function() {
 		});
 		socket.on('stop', function(data) {
 			game.EnsurePlayer(data.tankId);
+			//console.log('fire ', data);
 			var cmd = {
 				code: "stop"
 			};
