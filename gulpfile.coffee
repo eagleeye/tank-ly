@@ -34,7 +34,7 @@ gulp.task 'nodemon', ->
 	nodemon(
 		script: "./source/app.coffee"
 		ext: 'coffee js'
-		watch: ['source/']
+		watch: ['source/', 'views/']
 	).on 'restart', ->
 		gutil.log('Restarting app...')
 

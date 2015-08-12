@@ -20,4 +20,9 @@ startSession = (gameInfo) ->
 		setInterval ->
 			emit null, 'fire'
 			emit null, 'move', direction: Math.random() * 360
-		, 300
+		, 200
+
+	socket.on 'scoreUpdated', (data) ->
+		$('.color').html(data.score)
+		console.log('scoreUpdated', data)
+	window.socket = socket

@@ -10,7 +10,7 @@ html(lang="en")
 		link(href="/css/build/controller.css", rel="stylesheet")
 		script(src="/js/lib/jquery-2.1.0.min.js")
 		script(src="/js/lib/socket.io-1.2.0.js")
-		script(src="/js/build/controller.js")
+		block controllerCode
 		script.
 			var roomId = #{roomId}
 	body

@@ -30,12 +30,16 @@ window.onload = function() {
 
 		socket = io.connect(window.location.origin);
 		socket.on('connect', function() {
-			console.log('connect');
+			//console.log('connect');
 			socket.emit('host', {roomId: window.roomId});
 		});
 		socket.on('connected', function(data) {
-			console.log('connected ', data);
-			game.AddPlayer(data.tankId, null, data.color);
+			//console.log('connected ', data);
+			game.AddPlayer(data.tankId, data.nickname, data.color);
+		});
+		socket.on('disconnected', function(data) {
+			//console.log('disconnected ', data);
+			game.removePlayer(data.tankId);
 		});
 		socket.on('move', function(data) {
 			//console.log('move ', data);

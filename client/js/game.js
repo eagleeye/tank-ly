@@ -4,7 +4,7 @@ var height = window.innerHeight;
 var scale = 0.5;
 var colors = ['green', 'lightgreen', 'aqua', 'blue', 'darkviolet', 'red', 'yellow'];
 
-var game
+var game, last;
 
 mut.CreateGame = function(onCreate) {
 
@@ -57,14 +57,18 @@ mut.CreateGame = function(onCreate) {
 
 	function update() {
 
+		newTime = new Date();
+		//console.log(1000 / (newTime - last));
+		last = newTime;
+
 		var livePlayers = _.filter(players, function(p) {
 			return p.alive;
 		});
 
 		_.each(livePlayers, function(player) {
 			var tank = player.tank;
-			var turret = player.turret;
-			var shadow = player.shadow;
+			//var turret = player.turret;
+			//var shadow = player.shadow;
 			var input = player.input;
 			var currentSpeed = player.currentSpeed;
 
@@ -168,13 +172,13 @@ mut.CreateGame = function(onCreate) {
 				player[prop].rotation = player.tank.rotation;
 			});
 		});
+	}
 
-		function sortScores() {
-			var sorted = _.sortBy(players, function(p) { return -p.score;} );
-			_.each(sorted, function(p, index) {
-				p.scoreText.y = index * 40;
-			});
-		}
+	function sortScores() {
+		var sorted = _.sortBy(players, function(p) { return -p.score;} );
+		_.each(sorted, function(p, index) {
+			p.scoreText.y = index * 40;
+		});
 	}
 
 	function render() {
@@ -188,19 +192,14 @@ mut.CreateGame = function(onCreate) {
 
 	var playersNumber = 1;
 
-	game.AddPlayer = function(playerID, name) {
+	game.AddPlayer = function(playerID, name, color) {
 
 		name = name || "Player " + playersNumber++;
 
 		var x = game.world.randomX / scale;
 		var y = game.world.randomY / scale;
 
-		var colorId = _.size(players) + 1;
-		while (colorId > maxColorId) {
-			colorId -= maxColorId;
-		}
-		socket.emit('colorAssigned', {clientId: playerID, color: colors[colorId - 1]});
-
+		var colorId = (colors.indexOf(color) + 1) || 1; //in case if get 0 somehow
 		var spriteName = 'tank_' + colorId;
 
 		var shadow = game.add.sprite(x, y, spriteName, 'shadow');
@@ -219,7 +218,7 @@ mut.CreateGame = function(onCreate) {
 		tank.body.collideWorldBounds = true;
 
 		var style = { font: "bold 40px Arial", fill: colors[colorId-1], align: "left"};
-		var t = game.add.text(game.world.bounds.width / scale - 300, _.size(players) * 40, name + " ", style)
+		var t = game.add.text(game.world.bounds.width / scale - 300, _.size(players) * 40, name + " ", style);
 		t.setShadow(3, 3, "black", 2);
 
 		players[playerID] = {
@@ -243,9 +242,16 @@ mut.CreateGame = function(onCreate) {
 		return players[playerID];
 	};
 
+	game.removePlayer = function(tankId) {
+		players[tankId].scoreText.destroy();
+		delete players[tankId];
+		sortScores();
+		return players;
+	};
+
 	game.PlayerCommand = function(playerID, cmd) {
 		var player = players[playerID];
-		code = (cmd && cmd.code || "").split("_");
+		var code = (cmd && cmd.code || "").split("_");
 		switch(code[0]) {
 			case "press": player.input[code[1]] = true; break;
 			case "unpress": player.input[code[1]] = false; break;

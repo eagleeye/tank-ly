@@ -18,6 +18,7 @@ rooms = {}
 for roomId in [1..10]
 	rooms[roomId] = host: {}, tanks: {}
 colors = "green aqua blue violet red yellow lightgreen brown".split(" ")
+nicknames = "Sindy Dora Albert Zak Peter Mike John Alice".split ' '
 
 app.get '/', (req, res) ->
 	res.render 'home'
@@ -32,7 +33,7 @@ app.get '/joinroom/:roomId', (req, res) ->
 	if not rooms[roomId]
 		return res.status(404).send({error: "Room #{roomId} not found"})
 	tankId = uuid.v4()
-	rooms[roomId].tanks[tankId] = color: _.sample(colors), tankId: tankId
+	rooms[roomId].tanks[tankId] = color: _.sample(colors), tankId: tankId, nickname: _.sample(nicknames)
 	res.json rooms[roomId].tanks[tankId]
 
 app.get '/hostroom/:roomId', (req, res) ->
@@ -60,26 +61,37 @@ validateRoomId = (data, event) ->
 	else yes
 
 io.sockets.on 'connection', (socket) ->
-	console.log 'new connection'
+	console.log "new connection #{socket.id}"
 	socket.on 'host', (data) ->
 		console.log 'host connected', data
 		if not validateRoomId(data) then return
 		rooms[data.roomId].host.socket = socket
 
-	controllerEvents = "move stop fire connected".split ' '
+	controllerEvents = "move stop fire".split ' '
 	for event in controllerEvents
 		((event) ->
 			socket.on event, (data) ->
 #				console.log "#{event} event received", data
-				if not validateRoomId(data, event) then return
-				rooms[data.roomId].host.socket?.emit event, data
+				unless validateRoomId(data, event) then return
+				rooms[data.roomId].host?.socket?.emit event, data
+				rooms[data.roomId].tanks[data.tankId] = {} unless rooms[data.roomId].tanks[data.tankId]
+				rooms[data.roomId].tanks[data.tankId].socket = socket unless rooms[data.roomId].tanks[data.tankId].socket
 		)(event)
 
+	socket.on 'connected', (data) ->
+		console.log "connected ", data
+		rooms[data.roomId].host?.socket?.emit 'connected', _.pick rooms[data.roomId].tanks[data.tankId], ['tankId', 'color', 'nickname']
+
 	socket.on 'scoreUpdated', (data) ->
-		console.log "event scoreUpdates received", data
-		if not validateRoomId(data) then return
+#		console.log "event scoreUpdates received", data
+		unless validateRoomId(data) then return
 		rooms[data.roomId].tanks[data.tankId]?.socket.emit 'scoreUpdated', data
-	socket.on 'disconnect', (data, a, b, d) ->
-		console.log 'userDisconnected', data, a, b, d
+	socket.on 'disconnect', (data) ->
+		console.log 'userDisconnected', data
+		for roomId, room of rooms
+			for tankId, tank of room.tanks
+				if tank.socket?.id is socket.id
+					console.log "Disconnected tank found #{roomId} #{tankId}"
+					room.host.socket?.emit "disconnected", tankId: tankId
 	socket.on 'error', (data) ->
 		console.log('Error in socket', data, data.stack)

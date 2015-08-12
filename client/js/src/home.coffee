@@ -8,6 +8,7 @@ $ ->
 					<li>
 						Room ##{roomId} #{if room.host.socket then 'Host exists' else """<a href="/hostroom/#{roomId}">Host this room</a>"""} Tanks: #{room.tanks}
 						<a href="/m/#{roomId}">Join</a>&nbsp;
+						<a href="/bot/#{roomId}" target='_blank'>Bot</a>&nbsp;
 					</li>
 				"""
 			$("#rooms").html(html)
