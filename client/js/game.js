@@ -244,6 +244,9 @@ mut.CreateGame = function(onCreate) {
 
 	game.removePlayer = function(tankId) {
 		players[tankId].scoreText.destroy();
+		players[tankId].tank.destroy();
+		players[tankId].shadow.destroy();
+		players[tankId].turret.destroy();
 		delete players[tankId];
 		sortScores();
 		return players;

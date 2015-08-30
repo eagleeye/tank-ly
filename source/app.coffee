@@ -24,7 +24,7 @@ app.get '/', (req, res) ->
 	res.render 'home'
 
 app.get '/m/:roomId', (req, res) ->
-	res.render 'controller', {roomId: req.params.roomId}
+	res.render 'player', {roomId: req.params.roomId}
 app.get '/bot/:roomId', (req, res) ->
 	res.render 'bot', {roomId: req.params.roomId}
 
@@ -49,6 +49,14 @@ app.get '/rooms', (req, res) ->
 			host: {socket: !!room.host.socket}
 			tanks: Object.keys(room.tanks).length
 	res.json roomsJson
+
+app.get '/rooms/:roomId', (req, res) ->
+	roomId = req.params.roomId
+	if not rooms[roomId]
+		return res.status(404).send({error: "Room #{roomId} not found"})
+	tanks = for tankId, tank of rooms[roomId].tanks
+		_.pick(tank, ["tankId", "color", "nickname"])
+	res.json tanks
 
 app.use (err, req, res, next) ->
 	console.error('Uncaught error', err)
