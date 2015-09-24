@@ -20,7 +20,7 @@ console.log("Server started on port #{port} http://localhost:#{port}")
 rooms = {}
 for roomId in [1..10]
 	rooms[roomId] = host: {}, tanks: {}
-colors = "green lightgreen aqua blue darkviolet red yellow ".split(" ");
+colors = "green lightgreen aqua blue darkviolet red yellow".split(" ");
 nicknames = "Sindy Dora Albert Zak Peter Mike John Alice".split ' '
 
 app.get '/', (req, res) ->
