@@ -35,7 +35,7 @@ window.onload = function() {
 		});
 		socket.on('connected', function(data) {
 			//console.log('connected ', data);
-			game.AddPlayer(data.tankId, data.nickname, data.color);
+			game.EnsurePlayer(data.tankId, data.nickname, data.color);
 		});
 		socket.on('disconnected', function(data) {
 			//console.log('disconnected ', data);

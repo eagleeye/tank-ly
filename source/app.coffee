@@ -13,6 +13,9 @@ io = require('socket.io').listen(server)
 port = process.env.PORT || 5000
 server.listen(port)
 uuid = require 'node-uuid'
+n = 1
+#ticker = require("fps")()
+#ticker.on 'data', (framerate) => console.log("rate", ticker.rate);
 console.log("Server started on port #{port} http://localhost:#{port}")
 rooms = {}
 for roomId in [1..10]
@@ -76,15 +79,14 @@ io.sockets.on 'connection', (socket) ->
 		rooms[data.roomId].host.socket = socket
 
 	controllerEvents = "move stop fire".split ' '
-	for event in controllerEvents
-		((event) ->
-			socket.on event, (data) ->
-#				console.log "#{event} event received", data
-				unless validateRoomId(data, event) then return
-				rooms[data.roomId].host?.socket?.emit event, data
-				rooms[data.roomId].tanks[data.tankId] = {} unless rooms[data.roomId].tanks[data.tankId]
-				rooms[data.roomId].tanks[data.tankId].socket = socket unless rooms[data.roomId].tanks[data.tankId].socket
-		)(event)
+	controllerEvents.forEach (event) ->
+		console.log "Setting up events for #{event} #{socket.id}"
+		socket.on event, (data) ->
+#			ticker.tick()
+#			console.log "#{event} event received", ++n
+			rooms[data.roomId]?.host?.socket?.emit event, data
+			rooms[data.roomId]?.tanks[data.tankId] = {} unless rooms[data.roomId].tanks[data.tankId]
+			rooms[data.roomId]?.tanks[data.tankId].socket = socket unless rooms[data.roomId].tanks[data.tankId].socket
 
 	socket.on 'connected', (data) ->
 		console.log "connected ", data

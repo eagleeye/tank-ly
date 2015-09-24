@@ -184,9 +184,9 @@ mut.CreateGame = function(onCreate) {
 	function render() {
 	}
 
-	game.EnsurePlayer = function(playerID) {
+	game.EnsurePlayer = function(playerID, nickname, color) {
 		if (!players[playerID]) {
-			game.AddPlayer(playerID);
+			game.AddPlayer(playerID, nickname, color);
 		}
 	};
 
