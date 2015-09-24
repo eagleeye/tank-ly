@@ -2,7 +2,7 @@
 
 This is online multiplayer game, controlled by smartphones
 
-Latest stable version you can play on [http://tankly-touch.herokuapp.com/](http://tankly-touch.herokuapp.com/)
+Latest stable version you can play on [http://tank-ly.herokuapp.com/](http://tank-ly.herokuapp.com/)
 
 # Installation
 
@@ -12,6 +12,8 @@ Latest stable version you can play on [http://tankly-touch.herokuapp.com/](http:
 
 `npm start` 
 
-open in browser http://youradress:5000/qr.html - it contains qr code, that can be read from phone
-it is pointing to http://youradress:5000/m.html , - so you can type this url directly to phone, if you don't want to install QR-code reader
-Game field is on http://youradress:5000/screen.html
+open in browser [http://localhost:5000](http://localhost:5000)
+
+Host room on one of your laptops/PC's
+
+Connect with mobile devices using links on home page or QR codes inside of game
