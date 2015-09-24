@@ -1,9 +1,9 @@
 touchStartEvent = 'touchstart'
 touchMoveEvent = 'touchstart touchmove'
 touchStopEvent = 'touchend'
-touchMoveEvent = 'mousedown'
-touchStartEvent = 'mousedown'
-touchStopEvent = 'mouseup'
+#touchMoveEvent = 'mousedown'
+#touchStartEvent = 'mousedown'
+#touchStopEvent = 'mouseup'
 
 roomId = window.roomId
 
