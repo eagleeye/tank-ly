@@ -1,4 +1,6 @@
 $ ->
+#	$('.navigation').smint();
+
 	timeout = 5000
 	getRooms = ->
 		$.getJSON("/rooms").success (rooms) ->
