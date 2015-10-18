@@ -7,6 +7,8 @@ touchStopEvent = 'touchend'
 
 roomId = window.roomId
 
+screen?.orientation?.lock?('landscape-primary')
+
 $ ->
 	$.getJSON "/joinroom/#{roomId}", (res) ->
 		console.info('Joined room', res);
