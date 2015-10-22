@@ -1,4 +1,4 @@
-#Tank.ly [![Build Status](https://travis-ci.org/eagleeye/multiplayerTanks.svg)](https://travis-ci.org/eagleeye/multiplayerTanks) [![dependencies](https://david-dm.org/eagleeye/multiplayerTanks.svg)](https://david-dm.org/eagleeye/multiplayerTanks) [![devDependency Status](https://david-dm.org/eagleeye/multiplayerTanks/dev-status.svg)](https://david-dm.org/eagleeye/multiplayerTanks#info=devDependencies)
+#Tank.ly [![Build Status](https://travis-ci.org/eagleeye/tank-ly.svg)](https://travis-ci.org/eagleeye/tank-ly) [![dependencies](https://david-dm.org/eagleeye/tank-ly.svg)](https://david-dm.org/eagleeye/multiplayerTanks) [![devDependency Status](https://david-dm.org/eagleeye/tank-ly/dev-status.svg)](https://david-dm.org/eagleeye/tank-ly#info=devDependencies)
 
 This is online multiplayer game, controlled by smartphones
 
