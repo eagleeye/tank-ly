@@ -2,7 +2,7 @@
 
 This is online multiplayer game, controlled by smartphones
 
-Latest stable version you can play on [http://tank-ly.herokuapp.com/](http://tank-ly.herokuapp.com/)
+Latest stable version you can play on [http://tank.ly](http://tank.ly)
 
 # Installation
 
