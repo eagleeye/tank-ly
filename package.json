@@ -21,6 +21,7 @@
     "gulp-util": "3.0.6",
     "jade": "1.11.0",
     "lodash": "3.10.1",
+    "newrelic": "^1.23.1",
     "node-uuid": "1.4.3",
     "serve-favicon": "2.3.0",
     "socket.io": "1.0.6"

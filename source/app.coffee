@@ -1,3 +1,4 @@
+process.env.APP_ENV == 'production' && require('newrelic')
 fs = require("fs")
 express = require('express')
 _ = require("lodash")
