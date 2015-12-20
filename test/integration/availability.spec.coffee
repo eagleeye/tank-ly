@@ -2,7 +2,7 @@ request = require 'request'
 
 describe 'availability of static pages', ->
 
-	['/', '/m/1', '/bot/1', '/hostroom/1'].forEach (page) ->
+	['/', '/m/1', '/bot/1', '/hostroom/1', '/qr/1'].forEach (page) ->
 		describe "load page '#{page}'", ->
 			resp = null
 			bodyReturned = null

@@ -8,9 +8,10 @@ $ ->
 			for roomId, room of rooms
 				html += """
 					<li>
-						Room ##{roomId} #{if room.host.socket then 'Host exists' else """<a href="/hostroom/#{roomId}">Host this room</a>"""} Tanks: #{room.tanks}
-						<a href="/m/#{roomId}">Join</a>&nbsp;
-						<a href="/bot/#{roomId}" target='_blank'>Bot</a>&nbsp;
+						<span class="room-number"> Room ##{roomId}</span> <span class="join-room">#{if room.host.socket then 'Host exists' else """<a href="/hostroom/#{roomId}">Host this room</a>"""}</span> Tanks: #{room.tanks}
+						<a href="/m/#{roomId}" target='_blank'>Join</a>&nbsp;
+						<a href="/bot/#{roomId}" target='_blank'>Add bot</a>&nbsp;
+						<a href="/qr/#{roomId}" target='_blank'>QR code</a>&nbsp;
 					</li>
 				"""
 			$("#rooms").html(html)

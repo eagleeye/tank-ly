@@ -1,5 +1,4 @@
 node_modules
-client/js/build
 .idea
 forego.exe
 build

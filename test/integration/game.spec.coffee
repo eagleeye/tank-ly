@@ -58,12 +58,14 @@ describe 'game tests', ->
 				clientSocket.emit 'connected', roomId: 1, tankId: 100500
 
 			before (done) ->
-				hostSocket.on 'fire', (data) ->
-					lastClientData = data
-					done()
-				clientSocket.emit 'fire',
-					roomId: 1
-					tankId: 100500
+				setTimeout ->
+					hostSocket.on 'fire', (data) ->
+						lastClientData = data
+						done()
+					clientSocket.emit 'fire',
+						roomId: 1
+						tankId: 100500
+				, 200 #give some time to server to bind events
 
 			it 'should get event from client', ->
 				expect(lastClientData).to.eql

@@ -1,0 +1,11 @@
+extends _layout
+block head
+	script.
+		var roomId = #{roomId}
+	script(src="/js/lib/jquery.qrcode-0.11.0.min.js")
+	script(src="/js/build/qr.js")
+block content
+	h3 Join the battle by reading QR code or typing URL on your mobile device
+	#qr(style="float: left")
+	h2#link(style="display:flex")
+

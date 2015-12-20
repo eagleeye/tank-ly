@@ -32,6 +32,8 @@ app.get '/m/:roomId', (req, res) ->
 	res.render 'player', {roomId: req.params.roomId}
 app.get '/bot/:roomId', (req, res) ->
 	res.render 'bot', {roomId: req.params.roomId}
+app.get '/qr/:roomId', (req, res) ->
+	res.render 'qr', {roomId: req.params.roomId}
 
 app.get '/joinroom/:roomId', (req, res) ->
 	roomId = req.params.roomId
@@ -105,6 +107,8 @@ io.sockets.on 'connection', (socket) ->
 			for tankId, tank of room.tanks
 				if tank.socket?.id is socket.id
 					console.log "Disconnected tank found #{roomId} #{tankId}"
+					delete room.tanks[tankId]
 					room.host.socket?.emit "disconnected", tankId: tankId
+
 	socket.on 'error', (data) ->
 		console.log('Error in socket', data, data.stack)

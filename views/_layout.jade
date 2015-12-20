@@ -1,0 +1,28 @@
+doctype html
+html
+	head(lang="en")
+		meta(charset="UTF-8")
+		title Tank.ly | Home
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		link(rel="stylesheet", href="/css/vendor/materialize.css", media="screen,projection")
+		link(rel="stylesheet", href="/css/build/home.css")
+		script(src="/js/lib/jquery-2.1.0.min.js")
+		script(src="/js/lib/materialize.min.js")
+		block head
+	body.light-green.light-green-text.text-darken-4
+		.container
+			.navigation.green
+				nav.green
+					.nav-wrapper
+						.col.s12
+							a.brand-logo#welcome(href="/#welcome") Tank.ly
+							ul.right.hide-on-med-and-down
+								li
+									a(href="/#howto") How to play
+								li
+									a(href="/#play") Play
+								li
+									a(href="/#about") About
+			block content
+		include _analytics
+

@@ -1,4 +1,4 @@
-var mut = mut || {}; // MUltiplayer Tanks
+var mut = mut || {}; // Multiplayer Tanks (first name of tank.ly ;)
 var width = window.innerWidth;
 var height = window.innerHeight;
 var scale = 0.5;
@@ -51,6 +51,10 @@ mut.CreateGame = function(onCreate) {
 			explosionAnimation.anchor.setTo(0.5, 0.5);
 			explosionAnimation.animations.add('kaboom');
 		}
+
+		var style = { font: "bold 40px Arial", fill: "black", align: "right"};
+		var text = "Join this battle from your mobile device " + window.location.origin + "/m/" + roomId;
+		game.add.text(game.world.bounds.width / scale - 1600, game.world.bounds.height / scale - 50, text, style);
 
 		onCreate && onCreate(game);
 	}
