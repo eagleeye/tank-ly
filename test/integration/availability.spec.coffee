@@ -8,7 +8,7 @@ describe 'availability of static pages', ->
 			bodyReturned = null
 
 			before (done) ->
-				request.get "http://localhost:5000#{page}", (err, _resp, body) ->
+				request.get "#{baseUrl}#{page}", (err, _resp, body) ->
 					resp = _resp
 					bodyReturned = body
 					done err

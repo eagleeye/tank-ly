@@ -22,6 +22,8 @@ startSession = (_gameInfo) ->
 	socket.on 'scoreUpdated', (data) ->
 		$('.color').html(data.score)
 		console.log('scoreUpdated', data)
+	socket.on 'died', (data) ->
+		navigator.vibrate?("600")
 	window.socket = socket
 
 emit = (e, eventName, data = {}) ->

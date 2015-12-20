@@ -39,6 +39,9 @@ startSession = (gameInfo) ->
 		$('.color').html(data.score)
 		console.log('scoreUpdated', data)
 
+	socket.on 'died', (data) ->
+		navigator.vibrate?("600")
+
 	$('.right-control').on touchStartEvent, (e) ->
 		emit e, 'fire'
 	.on "#{touchMoveEvent} #{touchStopEvent}", (e) ->

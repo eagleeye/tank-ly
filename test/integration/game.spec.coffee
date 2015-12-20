@@ -8,7 +8,7 @@ describe 'game tests', ->
 
 	describe 'get list of available rooms', ->
 		before (done) ->
-			request.get 'http://localhost:5000/rooms', json: yes, (err, _resp) ->
+			request.get "#{baseUrl}/rooms", json: yes, (err, _resp) ->
 				resp = _resp
 				done(err)
 		it 'should status code 200', ->
@@ -19,7 +19,7 @@ describe 'game tests', ->
 	describe 'get info of the room #1', ->
 		playerInfo = null
 		before (done) ->
-			request.get "http://localhost:5000/joinroom/1", json: yes, (err, _resp, body) ->
+			request.get "#{baseUrl}/joinroom/1", json: yes, (err, _resp, body) ->
 				playerInfo = body
 				resp = _resp
 				done(err)
@@ -35,12 +35,12 @@ describe 'game tests', ->
 		clientSocket = null
 
 		before (done) ->
-			hostSocket = hostIo.connect('http://localhost:5000', forceNew: yes)
+			hostSocket = hostIo.connect("#{baseUrl}", forceNew: yes)
 			hostSocket.on 'connect', ->
 				done()
 			hostSocket.on 'connect_error', done
 		before (done) ->
-			clientSocket = clientIo.connect('http://localhost:5000', forceNew: yes)
+			clientSocket = clientIo.connect("#{baseUrl}", forceNew: yes)
 			clientSocket.on 'connect', ->
 				done()
 			clientSocket.on 'connect_error', done
@@ -48,7 +48,6 @@ describe 'game tests', ->
 			expect(clientSocket.connected).to.be.eql true
 		it 'host socket should connect', ->
 			expect(hostSocket.connected).to.be.eql true
-
 
 		describe 'send event from client to host', ->
 			lastClientData = null

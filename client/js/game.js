@@ -132,6 +132,7 @@ mut.CreateGame = function(onCreate) {
 						player.score++;
 						player.scoreText.text = player.name + " - " + player.score + " ";
 						socket.emit('scoreUpdated', {tankId: player.id, score: player.score, roomId: roomId});
+						socket.emit('died', {tankId: enemy.id, score: player.score, roomId: roomId});
 						sortScores();
 
 						enemy.alive = false;
@@ -247,6 +248,7 @@ mut.CreateGame = function(onCreate) {
 		players[tankId].tank.destroy();
 		players[tankId].shadow.destroy();
 		players[tankId].turret.destroy();
+		players[tankId].bullets.destroy();
 		delete players[tankId];
 		sortScores();
 		return players;

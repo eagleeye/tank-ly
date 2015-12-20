@@ -12,12 +12,13 @@ http = require 'http'
 server = http.createServer(app)
 io = require('socket.io').listen(server)
 port = process.env.PORT || 5000
-server.listen(port)
+server.listen port, (e) =>
+	console.log e || "Server started on port #{port} http://localhost:#{port}"
+	e && throw e
 uuid = require 'node-uuid'
 n = 1
 #ticker = require("fps")()
 #ticker.on 'data', (framerate) => console.log("rate", ticker.rate);
-console.log("Server started on port #{port} http://localhost:#{port}")
 rooms = {}
 for roomId in [1..10]
 	rooms[roomId] = host: {}, tanks: {}
@@ -93,10 +94,11 @@ io.sockets.on 'connection', (socket) ->
 		console.log "connected ", data
 		rooms[data.roomId].host?.socket?.emit 'connected', _.pick rooms[data.roomId].tanks[data.tankId], ['tankId', 'color', 'nickname']
 
-	socket.on 'scoreUpdated', (data) ->
-#		console.log "event scoreUpdates received", data
-		unless validateRoomId(data) then return
-		rooms[data.roomId].tanks[data.tankId]?.socket.emit 'scoreUpdated', data
+	hostEvents = "scoreUpdated died".split ' '
+	hostEvents.forEach (event) ->
+		socket.on event, (data) ->
+			unless validateRoomId(data) then return
+			rooms[data.roomId].tanks[data.tankId]?.socket.emit event, data
 	socket.on 'disconnect', (data) ->
 		console.log 'userDisconnected', data
 		for roomId, room of rooms
