@@ -100,7 +100,7 @@ io.sockets.on 'connection', (socket) ->
 	hostEvents.forEach (event) ->
 		socket.on event, (data) ->
 			unless validateRoomId(data) then return
-			rooms[data.roomId].tanks[data.tankId]?.socket.emit event, data
+			rooms[data.roomId].tanks[data.tankId]?.socket?.emit event, data
 	socket.on 'disconnect', (data) ->
 		console.log 'userDisconnected', data
 		for roomId, room of rooms
