@@ -10,11 +10,14 @@ html(lang="en")
 		link(href="/css/build/controller.css", rel="stylesheet")
 		script(src="/js/lib/jquery-2.1.0.min.js")
 		script(src="/js/lib/socket.io-1.2.0.js")
+		script(src="/js/build/controllerLib.js")
 		block controllerCode
 		script.
 			var roomId = #{roomId}
 	body
-		.container
+		.enter-fullscreen
+			| FullScr
+		#container.container
 			.control-wrap
 				.left-control.control
 					.text Move
