@@ -6,7 +6,7 @@ favicon = require('serve-favicon')
 app = express()
 app.use(favicon('./client/img/favicon.png'))
 app.set('views', './views')
-app.set('view engine', 'jade')
+app.set('view engine', 'pug')
 app.use(express.static('./client'))
 http = require 'http'
 server = http.createServer(app)
