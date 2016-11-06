@@ -88,19 +88,28 @@ io.sockets.on 'connection', (socket) ->
 		socket.on event, (data) ->
 #			ticker.tick()
 #			console.log "#{event} event received", ++n
-			rooms[data.roomId]?.host?.socket?.emit event, data
+			try
+				rooms[data.roomId]?.host?.socket?.emit event, data
+			catch e
+				console.error e
 			rooms[data.roomId]?.tanks[data.tankId] = {} unless rooms[data.roomId].tanks[data.tankId]
 			rooms[data.roomId]?.tanks[data.tankId].socket = socket unless rooms[data.roomId].tanks[data.tankId].socket
 
 	socket.on 'connected', (data) ->
 		console.log "connected ", data
-		rooms[data.roomId].host?.socket?.emit 'connected', _.pick rooms[data.roomId].tanks[data.tankId], ['tankId', 'color', 'nickname']
+		try
+			rooms[data.roomId].host?.socket?.emit 'connected', _.pick rooms[data.roomId].tanks[data.tankId], ['tankId', 'color', 'nickname']
+		catch e
+			console.error e
 
 	hostEvents = "scoreUpdated died".split ' '
 	hostEvents.forEach (event) ->
 		socket.on event, (data) ->
 			unless validateRoomId(data) then return
-			rooms[data.roomId].tanks[data.tankId]?.socket?.emit event, data
+			try
+				rooms[data.roomId].tanks[data.tankId]?.socket?.emit event, data
+			catch e
+				console.error e
 	socket.on 'disconnect', (data) ->
 		console.log 'userDisconnected', data
 		for roomId, room of rooms
@@ -108,7 +117,10 @@ io.sockets.on 'connection', (socket) ->
 				if tank.socket?.id is socket.id
 					console.log "Disconnected tank found #{roomId} #{tankId}"
 					delete room.tanks[tankId]
-					room.host.socket?.emit "disconnected", tankId: tankId
+					try
+						room.host.socket?.emit "disconnected", tankId: tankId
+					catch e
+						console.error e
 
 	socket.on 'error', (data) ->
 		console.log('Error in socket', data, data.stack)
