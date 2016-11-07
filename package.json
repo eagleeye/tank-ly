@@ -5,26 +5,27 @@
   "homepage": "http://tank.ly",
   "main": "app.js",
   "engines": {
-    "node": "5.8.x",
-    "npm": "3.10.x"
+    "node": "6.x.x",
+    "npm": "3.x.x"
   },
   "author": "Andrii Shumada <eagleeyes91@gmail.com>",
   "dependencies": {
-    "coffee-script": "1.11.0",
-    "del": "2.0.2",
-    "express": "4.13.3",
+    "coffee-script": "1.11.1",
+    "del": "2.2.2",
+    "express": "4.14.0",
     "gulp": "3.9.1",
     "gulp-coffee": "2.3.2",
     "gulp-nodemon": "2.2.1",
-    "gulp-sourcemaps": "2.1.1",
+    "gulp-sourcemaps": "2.2.0",
     "gulp-stylus": "2.5.0",
     "gulp-util": "3.0.7",
-    "lodash": "4.16.4",
-    "newrelic": "1.31.0",
+    "lodash": "4.16.6",
+    "my-local-ip": "1.0.0",
+    "newrelic": "1.33.0",
     "node-uuid": "1.4.7",
     "pug": "2.0.0-beta6",
     "serve-favicon": "2.3.0",
-    "socket.io": "1.0.6"
+    "socket.io": "1.5.1"
   },
   "repository": {
     "type": "git",
@@ -39,13 +40,13 @@
     "url": "https://github.com/eagleeye/tank-ly/issues"
   },
   "devDependencies": {
-    "async": "1.4.2",
-    "chai": "3.3.0",
+    "async": "2.1.2",
+    "chai": "3.5.0",
     "chai-pretty-expect": "1.0.1",
-    "chai-subset": "1.1.0",
+    "chai-subset": "1.3.0",
     "mocha": "3.1.2",
-    "request": "2.75.0",
-    "socket.io-client": "1.3.7"
+    "request": "2.78.0",
+    "socket.io-client": "1.5.1"
   },
   "keywords": [
     "game",

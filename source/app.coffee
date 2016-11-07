@@ -10,13 +10,14 @@ app.set('view engine', 'pug')
 app.use(express.static('./client'))
 http = require 'http'
 server = http.createServer(app)
+localIp = require('my-local-ip')
 io = require('socket.io').listen(server)
 port = process.env.PORT || 5000
 server.listen port, (e) =>
-	console.log e || "Server started on port #{port} http://localhost:#{port}"
+	console.log e || "Server started on port #{port} http://#{localIp()}:#{port}"
 	e && throw e
 uuid = require 'node-uuid'
-n = 1
+
 #ticker = require("fps")()
 #ticker.on 'data', (framerate) => console.log("rate", ticker.rate);
 rooms = {}
@@ -80,6 +81,7 @@ io.sockets.on 'connection', (socket) ->
 	socket.on 'host', (data) ->
 		console.log 'host connected', data
 		if not validateRoomId(data) then return
+		if rooms[data.roomId].host.socket then return console.warn 'host socket exists'
 		rooms[data.roomId].host.socket = socket
 
 	controllerEvents = "move stop fire".split ' '
@@ -113,6 +115,8 @@ io.sockets.on 'connection', (socket) ->
 	socket.on 'disconnect', (data) ->
 		console.log 'userDisconnected', data
 		for roomId, room of rooms
+			if room.host.socket?.id is socket.id
+				return delete room.host.socket
 			for tankId, tank of room.tanks
 				if tank.socket?.id is socket.id
 					console.log "Disconnected tank found #{roomId} #{tankId}"
