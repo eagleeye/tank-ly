@@ -9,9 +9,9 @@ $ ->
 				html += """
 					<li>
 						<span class="room-number"> Room ##{roomId}</span> <span class="join-room">#{if room.host.socket then 'Host exists' else """<a href="/hostroom/#{roomId}">Host this room</a>"""}</span> Tanks: #{room.tanks}
-						<a href="/m/#{roomId}" target='_blank'>Join</a>&nbsp;
-						<a href="/bot/#{roomId}" target='_blank'>Add bot</a>&nbsp;
-						<a href="/qr/#{roomId}" target='_blank'>QR code</a>&nbsp;
+						<a href="/m/#{roomId}" target='_blank' rel="nofollow">Join</a>&nbsp;
+						<a href="/bot/#{roomId}" target='_blank' rel="nofollow">Add bot</a>&nbsp;
+						<a href="/qr/#{roomId}" target='_blank' rel="nofollow">QR code</a>&nbsp;
 					</li>
 				"""
 			$("#rooms").html(html)
