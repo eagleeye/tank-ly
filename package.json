@@ -5,8 +5,7 @@
   "homepage": "http://tank.ly",
   "main": "app.js",
   "engines": {
-    "node": "6.x.x",
-    "npm": "3.x.x"
+    "node": "8.x.x"
   },
   "author": "Andrii Shumada <eagleeyes91@gmail.com>",
   "dependencies": {
